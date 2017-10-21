@@ -1,3 +1,4 @@
+package Juego;
 import personajes.*;
 import CargaDeNiveles.*;
 public class Mapa {

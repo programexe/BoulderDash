@@ -1,4 +1,5 @@
 package personajes;
+import ;
 
 public class Mariposa extends Explosivos {
 	
@@ -15,8 +16,8 @@ public class Mariposa extends Explosivos {
 		}
 	}
 	
-	public void Explotar(){
-		if 
+	public void Explotar(Mapa m){
+		if ()
 	}
 
 	public void informar(){

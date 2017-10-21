@@ -1,6 +1,9 @@
+package Juego;
 
 public class BoulderDash {
-	Mapa m;
+	
+	private Mapa m=new Mapa();
+	
 
 	public Mapa getM() {
 		return m;
