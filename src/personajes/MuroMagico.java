@@ -9,10 +9,7 @@ public class MuroMagico extends Muro {
 	}
 	
 	public void convertir(Elementos elem, int pos[][]){
-		if (time!=0){
-			
-		}
-	}
+		
 	public int getTiempo() {
 		return tiempo;
 	}

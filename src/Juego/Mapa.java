@@ -56,4 +56,8 @@ public class Mapa {
 	public void setEspacios(Elementos[][] espacios) {
 		this.espacios = espacios;
 	}
+	
+	public void modificarEspacio(int x,int y, Elementos espacio){
+		this.espacios[x][y]=espacio;
+	}
 }
