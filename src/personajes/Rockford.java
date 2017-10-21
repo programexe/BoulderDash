@@ -1,6 +1,8 @@
 package personajes;
 import Juego.*;
 
+/* COMENTARIO DE PRUEBA PARA GIT*/
+
 public class Rockford extends Animados{
 	private boolean muerto;
 	private int x;
@@ -8,7 +10,7 @@ public class Rockford extends Animados{
 	private int recolectados;
 	
 	public void moverDerecha(Mapa m){
-		if(m.)
+		
 		
 	}
 	
