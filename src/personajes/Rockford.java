@@ -26,6 +26,7 @@ public class Rockford extends Animados{
 	
 	public void moverDerecha(Mapa m){
 		if ((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Basura){
+			m.getEspacios()[this.getX()+1][this.getY()].informar();
 			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
 			this.setX(this.getX()+1);
 			m.modificarEspacio(this.getX(), this.getY(), this);
@@ -33,6 +34,7 @@ public class Rockford extends Animados{
 		else
 		{
 			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
+				m.getEspacios()[this.getX()+1][this.getY()].informar();
 				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
 				this.setX(this.getX()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
@@ -48,6 +50,7 @@ public class Rockford extends Animados{
 					
 					else{
 						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+						System.out.println("Nivel Terminado");
 						m.setNivelTerminado(true);
 
 					}

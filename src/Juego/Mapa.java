@@ -13,12 +13,20 @@ public class Mapa {
 	Elementos espacios[][]= new Elementos[lector.getWIDTH()][lector.getHEIGHT()];
 	
 
-
+	private static Mapa m2;
+	public static Mapa getInstance(){
+		if (m2==null){
+			m2=new Mapa();
+		}
+		return m2;
+		
+	}
+	
 	TimerTask tarea=new TimerTask(){
 		public void run(){
 			for(int i=0;i<40;i++){
 				for(int j=0;j<22;j++){
-					espacios[i][j].actualizarPorTimer(this);
+					espacios[i][j].actualizarPorTimer(Mapa.getInstance());
 					}
 				}
 			setTiempo(getTiempo()-1);
@@ -33,6 +41,8 @@ public class Mapa {
 		}
 	}
 	public void crearMapa(){
+		
+		lector.setCurrentLevel(lvl);
 		for(int i=0;i<40;i++){
 			for(int j=0;j<22;j++){
 				switch (lector.getTile(i, j)){
