@@ -25,7 +25,13 @@ public class Mapa {
 		}
 	};
 	
-	
+	public void actualizarMapa(){
+		for(int i=0;i<40;i++){
+			for(int j=0;j<22;j++){
+				espacios[i][j].actualizar(this);
+			}
+		}
+	}
 	public void crearMapa(){
 		for(int i=0;i<40;i++){
 			for(int j=0;j<22;j++){
