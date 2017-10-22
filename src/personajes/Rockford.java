@@ -12,8 +12,11 @@ public class Rockford extends Animados{
 	}
 	
 	public void moverDerecha(Mapa m){
+<<<<<<< HEAD
 		
 
+=======
+>>>>>>> a8ef37f11a2c3e1e998450c779c9d645f4fbf9f5
 		if ((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Basura){
 			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
 			this.setX(this.getX()+1);
@@ -29,7 +32,10 @@ public class Rockford extends Animados{
 			else{
 				
 				if (m.getEspacios()[this.getX()+1][this.getY()] instanceof Puerta){
+<<<<<<< HEAD
 
+=======
+>>>>>>> a8ef37f11a2c3e1e998450c779c9d645f4fbf9f5
 					Puerta puertaAuxiliar= (Puerta) m.getEspacios()[this.getX()+1][this.getY()];
 					if(!puertaAuxiliar.isAbierta()){
 						System.out.print("La puerta esta cerrada");
@@ -38,6 +44,7 @@ public class Rockford extends Animados{
 					else{
 						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
 						m.setNivelTerminado(true);
+<<<<<<< HEAD
 
 					Puerta p = new Puerta();
 						if(p = (Puerta) m.getEspacios()[this.getX()+1][this.getY()]) //??????)
@@ -47,6 +54,8 @@ public class Rockford extends Animados{
 						else{
 						//pasar nivel????
 						}
+=======
+>>>>>>> a8ef37f11a2c3e1e998450c779c9d645f4fbf9f5
 					}
 				}
 				else
@@ -60,15 +69,10 @@ public class Rockford extends Animados{
 					else{
 						System.out.print("Rockford no puede moverse a ese lugar");
 					}
-<<<<<<< Updated upstream
 				}
 			}
 		}
 		m.actualizarMapa();
-=======
-
-		
->>>>>>> Stashed changes
 	}
 		
 	

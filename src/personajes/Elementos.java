@@ -9,7 +9,7 @@ public abstract class Elementos{
 	public void actualizar(Mapa m){
 	}
 	
-	public void actualizarPorTimer(){
+	public void actualizarPorTimer(Mapa m){
 		
 	}
 	

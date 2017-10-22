@@ -1,5 +1,9 @@
 package personajes;
-import Juego.*;
+import Juego.*; 
+
+import Juego.Mapa;
+
+
 public class Mariposa extends Explosivos {
 	
 	public void cambiarDireccion(){
