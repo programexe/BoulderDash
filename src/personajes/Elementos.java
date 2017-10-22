@@ -1,11 +1,12 @@
 package personajes;
+import Juego.*;
 
 public abstract class Elementos{
 	private int x;
 	private int y;
 	private boolean destructible;
 	
-	public void actualizar(){
+	public void actualizar(Mapa m){
 	}
 	
 	public void actualizarPorTimer(){
