@@ -57,26 +57,9 @@ public abstract class QueCaen extends Animados{
 			m.modificarEspacio(this.getX(), this.getY(), this);
 			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
 		}
-		else{
-			if(m.getEspacios()[this.getY()][this.getY()+1] instanceof Rockford){
-				this.Explotar(m, (Rockford) m.getEspacios()[this.getX()][this.getY()+1]);
-			}
-			else{
-				if(m.getEspacios()[this.getY()][this.getY()+1] instanceof Luciernaga){
-					this.Explotar(m, (Luciernaga) m.getEspacios()[this.getX()][this.getY()+1]); //corregir cast aca despues de solucionar la duda
-				}
-				else{
-					if(m.getEspacios()[this.getY()][this.getY()+1] instanceof Mariposa){
-						this.Explotar(m, (Mariposa) m.getEspacios()[this.getX()][this.getY()+1]); //lo mismo aca
-					}
-					else
-						this.setCayendo(false);
-				}
-			}
-		}
 		this.caer(m);//Acá me parece que seria el llamado recursivo
-			
-	}
+		m.actualizarMapa();
+		}
 	
 	public void actualizar(Mapa m){ //aca creo que se tendria que ejecutar en los actualizar
 		if (this.isCayendo()){

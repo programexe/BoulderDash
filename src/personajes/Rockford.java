@@ -11,6 +11,19 @@ public class Rockford extends Animados{
 		m.setDiamantesRecolectados(m.getDiamantesRecolectados()+1);
 	}
 	
+	public void explotar(Mapa m){
+		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca){
+			
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio());
+			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio());
+			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
+			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio());
+			m.actualizarMapa();
+			this.setMuerto(true); 
+		}
+	}
+	
 	public void moverDerecha(Mapa m){
 		if ((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Basura){
 			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
@@ -191,5 +204,9 @@ public class Rockford extends Animados{
 	}
 	public void setMuerto(boolean muerto) {
 		this.muerto = muerto;
+	}
+	
+	public void actualizar(Mapa m){
+		explotar(m);
 	}
 }

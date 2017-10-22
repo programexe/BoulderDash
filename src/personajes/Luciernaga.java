@@ -23,76 +23,94 @@ public class Luciernaga extends Explosivos {
 	}
 	
 	
-	public void actualizar(Mapa m){
-		
+	public void actualizarPorTimer(Mapa m){
+		this.moverse(m);			
+	}
+	
+	public void actualizar(Mapa m){	
+		explotar(m);
+	}
+	
+	public void explotar(Mapa m){
+		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca){
+			
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio());
+			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio());
+			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
+			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio());
+		}
+		m.actualizarMapa();
+	}
+	
+	public void moverse(Mapa m){
 		switch (this.getDireccionActual()){
 		
-			case "Derecha": {
-				if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
-					this.setX(this.getX()+1);
-					m.modificarEspacio(this.getX(), this.getY(), this);
-					m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio());
-				}
-				else{
-					if (m.getEspacios()[this.getX()+1][this.getY()] instanceof Rockford){
-						this.Explotar(m, (Rockford) m.getEspacios()[this.getX()+1][this.getY()]);
-					}
-					else
-						this.cambiarDireccion();
-				}
+		case "Derecha": {
+			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
+				this.setX(this.getX()+1);
+				m.modificarEspacio(this.getX(), this.getY(), this);
+				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio());
 			}
-			break;
-			
-			case "Abajo": {
-				if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
-					this.setY(this.getY()+1);
-					m.modificarEspacio(this.getX(), this.getY(), this);
-					m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
+			else{
+				if (m.getEspacios()[this.getX()+1][this.getY()] instanceof Rockford){
+					this.Explotar(m, (Rockford) m.getEspacios()[this.getX()+1][this.getY()]);
 				}
-				else{
-					if (m.getEspacios()[this.getX()+1][this.getY()] instanceof Rockford){
-						this.Explotar(m, (Rockford) m.getEspacios()[this.getX()][this.getY()+1]);
-					}
-					else
-						this.cambiarDireccion();
-				}
+				else
+					this.cambiarDireccion();
 			}
-			break;
-			
-			case "Izquierda": {
-				if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
-					this.setX(this.getX()-1);
-					m.modificarEspacio(this.getX(), this.getY(), this);
-					m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio());
-				}
-				else{
-					if (m.getEspacios()[this.getX()-1][this.getY()] instanceof Rockford){
-						this.Explotar(m, (Rockford) m.getEspacios()[this.getX()-1][this.getY()]);
-					}
-					else
-						this.cambiarDireccion();
-				}
-				
-			}
-			break;
-			
-			case "Arriba": {
-				if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
-					this.setY(this.getY()-1);
-					m.modificarEspacio(this.getX(), this.getY(), this);
-					m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio());
-				}
-				else{
-					if (m.getEspacios()[this.getX()][this.getY()+1] instanceof Rockford){
-						this.Explotar(m, (Rockford) m.getEspacios()[this.getX()][this.getY()+1]);
-					}
-					else
-						this.cambiarDireccion();
-				}
-			}
-			break;
 		}
+		break;
+		
+		case "Abajo": {
+			if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
+				this.setY(this.getY()+1);
+				m.modificarEspacio(this.getX(), this.getY(), this);
+				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
+			}
+			else{
+				if (m.getEspacios()[this.getX()+1][this.getY()] instanceof Rockford){
+					this.Explotar(m, (Rockford) m.getEspacios()[this.getX()][this.getY()+1]);
+				}
+				else
+					this.cambiarDireccion();
+			}
+		}
+		break;
+		
+		case "Izquierda": {
+			if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
+				this.setX(this.getX()-1);
+				m.modificarEspacio(this.getX(), this.getY(), this);
+				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio());
+			}
+			else{
+				if (m.getEspacios()[this.getX()-1][this.getY()] instanceof Rockford){
+					this.Explotar(m, (Rockford) m.getEspacios()[this.getX()-1][this.getY()]);
+				}
+				else
+					this.cambiarDireccion();
+			}
 			
+		}
+		break;
+		
+		case "Arriba": {
+			if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
+				this.setY(this.getY()-1);
+				m.modificarEspacio(this.getX(), this.getY(), this);
+				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio());
+			}
+			else{
+				if (m.getEspacios()[this.getX()][this.getY()+1] instanceof Rockford){
+					this.Explotar(m, (Rockford) m.getEspacios()[this.getX()][this.getY()+1]);
+				}
+				else
+					this.cambiarDireccion();
+			}
+		}
+		break;
+	}
 	}
 				
 	public void informar(){
