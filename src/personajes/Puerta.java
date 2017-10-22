@@ -10,4 +10,12 @@ public class Puerta extends Inanimados{
 		}
 		else System.out.print("Es una puerta cerrada");
 	}
+
+	public boolean isAbierta() {
+		return abierta;
+	}
+
+	public void setAbierta(boolean abierta) {
+		this.abierta = abierta;
+	}
 }

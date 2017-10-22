@@ -2,25 +2,101 @@ package personajes;
 import Juego.*;
 
 public class Rockford extends Animados{
-	private boolean muerto;
+	private boolean muerto=false;
 	private int x;
 	private int y;
-	private int recolectados;
+	private int recolectados=0;
+	
+	public void agarrarDiamante(Mapa m){
+		m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+		recolectados++;
+	}
 	
 	public void moverDerecha(Mapa m){
-		if(m.)
+		
+		if ((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Basura){
+			this.setX(x+1);
+			m.modificarEspacio(this.getX(), this.getY(), this);
+		}
+		else
+			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
+				this.setX(x+1);
+				m.modificarEspacio(this.getX(), this.getY(), this);
+			}
+			else
+				if (m.getEspacios()[this.getX()+1][this.getY()] instanceof Puerta){
+					if(!(m.getEspacios()[this.getX()+1][this.getY()]).isAbierta()//??????)
+					{
+						System.out.print("La puerta esta cerrada");
+					}
+				else //pasar nivel????
+				}
+				else
+					if((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Diamante){
+						agarrarDiamante(m);
+						this.setX(x+1);
+						m.modificarEspacio(this.getX(), this.getY(), this);
+					}
+					else{
+						System.out.print("Rockford no puede moverse a ese lugar");
+					}
 		
 	}
 	
-	public void moverIzquierda(){
+	public void moverIzquierda(Mapa m){
+		
+		if ((m.getEspacios()[this.getX()][this.getY()]) instanceof Basura){
+			this.setX(x-1);
+		}
+		else
+			if (m.getEspacios()[this.getX()][this.getY()] instanceof EspacioVacio){
+				this.setX(x-1);
+			}
+			else
+				if (m.getEspacios()[this.getX()][this.getY()] instanceof Puerta){
+					
+				}
+				else{
+					System.out.println("Rokford no puede moverse al lugar seleccionado");
+				}
 		
 	}
 	
-	public void moverArriba(){
+	public void moverArriba(Mapa m){
+		
+		if ((m.getEspacios()[this.getX()][this.getY()]) instanceof Basura){
+			this.setY(y-1);
+		}
+		else
+			if (m.getEspacios()[this.getX()][this.getY()] instanceof EspacioVacio){
+				this.setY(y-1);
+			}
+			else
+				if (m.getEspacios()[this.getX()][this.getY()] instanceof Puerta){
+					
+				}
+				else{
+					System.out.println("Rokford no puede moverse al lugar seleccionado");
+				}
 		
 	}
 	
-	public void moverAbajo(){
+	public void moverAbajo(Mapa m){
+		
+		if ((m.getEspacios()[this.getX()][this.getY()]) instanceof Basura){
+			this.setY(y+1);
+		}
+		else
+			if (m.getEspacios()[this.getX()][this.getY()] instanceof EspacioVacio){
+				this.setY(y+1);
+			}
+			else
+				if (m.getEspacios()[this.getX()][this.getY()] instanceof Puerta){
+					
+				}
+				else{
+					System.out.println("Rokford no puede moverse al lugar seleccionado");
+				}
 		
 	}
 	
