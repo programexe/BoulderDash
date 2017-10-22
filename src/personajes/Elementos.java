@@ -1,5 +1,4 @@
 package personajes;
-import Juego.*;
 
 public abstract class Elementos{
 	private int x;

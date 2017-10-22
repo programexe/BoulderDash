@@ -4,9 +4,11 @@ import CargaDeNiveles.*;
 public class Mapa {
 	private int totalDiamantes;
 	private int diamantesRecolectados;
+	private boolean nivelTerminado;
 	BDLevelReader lector=new BDLevelReader();
-	Elementos espacios[][]= new Elementos[lector.getWIDTH()][lector.getHEIGHT()]; 
+	Elementos espacios[][]= new Elementos[lector.getWIDTH()][lector.getHEIGHT()];
 	
+
 	public void crearMapa(){
 		for(int i=0;i<40;i++){
 			for(int j=0;j<22;j++){
@@ -42,6 +44,15 @@ public class Mapa {
 			}
 		}
 		this.setTotalDiamantes(lector.getDiamondsNeeded());
+		nivelTerminado=false;
+	}
+	
+	public void actualizarMapa(){
+		for(int i=0;i<40;i++){
+			for(int j=0;j<22;j++){
+				espacios[i][j].actualizar();
+			}
+		}
 	}
 
 	public BDLevelReader getLector() {
@@ -78,5 +89,13 @@ public class Mapa {
 
 	public void setDiamantesRecolectados(int diamantesRecolectados) {
 		this.diamantesRecolectados = diamantesRecolectados;
+	}
+
+	public boolean isNivelTerminado() {
+		return nivelTerminado;
+	}
+
+	public void setNivelTerminado(boolean nivelTerminado) {
+		this.nivelTerminado = nivelTerminado;
 	}
 }
