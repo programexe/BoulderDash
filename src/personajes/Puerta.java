@@ -1,5 +1,7 @@
 package personajes;
 
+import Juego.Mapa;
+
 public class Puerta extends Inanimados{
 	
 	private boolean abierta;
@@ -17,5 +19,11 @@ public class Puerta extends Inanimados{
 
 	public void setAbierta(boolean abierta) {
 		this.abierta = abierta;
+	}
+	
+	public void actualizar(Mapa m){
+		if(m.getTotalDiamantes()-m.getDiamantesRecolectados()==0){
+			this.setAbierta(true);
+		}
 	}
 }

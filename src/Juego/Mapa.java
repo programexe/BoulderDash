@@ -2,6 +2,8 @@ package Juego;
 import personajes.*;
 import CargaDeNiveles.*;
 public class Mapa {
+	private int totalDiamantes;
+	private int diamantesRecolectados;
 	BDLevelReader lector=new BDLevelReader();
 	Elementos espacios[][]= new Elementos[lector.getWIDTH()][lector.getHEIGHT()]; 
 	
@@ -39,6 +41,7 @@ public class Mapa {
 				
 			}
 		}
+		this.setTotalDiamantes(lector.getDiamondsNeeded());
 	}
 
 	public BDLevelReader getLector() {
@@ -59,5 +62,21 @@ public class Mapa {
 	
 	public void modificarEspacio(int x,int y, Elementos espacio){
 		this.espacios[x][y]=espacio;
+	}
+
+	public int getTotalDiamantes() {
+		return totalDiamantes;
+	}
+
+	public void setTotalDiamantes(int totalDiamantes) {
+		this.totalDiamantes = totalDiamantes;
+	}
+
+	public int getDiamantesRecolectados() {
+		return diamantesRecolectados;
+	}
+
+	public void setDiamantesRecolectados(int diamantesRecolectados) {
+		this.diamantesRecolectados = diamantesRecolectados;
 	}
 }
