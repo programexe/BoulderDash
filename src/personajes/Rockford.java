@@ -1,6 +1,8 @@
 package personajes;
 import Juego.*;
 
+/* COMENTARIO DE PRUEBA PARA GIT*/
+
 public class Rockford extends Animados{
 	private boolean muerto=false;
 	private int x;
@@ -14,6 +16,7 @@ public class Rockford extends Animados{
 	
 	public void moverDerecha(Mapa m){
 		
+<<<<<<< HEAD
 		if ((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Basura){
 			this.setX(x+1);
 			m.modificarEspacio(this.getX(), this.getY(), this);
@@ -40,6 +43,8 @@ public class Rockford extends Animados{
 					else{
 						System.out.print("Rockford no puede moverse a ese lugar");
 					}
+=======
+>>>>>>> 9a82865c183485cd18e6dc272740fe815617e826
 		
 	}
 	
