@@ -1,4 +1,7 @@
 package personajes;
+
+import Juego.Mapa;
+
 public class Mariposa extends Explosivos {
 	
 	private int x;
