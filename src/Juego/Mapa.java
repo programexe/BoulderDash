@@ -1,14 +1,31 @@
 package Juego;
 import personajes.*;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import CargaDeNiveles.*;
 public class Mapa {
 	private int totalDiamantes;
 	private int diamantesRecolectados;
+	private int tiempo;
 	private boolean nivelTerminado;
 	BDLevelReader lector=new BDLevelReader();
 	Elementos espacios[][]= new Elementos[lector.getWIDTH()][lector.getHEIGHT()];
 	
 
+
+	TimerTask tarea=new TimerTask(){
+		public void run(){
+			for(int i=0;i<40;i++){
+				for(int j=0;j<22;j++){
+					espacios[i][j].actualizarPorTimer();
+					}
+				}
+			setTiempo(getTiempo()-1);
+		}
+	};
+	
+	
 	public void crearMapa(){
 		for(int i=0;i<40;i++){
 			for(int j=0;j<22;j++){
@@ -43,18 +60,14 @@ public class Mapa {
 				
 			}
 		}
+		this.setTiempo(150);
+		Timer timer=new Timer();
+		timer.schedule(tarea, 0, 1000);
 		this.setTotalDiamantes(lector.getDiamondsNeeded());
 		nivelTerminado=false;
 	}
-	
-	public void actualizarMapa(){
-		for(int i=0;i<40;i++){
-			for(int j=0;j<22;j++){
-				espacios[i][j].actualizar();
-			}
-		}
-	}
 
+	
 	public BDLevelReader getLector() {
 		return lector;
 	}
@@ -97,5 +110,15 @@ public class Mapa {
 
 	public void setNivelTerminado(boolean nivelTerminado) {
 		this.nivelTerminado = nivelTerminado;
+	}
+
+
+	public int getTiempo() {
+		return tiempo;
+	}
+
+
+	public void setTiempo(int tiempo) {
+		this.tiempo = tiempo;
 	}
 }

@@ -8,6 +8,10 @@ public abstract class Elementos{
 	public void actualizar(){
 	}
 	
+	public void actualizarPorTimer(){
+		
+	}
+	
 	public void informar(){
 		System.out.print("Es elemento");
 	}
