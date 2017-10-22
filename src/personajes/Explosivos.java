@@ -4,7 +4,7 @@ import Juego.Mapa;
 
 public abstract class Explosivos extends QueNoCaen{
 	
-	public void Explotar(Mapa m, Rockford personaje){
+	public void Explotar(Mapa m, Rockford personaje){ //esto iria en animados???
 		if ((m.getEspacios()[this.getX()-1][this.getX()] instanceof Rockford) || 
 				(m.getEspacios()[this.getX()+1][this.getX()] instanceof Rockford) || 
 				(m.getEspacios()[this.getX()][this.getX()-1]) instanceof Rockford || 

@@ -3,9 +3,6 @@ import Juego.*;
 
 public class Luciernaga extends Explosivos {
 	
-	private int x;
-	private int y;
-	
 	public void cambiarDireccion(){
 		
 		switch (this.getDireccionActual()){
@@ -32,9 +29,9 @@ public class Luciernaga extends Explosivos {
 		
 			case "Derecha": {
 				if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
-					this.setX(x+1);
-					m.modificarEspacio(x, y, this);
-					m.modificarEspacio(x-1, y, new EspacioVacio());
+					this.setX(this.getX()+1);
+					m.modificarEspacio(this.getX(), this.getY(), this);
+					m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio());
 				}
 				else{
 					if (m.getEspacios()[this.getX()+1][this.getY()] instanceof Rockford){
@@ -48,9 +45,9 @@ public class Luciernaga extends Explosivos {
 			
 			case "Abajo": {
 				if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
-					this.setY(y+1);
-					m.modificarEspacio(x, y, this);
-					m.modificarEspacio(x, y-1, new EspacioVacio());
+					this.setY(this.getY()+1);
+					m.modificarEspacio(this.getX(), this.getY(), this);
+					m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
 				}
 				else{
 					if (m.getEspacios()[this.getX()+1][this.getY()] instanceof Rockford){
@@ -64,9 +61,9 @@ public class Luciernaga extends Explosivos {
 			
 			case "Izquierda": {
 				if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
-					this.setX(x-1);
-					m.modificarEspacio(x, y, this);
-					m.modificarEspacio(x+1, y, new EspacioVacio());
+					this.setX(this.getX()-1);
+					m.modificarEspacio(this.getX(), this.getY(), this);
+					m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio());
 				}
 				else{
 					if (m.getEspacios()[this.getX()-1][this.getY()] instanceof Rockford){
@@ -81,9 +78,9 @@ public class Luciernaga extends Explosivos {
 			
 			case "Arriba": {
 				if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
-					this.setY(y-1);
-					m.modificarEspacio(x, y, this);
-					m.modificarEspacio(x, y+1, new EspacioVacio());
+					this.setY(this.getY()-1);
+					m.modificarEspacio(this.getX(), this.getY(), this);
+					m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio());
 				}
 				else{
 					if (m.getEspacios()[this.getX()][this.getY()+1] instanceof Rockford){
@@ -98,28 +95,6 @@ public class Luciernaga extends Explosivos {
 			
 	}
 				
-
-	
-	public int getX() {
-		return x;
-	}
-
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-
-	public int getY() {
-		return y;
-	}
-
-
-	public void setY(int y) {
-		this.y = y;
-	}
-
-
 	public void informar(){
 		System.out.print("Es una luciernaga");
 	}
