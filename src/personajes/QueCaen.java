@@ -14,7 +14,7 @@ public abstract class QueCaen extends Animados{
 		// TODO Auto-generated constructor stub
 	}
 
-	public boolean cayendo;
+	public boolean cayendo; //Indica si el elemento debe caer
 	
 	public void informar(){
 		System.out.print("Es un elemento animado");
@@ -30,8 +30,8 @@ public abstract class QueCaen extends Animados{
 	
 
 	
-	public void isEstacionario(Mapa m){
-		if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){ //caso base 
+	public void isEstacionario(Mapa m){		//Se evalua si el elemnto debe caer, y de ser se setea como verdadera la variable cayendo
+		if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){ 
 			this.setCayendo(true);
 			m.actualizarMapa();
 		}
@@ -61,7 +61,7 @@ public abstract class QueCaen extends Animados{
 		}
 	}
 		
-	public void caer(Mapa m){
+	public void caer(Mapa m){  //Si cayendo es true hace caer el elemento
 		if (m.getEspacios()[this.getY()][this.getY()+1] instanceof EspacioVacio){ // capaz con un case queda mejor
 			this.setY(this.getY()+1);
 			m.modificarEspacio(this.getX(), this.getY(), this);
@@ -70,7 +70,7 @@ public abstract class QueCaen extends Animados{
 		m.actualizarMapa();
 		}
 	
-	public void actualizar(Mapa m){ //aca creo que se tendria que ejecutar en los actualizar
+	public void actualizar(Mapa m){ //
 		if (this.isCayendo()){
 			this.caer(m);
 		}

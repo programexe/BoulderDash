@@ -49,7 +49,8 @@ public class Mapa {
 		}
 	}
 
-	public Rockford crearMapa(int lvl){
+	public Rockford crearMapa(int lvl){  //Lee el archivo levels.xml y apartir de este crea una matriz con los elementos correpondientes
+										 //En el momento que crea el mapa, cuando encuentra a rockford crea una instancia de este y la retorna
 		Rockford player=new Rockford();
 		
 		try {

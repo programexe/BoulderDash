@@ -33,7 +33,8 @@ public class Mariposa extends Explosivos {
 		}
 	}
 	
-	public void moverse(Mapa m){
+	public void moverse(Mapa m){	//Evelua a donde debe moverse la mariposa y en que direccion
+									//Si debe moverse lo hace
 		switch (this.getDireccionActual()){
 		
 		case "Derecha": {
@@ -89,7 +90,7 @@ public class Mariposa extends Explosivos {
 	}
 	}
 	
-	public void explotar(Mapa m){
+	public void explotar(Mapa m){		//Evalua si debe explotar y de ser asi lo hace
 		
 		if ((m.getEspacios()[this.getX()][this.getY()-1] instanceof Roca)){
 			

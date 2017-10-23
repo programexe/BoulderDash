@@ -14,7 +14,7 @@ public class Puerta extends Inanimados{
 		// TODO Auto-generated constructor stub
 	}
 
-	private boolean abierta;
+	private boolean abierta;  //Variable que indica si la puerta esta abierta. Si esta abierta es true
 
 	public void informar(){
 		if (abierta){
@@ -31,7 +31,7 @@ public class Puerta extends Inanimados{
 		this.abierta = abierta;
 	}
 	
-	public void actualizar(Mapa m){
+	public void actualizar(Mapa m){		//Evalua si se recolectaros todos los diamantes. De ser asi se abre la puerta
 		if(m.getTotalDiamantes()-m.getDiamantesRecolectados()==0){
 			this.setAbierta(true);
 		}

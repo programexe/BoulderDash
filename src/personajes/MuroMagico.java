@@ -3,7 +3,8 @@ package personajes;
 import Juego.Mapa;
 
 public class MuroMagico extends Muro {
-	
+	//Este muro puede activarse. Cuando lo hace convierte los elementos alrededor en diamantes siempre y cuando no sea un muro
+	//El tiempor que estará activo es de 5 segundos cada 30 segundos
 	public MuroMagico() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -14,7 +15,7 @@ public class MuroMagico extends Muro {
 		// TODO Auto-generated constructor stub
 	}
 
-	private int tiempo;
+	private int tiempo;		//Esta variable guarda la cantidad de tiempo que el cumo convertira los elementos en diamantes
 	private int seg30=0;
 
 	public void informar(){
@@ -25,7 +26,7 @@ public class MuroMagico extends Muro {
 		convertir(m);
 		}
 	
-	public void actualizarPorTimer(){
+	public void actualizarPorTimer(){	//Por cada ejecucion de la tarea del timer disminuira el tiempo en que esta activo el muro
 		if (tiempo!=0){
 			tiempo--;
 		}
@@ -38,7 +39,7 @@ public class MuroMagico extends Muro {
 		}
 	}
 	
-	public void convertir(Mapa m){
+	public void convertir(Mapa m){		//Convierte los elementos a su alrededor siempre y cuando este acivo (tiempo!=0) y el elemento a su alrededor no sea un muro
 		
 		if((this.getTiempo()!=0) && (m.getEspacios()[this.getX()+1][this.getY()] instanceof Diamante)){
 			m.modificarEspacio(this.getX()+1, this.getY(), new Roca());

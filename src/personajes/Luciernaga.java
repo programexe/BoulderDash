@@ -15,7 +15,7 @@ public class Luciernaga extends Explosivos {
 	}
 
 
-	public void cambiarDireccion(){
+	public void cambiarDireccion(){		//Indica en que direccion debe moverse la luciernaga
 		
 		switch (this.getDireccionActual()){
 			case "Izquierda": this.setDireccionActual("Arriba");
@@ -35,7 +35,7 @@ public class Luciernaga extends Explosivos {
 	}
 	
 	
-	public void actualizarPorTimer(Mapa m){
+	public void actualizarPorTimer(Mapa m){		//La luciernaga se movera cada vez que se ejecute el codigo del timer
 		this.moverse(m);			
 	}
 	
@@ -43,7 +43,7 @@ public class Luciernaga extends Explosivos {
 		explotar(m);
 	}
 	
-	public void explotar(Mapa m){
+	public void explotar(Mapa m){		//Evalua si debe explotar y de ser asi lo hace
 		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca){
 			
 			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));

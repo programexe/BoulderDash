@@ -37,53 +37,59 @@ public class Ameba extends Animados {
 	
 	public void actualizar(Mapa m){
 		
+		expandirse(m);	
+	}
+	
+	public void expandirse(Mapa m){			//Evalua si la ameba tiene que expandirse y en cual direccion.
+											//Si debe expandirse lo hace
+		
 		switch (this.getDireccionActual()){
 		
-			case "Izquierda":{
-				if ((m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio) ||
-						(m.getEspacios()[this.getX()-1][this.getY()] instanceof Basura)) {
-					this.setX(this.getX()-1);
-					m.modificarEspacio(this.getX(), this.getY(), this);
-				}
-				else 
-					this.cambiarDireccion();
+		case "Izquierda":{
+			if ((m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio) ||
+					(m.getEspacios()[this.getX()-1][this.getY()] instanceof Basura)) {
+				this.setX(this.getX()-1);
+				m.modificarEspacio(this.getX(), this.getY(), this);
 			}
-			break;
-		
-			case "Abajo":{
-				if ((m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio) ||
-					(m.getEspacios()[this.getX()][this.getY()+1] instanceof Basura)){
-					this.setY(this.getY()+1);
-					m.modificarEspacio(this.getX(), this.getY(), this);
-				}
-				else 
-					this.cambiarDireccion();
-			}
-			break;
-			
-			case "Derecha":{
-				if ((m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio) ||
-						(m.getEspacios()[this.getX()+1][this.getY()] instanceof Basura)){
-					this.setX(this.getX()+1);
-					m.modificarEspacio(this.getX(), this.getY(), this);
-				}
-				else 
-					this.cambiarDireccion();
-			}
-			break;
-			
-			case "Arriba":{
-				if ((m.getEspacios()[this.getX()][this.getY()-1] instanceof EspacioVacio) ||
-						(m.getEspacios()[this.getX()][this.getY()-1] instanceof Basura)){
-					this.setY(this.getY()-1);
-					m.modificarEspacio(this.getX(), this.getY(), this);
-				}
-				else 
-					this.cambiarDireccion();
-			}
-			break;
+			else 
+				this.cambiarDireccion();
 		}
+		break;
+	
+		case "Abajo":{
+			if ((m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio) ||
+				(m.getEspacios()[this.getX()][this.getY()+1] instanceof Basura)){
+				this.setY(this.getY()+1);
+				m.modificarEspacio(this.getX(), this.getY(), this);
+			}
+			else 
+				this.cambiarDireccion();
+		}
+		break;
+		
+		case "Derecha":{
+			if ((m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio) ||
+					(m.getEspacios()[this.getX()+1][this.getY()] instanceof Basura)){
+				this.setX(this.getX()+1);
+				m.modificarEspacio(this.getX(), this.getY(), this);
+			}
+			else 
+				this.cambiarDireccion();
+		}
+		break;
+		
+		case "Arriba":{
+			if ((m.getEspacios()[this.getX()][this.getY()-1] instanceof EspacioVacio) ||
+					(m.getEspacios()[this.getX()][this.getY()-1] instanceof Basura)){
+				this.setY(this.getY()-1);
+				m.modificarEspacio(this.getX(), this.getY(), this);
+			}
+			else 
+				this.cambiarDireccion();
+		}
+		break;
 	}
+}
 	
 	public void informar(){
 		System.out.print("Es ameba");

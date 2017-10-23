@@ -1,6 +1,8 @@
 package personajes;
 import Juego.*;
 
+//Esta clase es la padre de todos los personajes que hay en el juego
+//Contiene las coordenadas de su ubicacion en el mapa
 public abstract class Elementos{
 	private int x;
 	private int y;

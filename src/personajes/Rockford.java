@@ -14,14 +14,14 @@ public class Rockford extends Animados{
 		// TODO Auto-generated constructor stub
 	}
 
-	private boolean muerto=false;
+	private boolean muerto=false;  //Indica si rockford esta muerto
 	
-	public void agarrarDiamante(Mapa m){
+	public void agarrarDiamante(Mapa m){  //Modifica la cantidad de diamantes recolectados
 		m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 		m.setDiamantesRecolectados(m.getDiamantesRecolectados()+1);
 	}
 	
-	public void explotar(Mapa m){
+	public void explotar(Mapa m){  //Evalua si rockford debe explotar. De ser asi lo hace
 		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca){
 			
 			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
@@ -139,7 +139,9 @@ public class Rockford extends Animados{
 	System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
 	m.actualizarMapa();
 }
-		
+
+	
+	//Los metodos de movimiento evaluan que que elemento hay en el lugar donde rockford debe moverse y si puede moverse lo hace
 	
 	public void moverIzquierda(Mapa m){
 		

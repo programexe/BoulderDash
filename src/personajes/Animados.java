@@ -13,7 +13,7 @@ public abstract class Animados extends Elementos {
 		
 	}
 
-	private String direccionActual;
+	private String direccionActual;		//Indica en que direccion debe moverse el elemento animado
 	
 	public void cambiarDireccion(){
 		
