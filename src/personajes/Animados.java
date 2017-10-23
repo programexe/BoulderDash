@@ -9,6 +9,8 @@ public abstract class Animados extends Elementos {
 
 	public Animados(int i, int j) {
 		super(i, j);
+		this.setDireccionActual("Derecha");
+		
 	}
 
 	private String direccionActual;

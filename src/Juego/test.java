@@ -43,6 +43,15 @@ public class test {
 			break;
 			
 			case 2:{
+				player.moverDerecha(m);
+				for (int i = 0; i<3; i++){
+					player.moverArriba(m);
+				}
+				for (int i = 0; i<3; i++){
+					player.moverIzquierda(m);
+				}
+				player.moverArriba(m);
+				
 				
 			}
 			break;

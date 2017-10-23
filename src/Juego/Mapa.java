@@ -113,7 +113,7 @@ public class Mapa {
 		
 		this.setTiempo(150);
 		Timer timer=new Timer();
-		timer.schedule(tarea, 0, 1000);
+		timer.schedule(tarea, 1000);	
 		this.setTotalDiamantes(lector.getDiamondsNeeded());
 		nivelTerminado=false;
 		return player;

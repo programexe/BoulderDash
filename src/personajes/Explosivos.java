@@ -9,6 +9,7 @@ public abstract class Explosivos extends QueNoCaen{
 
 	public Explosivos(int i, int j) {
 		super(i, j);
+		
 		// TODO Auto-generated constructor stub
 	}
 
