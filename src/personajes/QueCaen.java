@@ -67,7 +67,6 @@ public abstract class QueCaen extends Animados{
 			m.modificarEspacio(this.getX(), this.getY(), this);
 			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
 		}
-		this.caer(m);//Acá me parece que seria el llamado recursivo
 		m.actualizarMapa();
 		}
 	
