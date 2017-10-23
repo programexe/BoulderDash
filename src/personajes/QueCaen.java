@@ -4,6 +4,16 @@ import Juego.Mapa;
 
 public abstract class QueCaen extends Animados{
 	
+	public QueCaen() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public QueCaen(int i, int j) {
+		super(i, j);
+		// TODO Auto-generated constructor stub
+	}
+
 	public boolean cayendo;
 	
 	public void informar(){

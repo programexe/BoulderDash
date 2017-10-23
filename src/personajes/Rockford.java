@@ -4,6 +4,11 @@ import Juego.*;
 /* COMENTARIO DE PRUEBA PARA GIT*/
 
 public class Rockford extends Animados{
+	public Rockford(int i, int j) {
+		super(i, j);
+		// TODO Auto-generated constructor stub
+	}
+
 	private boolean muerto=false;
 	
 	public void agarrarDiamante(Mapa m){

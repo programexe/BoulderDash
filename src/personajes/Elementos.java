@@ -6,6 +6,14 @@ public abstract class Elementos{
 	private int y;
 	private boolean destructible;
 	
+	public Elementos(){
+		
+	}
+	public Elementos(int i,int j){
+		this.y=j;
+		this.x=i;
+	}
+	
 	public void actualizar(Mapa m){
 	}
 	

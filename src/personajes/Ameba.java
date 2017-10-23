@@ -3,6 +3,18 @@ import Juego.*;
 
 public class Ameba extends Animados {
 	
+	
+
+
+	public Ameba() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Ameba(int i, int j) {
+		super(i, j);
+		// TODO Auto-generated constructor stub
+	}
 
 	public void cambiarDireccion(){
 		int n = (int) (Math.random() * 4) + 1;

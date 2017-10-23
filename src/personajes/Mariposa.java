@@ -5,6 +5,16 @@ import Juego.Mapa;
 
 public class Mariposa extends Explosivos {
 	
+	public Mariposa() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Mariposa(int i, int j) {
+		super(i, j);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void cambiarDireccion(){
 		
 		switch (this.getDireccionActual()){

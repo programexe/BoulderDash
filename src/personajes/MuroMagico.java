@@ -4,6 +4,16 @@ import Juego.Mapa;
 
 public class MuroMagico extends Muro {
 	
+	public MuroMagico() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public MuroMagico(int i, int j) {
+		super(i, j);
+		// TODO Auto-generated constructor stub
+	}
+
 	private int tiempo;
 	private int seg30=0;
 

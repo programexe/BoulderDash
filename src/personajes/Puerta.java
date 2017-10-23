@@ -4,6 +4,16 @@ import Juego.Mapa;
 
 public class Puerta extends Inanimados{
 	
+	public Puerta() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Puerta(int i, int j) {
+		super(i, j);
+		// TODO Auto-generated constructor stub
+	}
+
 	private boolean abierta;
 
 	public void informar(){

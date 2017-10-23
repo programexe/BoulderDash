@@ -2,6 +2,15 @@ package personajes;
 
 
 public abstract class Animados extends Elementos {
+	public Animados() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Animados(int i, int j) {
+		super(i, j);
+	}
+
 	private String direccionActual;
 	
 	public void cambiarDireccion(){

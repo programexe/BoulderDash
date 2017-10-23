@@ -3,6 +3,18 @@ import Juego.*;
 
 public class Luciernaga extends Explosivos {
 	
+	public Luciernaga() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Luciernaga(int i, int j) {
+		super(i, j);
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public void cambiarDireccion(){
 		
 		switch (this.getDireccionActual()){

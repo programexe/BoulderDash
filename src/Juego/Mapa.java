@@ -60,7 +60,7 @@ public class Mapa {
 				for(int j=0; j<lector.getHEIGHT(); j++){
 					switch (lector.getTile(i, j)){
 					
-						case EMPTY : espacios[i][j]=new EspacioVacio();
+						case EMPTY : espacios[i][j]=new EspacioVacio(i,j);
 							break;
 							
 						case DIRT: espacios[i][j]=new Basura();
