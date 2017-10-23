@@ -1,5 +1,4 @@
 package personajes;
-import Juego.*;
 
 public class Roca extends QueCaen{
 
