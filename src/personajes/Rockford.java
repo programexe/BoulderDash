@@ -171,7 +171,7 @@ public class Rockford extends Animados{
 						m.modificarEspacio(this.getX(), this.getY(), this);
 					}
 					else {
-						if(((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Roca) && ((m.getEspacios()[this.getX()+2][this.getY()]) instanceof EspacioVacio)) {
+						if(((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Roca) && ((m.getEspacios()[this.getX()][this.getY()+2]) instanceof EspacioVacio)) {
 							m.modificarEspacio(this.getX(), this.getY()+2, m.getEspacios()[this.getX()][this.getY()+1]);
 							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
 							this.setY(this.getY()+1);
@@ -225,7 +225,7 @@ public class Rockford extends Animados{
 						m.modificarEspacio(this.getX(), this.getY(), this);
 					}
 					else {
-						if(((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca) && ((m.getEspacios()[this.getX()-2][this.getY()]) instanceof EspacioVacio)) {
+						if(((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca) && ((m.getEspacios()[this.getX()][this.getY()-2]) instanceof EspacioVacio)) {
 							m.modificarEspacio(this.getX(), this.getY()-2, m.getEspacios()[this.getX()][this.getY()-1]);
 							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
 							this.setY(this.getY()-1);

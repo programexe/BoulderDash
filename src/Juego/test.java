@@ -6,7 +6,8 @@ public class test {
 		
 		Mapa m = Mapa.getInstance(null);		
 		m.crearMapa();
-		System.out.println("asd");
+		
+		
 
 	}
 	
