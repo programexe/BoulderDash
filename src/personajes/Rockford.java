@@ -4,6 +4,11 @@ import Juego.*;
 /* COMENTARIO DE PRUEBA PARA GIT*/
 
 public class Rockford extends Animados{
+	public Rockford() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Rockford(int i, int j) {
 		super(i, j);
 		// TODO Auto-generated constructor stub
@@ -31,7 +36,6 @@ public class Rockford extends Animados{
 	
 	public void moverDerecha(Mapa m){
 		if ((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Basura){
-			m.getEspacios()[this.getX()+1][this.getY()].informar();
 			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
 			this.setX(this.getX()+1);
 			m.modificarEspacio(this.getX(), this.getY(), this);
@@ -39,7 +43,6 @@ public class Rockford extends Animados{
 		else
 		{
 			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
-				m.getEspacios()[this.getX()+1][this.getY()].informar();
 				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
 				this.setX(this.getX()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
@@ -85,6 +88,7 @@ public class Rockford extends Animados{
 			}
 		}
 	}
+	System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
 	m.actualizarMapa();
 }
 		
@@ -138,10 +142,11 @@ public class Rockford extends Animados{
 			}
 		}	
 	}
+	System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
 	m.actualizarMapa();
 }
 	
-	public void moverArriba(Mapa m){
+	public void moverAbajo(Mapa m){
 		
 		if ((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Basura){
 			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
@@ -192,10 +197,11 @@ public class Rockford extends Animados{
 			}
 		}
 	}
+	System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
 	m.actualizarMapa();
 }
 	
-	public void moverAbajo(Mapa m){
+	public void moverArriba(Mapa m){
 		
 		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Basura){
 			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
@@ -246,6 +252,7 @@ public class Rockford extends Animados{
 			}
 		}
 	}
+	System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
 	m.actualizarMapa();
 }
 	

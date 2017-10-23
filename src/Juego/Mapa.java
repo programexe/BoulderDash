@@ -6,7 +6,7 @@ import java.util.TimerTask;
 import CargaDeNiveles.*;
 public class Mapa {
 	private int totalDiamantes;
-	private int diamantesRecolectados;
+	private int diamantesRecolectados=0;
 	private int tiempo;
 	private boolean nivelTerminado;
 	BDLevelReader lector=new BDLevelReader();
@@ -49,12 +49,13 @@ public class Mapa {
 		}
 	}
 
-	public void crearMapa(){
+	public Rockford crearMapa(int lvl){
+		Rockford player=new Rockford();
 		
 		try {
-			int nivelElegido = 1;
+			
 			int levels = lector.readLevels("levels.xml");
-			lector.setCurrentLevel(nivelElegido);
+			lector.setCurrentLevel(lvl);
 			
 			for(int i=0; i<lector.getWIDTH(); i++){
 				for(int j=0; j<lector.getHEIGHT(); j++){
@@ -63,40 +64,41 @@ public class Mapa {
 						case EMPTY : espacios[i][j]=new EspacioVacio(i,j);
 							break;
 							
-						case DIRT: espacios[i][j]=new Basura();
+						case DIRT: espacios[i][j]=new Basura(i,j);
 							break;              
 						
-						case TITANIUM: espacios[i][j]=new MuroTitanio();
+						case TITANIUM: espacios[i][j]=new MuroTitanio(i,j);
 							break;       
 						
-						case WALL: espacios[i][j]=new MuroTitanio();
+						case WALL: espacios[i][j]=new MuroTitanio(i,j);
 							break;              
 						
-						case ROCK: espacios[i][j]=new Roca();
+						case ROCK: espacios[i][j]=new Roca(i,j);
 							break;               
 						
-						case FALLINGROCK: espacios[i][j]=new Roca();
+						case FALLINGROCK: espacios[i][j]=new Roca(i,j);
 							break;        
 						
-						case DIAMOND: espacios[i][j]=new Diamante();
+						case DIAMOND: espacios[i][j]=new Diamante(i,j);
 							break;             
 						
-						case FALLINGDIAMOND: espacios[i][j]=new Diamante();
+						case FALLINGDIAMOND: espacios[i][j]=new Diamante(i,j);
 							break;     
 						
-						case AMOEBA: espacios[i][j]=new Ameba();
+						case AMOEBA: espacios[i][j]=new Ameba(i,j);
 							break;              
 						
-						case FIREFLY: espacios[i][j]=new Luciernaga();
+						case FIREFLY: espacios[i][j]=new Luciernaga(i,j);
 							break;
 							
-						case BUTTERFLY: espacios[i][j]=new Mariposa();
+						case BUTTERFLY: espacios[i][j]=new Mariposa(i,j);
 							break;
 							
-						case EXIT : espacios[i][j]=new Puerta();
+						case EXIT : espacios[i][j]=new Puerta(i,j);
 							break;
 							
-						case PLAYER : espacios[i][j]=new Rockford();
+						case PLAYER : espacios[i][j]=new Rockford(i,j);
+						player= (Rockford) espacios[i][j];
 							break;  
 					}
 				
@@ -114,6 +116,7 @@ public class Mapa {
 		timer.schedule(tarea, 0, 1000);
 		this.setTotalDiamantes(lector.getDiamondsNeeded());
 		nivelTerminado=false;
+		return player;
 	}
 
 /*	

@@ -1,5 +1,6 @@
 package Juego;
 import personajes.*;
+import java.util.Scanner;
 
 
 public class test {
@@ -7,10 +8,12 @@ public class test {
 	
 	public static void main(String[] args){
 		
-		Mapa m = Mapa.getInstance(null);		
-		m.crearMapa();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Ingrese nivel que quiere recorrer");
+		int lvl = sc.nextInt();
 		
-		Rockford player = (Rockford) m.getEspacios()[3][2];
+		Mapa m = Mapa.getInstance(null);		
+		Rockford player=m.crearMapa(lvl);
 		
 	
 		player.moverAbajo(m);
@@ -33,6 +36,7 @@ public class test {
 		for (int i=0; i<5; i++){
 			player.moverDerecha(m);
 		}
+		System.out.println(m.getDiamantesRecolectados());
 		
 		
 
