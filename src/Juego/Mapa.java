@@ -103,6 +103,8 @@ public class Mapa {
 				}
 			}
 			
+			System.out.println("Se creo el mapa");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
