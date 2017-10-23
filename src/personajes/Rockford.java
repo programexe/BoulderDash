@@ -17,18 +17,61 @@ public class Rockford extends Animados{
 	private boolean muerto=false;
 	
 	public void agarrarDiamante(Mapa m){
-		m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+		m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 		m.setDiamantesRecolectados(m.getDiamantesRecolectados()+1);
 	}
 	
 	public void explotar(Mapa m){
 		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca){
 			
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
-			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio());
-			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio());
-			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
-			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio());
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+			m.actualizarMapa();
+			this.setMuerto(true); 
+		}
+		if (((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Luciernaga) || (m.getEspacios()[this.getX()][this.getY()-1]) instanceof Mariposa){
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+			this.setMuerto(true);
+			m.actualizarMapa();
+			 
+		}
+		
+		if (((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Luciernaga) || (m.getEspacios()[this.getX()][this.getY()+1]) instanceof Mariposa){
+			
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+			m.actualizarMapa();
+			this.setMuerto(true); 
+		}
+		
+		if (((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Luciernaga) || (m.getEspacios()[this.getX()-1][this.getY()]) instanceof Mariposa){
+			
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+			m.actualizarMapa();
+			this.setMuerto(true); 
+		}
+		
+		if (((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Luciernaga) || (m.getEspacios()[this.getX()+1][this.getY()]) instanceof Mariposa){
+			
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
 			m.actualizarMapa();
 			this.setMuerto(true); 
 		}
@@ -36,7 +79,7 @@ public class Rockford extends Animados{
 	
 	public void moverDerecha(Mapa m){
 		if ((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Basura){
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 			this.setX(this.getX()+1);
 			m.modificarEspacio(this.getX(), this.getY(), this);
 			m.getEspacios()[this.getX()][this.getY()].informar();
@@ -44,7 +87,7 @@ public class Rockford extends Animados{
 		else
 		{
 			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
-				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 				this.setX(this.getX()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.getEspacios()[this.getX()][this.getY()].informar();
@@ -59,7 +102,7 @@ public class Rockford extends Animados{
 					}						
 					
 					else{
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 						System.out.println("Nivel Terminado");
 						m.setNivelTerminado(true);
 
@@ -68,7 +111,7 @@ public class Rockford extends Animados{
 				else
 				{
 					if((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Diamante){
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 						this.setX(this.getX()+1);
 						agarrarDiamante(m);
 						System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
@@ -78,7 +121,7 @@ public class Rockford extends Animados{
 					else {
 						if(((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Roca) && ((m.getEspacios()[this.getX()+2][this.getY()]) instanceof EspacioVacio)) {
 							m.modificarEspacio(this.getX()+2, this.getY(), m.getEspacios()[this.getX()+1][this.getY()]);
-							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 							this.setX(this.getX()+1);
 							m.modificarEspacio(this.getX(), this.getY(), this);
 							m.getEspacios()[this.getX()][this.getY()].informar();
@@ -101,7 +144,7 @@ public class Rockford extends Animados{
 	public void moverIzquierda(Mapa m){
 		
 		if ((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Basura){
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 			this.setX(this.getX()-1);
 			m.modificarEspacio(this.getX(), this.getY(), this);
 			m.getEspacios()[this.getX()][this.getY()].informar();
@@ -109,7 +152,7 @@ public class Rockford extends Animados{
 		else
 		{
 			if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
-				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 				this.setX(this.getX()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.getEspacios()[this.getX()][this.getY()].informar();
@@ -122,14 +165,14 @@ public class Rockford extends Animados{
 						System.out.print("La puerta esta cerrada");
 					}
 					else{
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 						m.setNivelTerminado(true);
 					}
 				}
 				else
 				{
 					if((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Diamante){
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 						this.setX(this.getX()-1);
 						agarrarDiamante(m);
 						System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
@@ -139,7 +182,7 @@ public class Rockford extends Animados{
 					else {
 						if(((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Roca) && ((m.getEspacios()[this.getX()-2][this.getY()]) instanceof EspacioVacio)) {
 							m.modificarEspacio(this.getX()-2, this.getY(), m.getEspacios()[this.getX()-1][this.getY()]);
-							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 							this.setX(this.getX()-1);
 							m.modificarEspacio(this.getX(), this.getY(), this);
 							m.getEspacios()[this.getX()][this.getY()].informar();
@@ -159,7 +202,7 @@ public class Rockford extends Animados{
 	public void moverAbajo(Mapa m){
 		
 		if ((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Basura){
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 			this.setY(this.getY()+1);
 			m.modificarEspacio(this.getX(), this.getY(), this);
 			m.getEspacios()[this.getX()][this.getY()].informar();
@@ -167,7 +210,7 @@ public class Rockford extends Animados{
 		else
 		{
 			if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
-				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 				this.setY(this.getY()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.getEspacios()[this.getX()][this.getY()].informar();
@@ -180,14 +223,14 @@ public class Rockford extends Animados{
 						System.out.print("La puerta esta cerrada");
 					}
 					else{
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 						m.setNivelTerminado(true);
 					}
 				}
 				else
 				{
 					if((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Diamante){
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 						this.setY(this.getY()+1);
 						agarrarDiamante(m);
 						System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
@@ -197,7 +240,7 @@ public class Rockford extends Animados{
 					else {
 						if(((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Roca) && ((m.getEspacios()[this.getX()][this.getY()+2]) instanceof EspacioVacio)) {
 							m.modificarEspacio(this.getX(), this.getY()+2, m.getEspacios()[this.getX()][this.getY()+1]);
-							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 							this.setY(this.getY()+1);
 							m.modificarEspacio(this.getX(), this.getY(), this);
 							m.getEspacios()[this.getX()][this.getY()].informar();
@@ -219,7 +262,7 @@ public class Rockford extends Animados{
 	public void moverArriba(Mapa m){
 		
 		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Basura){
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 			this.setY(this.getY()-1);
 			m.modificarEspacio(this.getX(), this.getY(), this);
 			m.getEspacios()[this.getX()][this.getY()].informar();
@@ -227,7 +270,7 @@ public class Rockford extends Animados{
 		else
 		{
 			if (m.getEspacios()[this.getX()][this.getY()-1] instanceof EspacioVacio){
-				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 				this.setY(this.getY()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.getEspacios()[this.getX()][this.getY()].informar();
@@ -240,14 +283,14 @@ public class Rockford extends Animados{
 						System.out.print("La puerta esta cerrada");
 					}
 					else{
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 						m.setNivelTerminado(true);
 					}
 				}
 				else
 				{
 					if((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Diamante){
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 						this.setY(this.getY()-1);
 						agarrarDiamante(m);
 						System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
@@ -257,7 +300,7 @@ public class Rockford extends Animados{
 					else {
 						if(((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca) && ((m.getEspacios()[this.getX()][this.getY()-2]) instanceof EspacioVacio)) {
 							m.modificarEspacio(this.getX(), this.getY()-2, m.getEspacios()[this.getX()][this.getY()-1]);
-							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 							this.setY(this.getY()-1);
 							m.modificarEspacio(this.getX(), this.getY(), this);
 							m.getEspacios()[this.getX()][this.getY()].informar();
@@ -284,6 +327,6 @@ public class Rockford extends Animados{
 	}
 	
 	public void actualizar(Mapa m){
-		explotar(m);
+		this.explotar(m);
 	}
 }

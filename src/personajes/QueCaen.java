@@ -43,7 +43,7 @@ public abstract class QueCaen extends Animados{
 						(m.getEspacios()[this.getX()-1][this.getY()+1] instanceof EspacioVacio)){
 					this.setX(this.getX()-1);
 					m.modificarEspacio(this.getX(), this.getY(), this);
-					m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio());
+					m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 					this.setCayendo(true);
 					m.actualizarMapa();
 				}
@@ -52,7 +52,7 @@ public abstract class QueCaen extends Animados{
 							(m.getEspacios()[this.getX()+1][this.getY()+1] instanceof EspacioVacio)){
 						this.setX(this.getX()+1);
 						m.modificarEspacio(this.getX(), this.getY(), this);
-						m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio());
+						m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
 						this.setCayendo(true);
 						m.actualizarMapa();
 					}
@@ -65,7 +65,7 @@ public abstract class QueCaen extends Animados{
 		if (m.getEspacios()[this.getY()][this.getY()+1] instanceof EspacioVacio){ // capaz con un case queda mejor
 			this.setY(this.getY()+1);
 			m.modificarEspacio(this.getX(), this.getY(), this);
-			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
+			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 		}
 		m.actualizarMapa();
 		}

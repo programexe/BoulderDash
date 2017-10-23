@@ -46,13 +46,14 @@ public class Luciernaga extends Explosivos {
 	public void explotar(Mapa m){
 		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca){
 			
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
-			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio());
-			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio());
-			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
-			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio());
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+			m.actualizarMapa();
 		}
-		m.actualizarMapa();
+		
 	}
 	
 	public void moverse(Mapa m){
@@ -62,7 +63,7 @@ public class Luciernaga extends Explosivos {
 			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
 				this.setX(this.getX()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio());
+				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
 				m.actualizarMapa();
 			}
 				else
@@ -74,7 +75,7 @@ public class Luciernaga extends Explosivos {
 			if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
 				this.setY(this.getY()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
+				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 				m.actualizarMapa();
 			}
 
@@ -86,10 +87,11 @@ public class Luciernaga extends Explosivos {
 		
 		
 		case "Izquierda": {
+			System.out.println(m.getEspacios()[this.getX()-1][this.getY()].getClass().getName());
 			if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
 				this.setX(this.getX()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio());
+				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 				m.actualizarMapa();
 			}
 				else
@@ -101,7 +103,7 @@ public class Luciernaga extends Explosivos {
 			if (m.getEspacios()[this.getX()][this.getY()-11] instanceof EspacioVacio){
 				this.setY(this.getY()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio());
+				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
 				m.actualizarMapa();
 			}
 				else

@@ -40,7 +40,7 @@ public class Mariposa extends Explosivos {
 			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
 				this.setX(this.getX()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio());
+				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
 				m.actualizarMapa();
 			}
 				else
@@ -52,7 +52,7 @@ public class Mariposa extends Explosivos {
 			if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
 				this.setY(this.getY()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
+				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 				m.actualizarMapa();
 			}
 
@@ -67,7 +67,7 @@ public class Mariposa extends Explosivos {
 			if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
 				this.setX(this.getX()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio());
+				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 				m.actualizarMapa();
 			}
 				else
@@ -79,7 +79,7 @@ public class Mariposa extends Explosivos {
 			if (m.getEspacios()[this.getX()][this.getY()-11] instanceof EspacioVacio){
 				this.setY(this.getY()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio());
+				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
 				m.actualizarMapa();
 			}
 				else
@@ -94,38 +94,47 @@ public class Mariposa extends Explosivos {
 		if ((m.getEspacios()[this.getX()][this.getY()-1] instanceof Roca)){
 			
 			if(!(m.getEspacios()[this.getX()+1][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX()+1, this.getY(), new Diamante());
+				m.modificarEspacio(this.getX()+1, this.getY(), new Diamante(this.getX()+1, this.getY()));
+				m.actualizarMapa();
 			}
 			else{
-				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio());
+				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+				m.actualizarMapa();
 			}
 			
 			if(!(m.getEspacios()[this.getX()-1][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX()-1, this.getY(), new Diamante());
+				m.modificarEspacio(this.getX()-1, this.getY(), new Diamante(this.getX()-1, this.getY()));
+				m.actualizarMapa();
 			}
 			else{
-				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio());
+				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+				m.actualizarMapa();
 			}
 			
 			if(!(m.getEspacios()[this.getX()][this.getY()+1] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY()+1, new Diamante());
+				m.modificarEspacio(this.getX(), this.getY()+1, new Diamante(this.getX(), this.getY()+1));
+				m.actualizarMapa();
 			}
 			else{
-				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio());
+				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.actualizarMapa();
 			}
 			
 			if(!(m.getEspacios()[this.getX()][this.getY()-1] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY()-1, new Diamante());
+				m.modificarEspacio(this.getX(), this.getY()-1, new Diamante(this.getX(), this.getY()-1));
+				m.actualizarMapa();
 			}
 			else{
-				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio());
+				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+				m.actualizarMapa();
 			}
 			
-			m.modificarEspacio(this.getX()+1, this.getY(), new Diamante());
+			m.modificarEspacio(this.getX()+1, this.getY(), new Diamante(this.getX()+1, this.getY()));
+			m.actualizarMapa();
 			
 			
 		}
-		m.actualizarMapa();
+		
 	}
 	
 	public void actualizar (Mapa m){

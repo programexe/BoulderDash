@@ -29,7 +29,7 @@ public class test {
 				for (int i=0; i<2; i++){
 					player.moverAbajo(m);
 				}
-				for (int i=0; i<7; i++){
+				for (int i=0; i<9; i++){
 					player.moverDerecha(m);
 				}
 				for (int i=0; i<2; i++){
@@ -38,7 +38,6 @@ public class test {
 				for (int i=0; i<5; i++){
 					player.moverDerecha(m);
 				}
-				System.out.println(m.getDiamantesRecolectados());
 			}
 			break;
 			
@@ -47,10 +46,19 @@ public class test {
 				for (int i = 0; i<3; i++){
 					player.moverArriba(m);
 				}
-				for (int i = 0; i<3; i++){
+				for (int i = 0; i<12; i++){
 					player.moverIzquierda(m);
+					m.getEspacios()[player.getX()][player.getY()-1].informar();
 				}
 				player.moverArriba(m);
+				for (int i = 0; i<12; i++){
+					player.moverIzquierda(m);
+					m.getEspacios()[player.getX()][player.getY()-1].informar();
+				}
+				if (player.isMuerto()){
+					System.out.println("Muerto");
+				}
+				
 				
 				
 			}
