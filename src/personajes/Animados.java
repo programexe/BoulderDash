@@ -1,6 +1,5 @@
 package personajes;
 
-import Juego.Mapa;
 
 public abstract class Animados extends Elementos {
 	private String direccionActual;

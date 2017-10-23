@@ -1,5 +1,4 @@
-package personajes;
-import Juego.*; 
+package personajes; 
 
 import Juego.Mapa;
 
