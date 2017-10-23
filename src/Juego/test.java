@@ -15,28 +15,41 @@ public class test {
 		Mapa m = Mapa.getInstance(null);		
 		Rockford player=m.crearMapa(lvl);
 		
-	
-		player.moverAbajo(m);
-		for (int i = 0; i<6; i++){
-			player.moverDerecha(m);
+		switch (lvl){
+		
+			case 1 :{
+				player.moverAbajo(m);
+				for (int i = 0; i<6; i++){
+					player.moverDerecha(m);
+				}
+				for (int i=0; i<2; i++){
+					player.moverArriba(m);
+				}
+				player.moverDerecha(m);
+				for (int i=0; i<2; i++){
+					player.moverAbajo(m);
+				}
+				for (int i=0; i<7; i++){
+					player.moverDerecha(m);
+				}
+				for (int i=0; i<2; i++){
+					player.moverAbajo(m);
+				}
+				for (int i=0; i<5; i++){
+					player.moverDerecha(m);
+				}
+				System.out.println(m.getDiamantesRecolectados());
+			}
+			break;
+			
+			case 2:{
+				
+			}
+			break;
+			
+			default:
+				System.out.println("El nivel no esta disponible");
 		}
-		for (int i=0; i<2; i++){
-			player.moverArriba(m);
-		}
-		player.moverDerecha(m);
-		for (int i=0; i<2; i++){
-			player.moverAbajo(m);
-		}
-		for (int i=0; i<7; i++){
-			player.moverDerecha(m);
-		}
-		for (int i=0; i<2; i++){
-			player.moverAbajo(m);
-		}
-		for (int i=0; i<5; i++){
-			player.moverDerecha(m);
-		}
-		System.out.println(m.getDiamantesRecolectados());
 		
 		
 
