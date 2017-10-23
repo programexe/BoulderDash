@@ -9,8 +9,8 @@ public class Mapa {
 	private int diamantesRecolectados;
 	private int tiempo;
 	private boolean nivelTerminado;
-	BDLevelReader lector=new BDLevelReader();
-	Elementos espacios[][]= new Elementos[lector.getWIDTH()][lector.getHEIGHT()];
+//	BDLevelReader lector=new BDLevelReader();
+	Elementos espacios[][]= new Elementos[40][22];
 	
 
 	private static Mapa m2;
@@ -40,9 +40,7 @@ public class Mapa {
 			}
 		}
 	}
-	public void crearMapa(){
-		
-		lector.setCurrentLevel(lvl);
+	public void crearMapa(BDLevelReader lector){
 		for(int i=0;i<40;i++){
 			for(int j=0;j<22;j++){
 				switch (lector.getTile(i, j)){
@@ -83,7 +81,7 @@ public class Mapa {
 		nivelTerminado=false;
 	}
 
-	
+/*	
 	public BDLevelReader getLector() {
 		return lector;
 	}
@@ -91,7 +89,7 @@ public class Mapa {
 	public void setLector(BDLevelReader lector) {
 		this.lector = lector;
 	}
-
+*/
 	public Elementos[][] getEspacios() {
 		return espacios;
 	}

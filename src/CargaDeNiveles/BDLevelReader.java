@@ -140,7 +140,7 @@ public class BDLevelReader {
 	 * Éste método crea una instancia del level reader a modo de ejemplo
 	 * para demostrar como se lee el NIVEL 1
 	 * */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		BDLevelReader levelReader = new BDLevelReader();
 		try {
 			int nivelElegido = 1;
