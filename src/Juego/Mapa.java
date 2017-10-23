@@ -58,8 +58,8 @@ public class Mapa {
 			int levels = lector.readLevels("levels.xml");
 			lector.setCurrentLevel(lvl);
 			
-			for(int i=0; i<lector.getWIDTH(); i++){
-				for(int j=0; j<lector.getHEIGHT(); j++){
+			for(int i=0; i<lector.getHEIGHT(); i++){
+				for(int j=0; j<lector.getWIDTH(); j++){
 					switch (lector.getTile(i, j)){
 					
 						case EMPTY : espacios[i][j]=new EspacioVacio(i,j);
