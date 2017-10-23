@@ -46,7 +46,7 @@ public class Rockford extends Animados{
 					Puerta puertaAuxiliar= (Puerta) m.getEspacios()[this.getX()+1][this.getY()];
 					if(!puertaAuxiliar.isAbierta()){
 						System.out.print("La puerta esta cerrada");
-					}
+					}						
 					
 					else{
 						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
@@ -63,14 +63,25 @@ public class Rockford extends Animados{
 						agarrarDiamante(m);
 						m.modificarEspacio(this.getX(), this.getY(), this);
 					}
-					else{
-						System.out.print("Rockford no puede moverse a ese lugar");
-					}
+					else {
+						if(((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Roca) && ((m.getEspacios()[this.getX()+2][this.getY()]) instanceof EspacioVacio)) {
+							m.modificarEspacio(this.getX()+2, this.getY(), m.getEspacios()[this.getX()+1][this.getY()]);
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+							this.setX(this.getX()+1);
+							m.modificarEspacio(this.getX(), this.getY(), this);
+						}
+							
+						else{
+							System.out.print("Rockford no puede moverse a ese lugar");
+						}
+						
+					
 				}
 			}
 		}
-		m.actualizarMapa();
 	}
+	m.actualizarMapa();
+}
 		
 	
 	public void moverIzquierda(Mapa m){
@@ -107,14 +118,23 @@ public class Rockford extends Animados{
 						agarrarDiamante(m);
 						m.modificarEspacio(this.getX(), this.getY(), this);
 					}
-					else{
-						System.out.print("Rockford no puede moverse a ese lugar");
-					}
+					else {
+						if(((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Roca) && ((m.getEspacios()[this.getX()-2][this.getY()]) instanceof EspacioVacio)) {
+							m.modificarEspacio(this.getX()-2, this.getY(), m.getEspacios()[this.getX()-1][this.getY()]);
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+							this.setX(this.getX()-1);
+							m.modificarEspacio(this.getX(), this.getY(), this);
+						}
+							
+						else{
+							System.out.print("Rockford no puede moverse a ese lugar");
+						}
 				}
 			}
 		}	
-		m.actualizarMapa();
 	}
+	m.actualizarMapa();
+}
 	
 	public void moverArriba(Mapa m){
 		
@@ -150,14 +170,25 @@ public class Rockford extends Animados{
 						agarrarDiamante(m);
 						m.modificarEspacio(this.getX(), this.getY(), this);
 					}
-					else{
-						System.out.print("Rockford no puede moverse a ese lugar");
-					}
+					else {
+						if(((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Roca) && ((m.getEspacios()[this.getX()+2][this.getY()]) instanceof EspacioVacio)) {
+							m.modificarEspacio(this.getX(), this.getY()+2, m.getEspacios()[this.getX()][this.getY()+1]);
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+							this.setY(this.getY()+1);
+							m.modificarEspacio(this.getX(), this.getY(), this);
+						}
+							
+						else{
+							System.out.print("Rockford no puede moverse a ese lugar");
+						}
+						
+					
 				}
 			}
-		}	
-		m.actualizarMapa();
+		}
 	}
+	m.actualizarMapa();
+}
 	
 	public void moverAbajo(Mapa m){
 		
@@ -193,14 +224,25 @@ public class Rockford extends Animados{
 						agarrarDiamante(m);
 						m.modificarEspacio(this.getX(), this.getY(), this);
 					}
-					else{
-						System.out.print("Rockford no puede moverse a ese lugar");
-					}
+					else {
+						if(((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca) && ((m.getEspacios()[this.getX()-2][this.getY()]) instanceof EspacioVacio)) {
+							m.modificarEspacio(this.getX(), this.getY()-2, m.getEspacios()[this.getX()][this.getY()-1]);
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio());
+							this.setY(this.getY()-1);
+							m.modificarEspacio(this.getX(), this.getY(), this);
+						}
+							
+						else{
+							System.out.print("Rockford no puede moverse a ese lugar");
+						}
+						
+					
 				}
 			}
 		}
-		m.actualizarMapa();
 	}
+	m.actualizarMapa();
+}
 	
 	public boolean isMuerto() {
 		return muerto;
