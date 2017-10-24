@@ -1,8 +1,7 @@
 package Juego;
 import personajes.*;
-/*import java.util.Timer;
+import java.util.Timer;
 import java.util.TimerTask;
-*/
 import CargaDeNiveles.*;
 
 /**
@@ -40,8 +39,10 @@ public class Mapa {
 		return m;
 	}
 	
-	
-	/*TimerTask tarea=new TimerTask(){
+	/**
+	 * Actualiza las posiciones de cada elemento en el mapa
+	 */
+	TimerTask tarea = new TimerTask(){
 		public void run(){
 			for(int i=0;i<40;i++){
 				for(int j=0;j<22;j++){
@@ -50,12 +51,11 @@ public class Mapa {
 				}
 			setTiempo(getTiempo()-1);
 		}
-	};*/
+	};
 	
 	/**
-	 * Actualiza las posiciones de cada elemento en el mapa
+	 * Actualiza las posiciones de cada elemento en el mapa luego de determinado tiempo
 	 */
-	
 	public void actualizarMapa(){
 		if (!this.isNivelTerminado()){
 			for(int i=0;i<40;i++){
@@ -138,13 +138,13 @@ public class Mapa {
 			e.printStackTrace();
 		}
 		
-		/*
+		
 		this.setTiempo(150);
 		Timer timer=new Timer();
 		timer.schedule(tarea, 1000);	
 		this.setTotalDiamantes(lector.getDiamondsNeeded());
 		nivelTerminado=false;
-		*/
+	
 		
 		
 		this.actualizarMapa();
@@ -213,7 +213,7 @@ public class Mapa {
 	}
 
 
-	/*public int getTiempo() {
+	public int getTiempo() {
 		return tiempo;
 	}
 
@@ -221,5 +221,5 @@ public class Mapa {
 	public void setTiempo(int tiempo) {
 		this.tiempo = tiempo;
 	}
-	*/
+	
 }

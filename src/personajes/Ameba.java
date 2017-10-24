@@ -59,13 +59,14 @@ public class Ameba extends Animados {
 		expandirse(m);
 	}
 	
-	/*
+	/**
+	 * Actualiza el mapa para expandir a la ameba luego de cierto tiempo.
+	 * @param m Mapa
+	 */
 	public void actualizarPorTimer(Mapa m){
-	
-		
 		expandirse(m);	
 	}
-	*/
+	
 	
 	/**
 	 * Evalua si la ameba puede expandirse en la direccion actual que tiene, y en caso de tener 

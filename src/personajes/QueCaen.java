@@ -9,9 +9,9 @@ import Juego.Mapa;
  *
  */
 public abstract class QueCaen extends Animados{
-	
-	
-	
+
+	private boolean cayendo; /* Indica si el elemento debe caer */
+		
 	public QueCaen() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -29,10 +29,6 @@ public abstract class QueCaen extends Animados{
 		this.cayendo = cayendo;
 		// TODO Auto-generated constructor stub
 	}
-
-
-	private boolean cayendo; //Indica si el elemento debe caer
-
 	
 	public void informar(){
 		System.out.print("Es un elemento animado");

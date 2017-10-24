@@ -167,9 +167,13 @@ public class Mariposa extends Explosivos {
 		this.explotar(m);
 		}
 	
-	/*public void actualizarPorTimer(Mapa m){
+	/**
+	 * Actualiza el mapa para mover a la mariposa luego de cierto tiempo.
+	 * @param m Mapa
+	 */
+	public void actualizarPorTimer(Mapa m){
 		this.moverse(m);
-	}*/
+	}
 
 	public void informar(){
 		System.out.print("Es una mariposa");

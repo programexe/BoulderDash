@@ -51,11 +51,13 @@ public class Luciernaga extends Explosivos {
 	}
 	
 	
-	/*
+	/**
+	 * Actualiza el mapa para mover a la luciernaga luego del tiempo determinado por el timer.
+	 * @param m Mapa
+	 */
 	public void actualizarPorTimer(Mapa m){
 		this.moverse(m);			
 	}
-	*/
 	
 	
 	/**

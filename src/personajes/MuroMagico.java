@@ -35,8 +35,10 @@ public class MuroMagico extends Muro {
 	public void actualizar(Mapa m){
 		convertir(m);
 		}
-	/*
-	public void actualizarPorTimer(){	//Por cada ejecucion de la tarea del timer disminuira el tiempo en que esta activo el muro
+	/**
+	 * Por cada ejecucion de la tarea del timer disminuira el tiempo en que esta activo el muro magico
+	 */
+	public void actualizarPorTimer(){
 		if (tiempo!=0){
 			tiempo--;
 		}
@@ -48,7 +50,7 @@ public class MuroMagico extends Muro {
 			tiempo=5;
 		}
 	}
-	*/
+
 	
 	/**
 	 * Convierte los elementos a su alrededor siempre y cuando este activo (tiempo!=0)
