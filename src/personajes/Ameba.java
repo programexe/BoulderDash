@@ -36,6 +36,9 @@ public class Ameba extends Animados {
 	}
 	
 	public void actualizar(Mapa m){
+	}
+	
+public void actualizarPorTimer(Mapa m){
 		
 		expandirse(m);	
 	}
@@ -50,6 +53,7 @@ public class Ameba extends Animados {
 					(m.getEspacios()[this.getX()-1][this.getY()] instanceof Basura)) {
 				this.setX(this.getX()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
+				m.actualizarMapa();
 			}
 			else 
 				this.cambiarDireccion();
@@ -61,6 +65,7 @@ public class Ameba extends Animados {
 				(m.getEspacios()[this.getX()][this.getY()+1] instanceof Basura)){
 				this.setY(this.getY()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
+				m.actualizarMapa();
 			}
 			else 
 				this.cambiarDireccion();
@@ -72,6 +77,7 @@ public class Ameba extends Animados {
 					(m.getEspacios()[this.getX()+1][this.getY()] instanceof Basura)){
 				this.setX(this.getX()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
+				m.actualizarMapa();
 			}
 			else 
 				this.cambiarDireccion();
@@ -83,6 +89,7 @@ public class Ameba extends Animados {
 					(m.getEspacios()[this.getX()][this.getY()-1] instanceof Basura)){
 				this.setY(this.getY()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
+				m.actualizarMapa();
 			}
 			else 
 				this.cambiarDireccion();

@@ -5,15 +5,19 @@ import java.util.Scanner;
 
 public class test {
 	
-	
+	//Pruebaaaaaa2
 	public static void main(String[] args){
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Ingrese nivel que quiere recorrer");
 		int lvl = sc.nextInt();
 		
-		Mapa m = Mapa.getInstance(null);		
+		Mapa m = Mapa.getInstance(null);
 		Rockford player=m.crearMapa(lvl);
+		
+		if(m.espacios[4][3]!=null){
+			System.out.println(m.espacios[4][3].getClass().getName());
+		}
 		
 		switch (lvl){
 		

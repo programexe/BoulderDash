@@ -22,23 +22,45 @@ public class Rockford extends Animados{
 	}
 	
 	public void explotar(Mapa m){  //Evalua si rockford debe explotar. De ser asi lo hace
+		
+		
 		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca){
 			
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
-			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
-			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
-			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+			if(!(m.getEspacios()[this.getX()][this.getY()] instanceof Muro)){
+				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+				
+			}
+			
+			if(!(m.getEspacios()[this.getX()-1][this.getY()] instanceof Muro)){
+				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+				
+			}
+			
+			if(!(m.getEspacios()[this.getX()+1][this.getY()] instanceof Muro)){
+				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+				
+			}
+			
+			if(!(m.getEspacios()[this.getX()][this.getY()-1] instanceof Muro)){
+				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+				
+			}
+			
+			if(!(m.getEspacios()[this.getX()][this.getY()+1] instanceof Muro)){
+				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				
+			}
+			this.setMuerto(true,m);
 			m.actualizarMapa();
-			this.setMuerto(true); 
+			 
 		}
-		if (((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Luciernaga) || (m.getEspacios()[this.getX()][this.getY()-1]) instanceof Mariposa){
+		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Luciernaga || (m.getEspacios()[this.getX()][this.getY()-1]) instanceof Mariposa){
 			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
 			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
-			this.setMuerto(true);
+			this.setMuerto(true,m);
 			m.actualizarMapa();
 			 
 		}
@@ -50,8 +72,8 @@ public class Rockford extends Animados{
 			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+			this.setMuerto(true,m);
 			m.actualizarMapa();
-			this.setMuerto(true); 
 		}
 		
 		if (((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Luciernaga) || (m.getEspacios()[this.getX()-1][this.getY()]) instanceof Mariposa){
@@ -61,8 +83,8 @@ public class Rockford extends Animados{
 			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+			this.setMuerto(true,m);
 			m.actualizarMapa();
-			this.setMuerto(true); 
 		}
 		
 		if (((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Luciernaga) || (m.getEspacios()[this.getX()+1][this.getY()]) instanceof Mariposa){
@@ -72,8 +94,8 @@ public class Rockford extends Animados{
 			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+			this.setMuerto(true,m);
 			m.actualizarMapa();
-			this.setMuerto(true); 
 		}
 	}
 	
@@ -326,6 +348,10 @@ public class Rockford extends Animados{
 	}
 	public void setMuerto(boolean muerto) {
 		this.muerto = muerto;
+	}
+	public void setMuerto(boolean muerto,Mapa m) {
+		this.muerto = muerto;
+		m.setNivelTerminado(true);
 	}
 	
 	public void actualizar(Mapa m){

@@ -66,8 +66,9 @@ public abstract class QueCaen extends Animados{
 			this.setY(this.getY()+1);
 			m.modificarEspacio(this.getX(), this.getY(), this);
 			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+			m.actualizarMapa();
 		}
-		m.actualizarMapa();
+		
 		}
 	
 	public void actualizar(Mapa m){ //

@@ -8,7 +8,7 @@ public class Mapa {
 	private int totalDiamantes;
 	private int diamantesRecolectados=0;
 	private int tiempo;
-	private boolean nivelTerminado;
+	private boolean nivelTerminado=false;
 	BDLevelReader lector=new BDLevelReader();
 	Elementos espacios[][]= new Elementos[40][22];
 	
@@ -42,9 +42,14 @@ public class Mapa {
 	};
 	
 	public void actualizarMapa(){
-		for(int i=0;i<40;i++){
-			for(int j=0;j<22;j++){
-				espacios[i][j].actualizar(Mapa.getInstance(m));
+		if (!this.isNivelTerminado()){
+			for(int i=0;i<40;i++){
+				for(int j=0;j<22;j++){
+					if(espacios[i][j]==null){
+						System.out.println("Es null");
+					}
+					espacios[i][j].actualizar(this);
+				}
 			}
 		}
 	}
