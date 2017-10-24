@@ -95,34 +95,34 @@ public class Mariposa extends Explosivos {
 		if ((m.getEspacios()[this.getX()][this.getY()-1] instanceof Roca)){
 			
 			if(!(m.getEspacios()[this.getX()+1][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX()+1, this.getY(), new Diamante(this.getX()+1, this.getY()));
+				m.modificarEspacio(this.getX()+1, this.getY(), new Diamante(this.getX()+1, this.getY(), true));
 			}
 			else{
 				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 			}
 			
 			if(!(m.getEspacios()[this.getX()-1][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX()-1, this.getY(), new Diamante(this.getX()-1, this.getY()));
+				m.modificarEspacio(this.getX()-1, this.getY(), new Diamante(this.getX()-1, this.getY(), true));
 			}
 			else{
 				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
 			}
 			
 			if(!(m.getEspacios()[this.getX()][this.getY()+1] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY()+1, new Diamante(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX(), this.getY()+1, new Diamante(this.getX(), this.getY()+1, true));
 			}
 			else{
 				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
 			}
 			
 			if(!(m.getEspacios()[this.getX()][this.getY()-1] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY()-1, new Diamante(this.getX(), this.getY()-1));
+				m.modificarEspacio(this.getX(), this.getY()-1, new Diamante(this.getX(), this.getY()-1, true));
 			}
 			else{
 				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 			}
 			
-			m.modificarEspacio(this.getX()+1, this.getY(), new Diamante(this.getX()+1, this.getY()));
+			m.modificarEspacio(this.getX()+1, this.getY(), new Diamante(this.getX()+1, this.getY(), true));
 			m.actualizarMapa();
 			
 			
@@ -131,12 +131,13 @@ public class Mariposa extends Explosivos {
 	}
 	
 	public void actualizar (Mapa m){
+		this.moverse(m);
 		this.explotar(m);
 		}
 	
-	public void actualizarPorTimer(Mapa m){
+	/*public void actualizarPorTimer(Mapa m){
 		this.moverse(m);
-	}
+	}*/
 
 	public void informar(){
 		System.out.print("Es una mariposa");

@@ -25,7 +25,8 @@ public class Rockford extends Animados{
 	
 	public void explotar(Mapa m){  //Evalua si rockford debe explotar. De ser asi lo hace
 		if(!muerto){
-			if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca){
+			if (((m.getEspacios()[this.getX()][this.getY()-1]) instanceof EspacioVacio)
+					&& ((m.getEspacios()[this.getX()][this.getY()-2]) instanceof Roca)){
 				
 				if(!(m.getEspacios()[this.getX()][this.getY()] instanceof Muro)){
 					m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));

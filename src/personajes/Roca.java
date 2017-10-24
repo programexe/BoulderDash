@@ -7,8 +7,8 @@ public class Roca extends QueCaen{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Roca(int i, int j) {
-		super(i, j);
+	public Roca(int i, int j, boolean cayendo) {
+		super(i, j, cayendo);
 		// TODO Auto-generated constructor stub
 	}
 

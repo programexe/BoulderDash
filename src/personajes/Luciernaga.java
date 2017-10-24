@@ -29,17 +29,16 @@ public class Luciernaga extends Explosivos {
 		
 			case "Abajo": this.setDireccionActual("Izquierda");
 				break;
-			
-			default: break;
 		}
 	}
 	
 	
-	public void actualizarPorTimer(Mapa m){		//La luciernaga se movera cada vez que se ejecute el codigo del timer
+	/*public void actualizarPorTimer(Mapa m){		//La luciernaga se movera cada vez que se ejecute el codigo del timer
 		this.moverse(m);			
-	}
+	}*/
 	
 	public void actualizar(Mapa m){	
+		this.moverse(m);
 		explotar(m);
 	}
 	
@@ -70,10 +69,8 @@ public class Luciernaga extends Explosivos {
 				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
 				
 			}
-			
-			m.actualizarMapa();
 		
-	}
+		}
 }
 	
 	public void moverse(Mapa m){
@@ -84,6 +81,7 @@ public class Luciernaga extends Explosivos {
 				this.setX(this.getX()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+				System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
 				m.actualizarMapa();
 			}
 				else
@@ -96,6 +94,7 @@ public class Luciernaga extends Explosivos {
 				this.setY(this.getY()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+				System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
 				m.actualizarMapa();
 			}
 
@@ -107,11 +106,11 @@ public class Luciernaga extends Explosivos {
 		
 		
 		case "Izquierda": {
-			System.out.println(m.getEspacios()[this.getX()-1][this.getY()].getClass().getName());
 			if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
 				this.setX(this.getX()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+				System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
 				m.actualizarMapa();
 			}
 				else
@@ -120,10 +119,11 @@ public class Luciernaga extends Explosivos {
 			}
 		
 		case "Arriba": {
-			if (m.getEspacios()[this.getX()][this.getY()-11] instanceof EspacioVacio){
+			if (m.getEspacios()[this.getX()][this.getY()-1] instanceof EspacioVacio){
 				this.setY(this.getY()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
 				m.actualizarMapa();
 			}
 				else

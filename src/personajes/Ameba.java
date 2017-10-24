@@ -36,9 +36,10 @@ public class Ameba extends Animados {
 	}
 	
 	public void actualizar(Mapa m){
+		expandirse(m);
 	}
 	
-public void actualizarPorTimer(Mapa m){
+	public void actualizarPorTimer(Mapa m){
 		
 		expandirse(m);	
 	}

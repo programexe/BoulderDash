@@ -14,11 +14,7 @@ public class test {
 		
 		Mapa m = Mapa.getInstance(null);
 		Rockford player=m.crearMapa(lvl);
-		
-		if(m.espacios[4][3]!=null){
-			System.out.println(m.espacios[4][3].getClass().getName());
-		}
-		
+				
 		switch (lvl){
 		
 			case 1 :{
@@ -50,16 +46,10 @@ public class test {
 				for (int i = 0; i<3; i++){
 					player.moverArriba(m);
 				}
-				for (int i = 0; i<12; i++){
+				for (int i = 0; i<14; i++){
 					player.moverIzquierda(m);
-					m.getEspacios()[player.getX()][player.getY()-1].informar();
 				}
 				player.moverArriba(m);
-				for (int i = 0; i<12; i++){
-					player.moverIzquierda(m);
-				}
-				if (player.isMuerto()){
-				}
 			}
 			break;
 			

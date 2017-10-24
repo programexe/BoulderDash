@@ -24,7 +24,7 @@ public abstract class Elementos{
 	}
 	
 	public void informar(){
-		System.out.print("Es elemento");
+		System.out.print("Es elemento ");
 	}
 
 
