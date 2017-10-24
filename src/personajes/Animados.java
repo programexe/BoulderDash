@@ -1,19 +1,32 @@
 package personajes;
 import Juego.Mapa;
 
+/**
+* Clase padre de todos los elementos que son capaces de cambiar su ubicacion en el mapa del juego.
+* Consta de una atributo que indica la direccion en la cual debe moverse el elemento.
+* 
+* @author Ezequiel Humar - Sebastián Sauer Rosas
+* 
+*/
 public abstract class Animados extends Elementos {
+	
+	private String direccionActual;		
 	public Animados() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Constructor que setea coordenadas.
+	 * 
+	 * @param i Coordenada X
+	 * @param j Coordenada Y
+	 */	
 	public Animados(int i, int j) {
 		super(i, j);
 		this.setDireccionActual("Derecha");
 		
 	}
-
-	private String direccionActual;		//Indica en que direccion debe moverse el elemento animado
 	
 	public void cambiarDireccion(){
 		

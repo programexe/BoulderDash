@@ -2,28 +2,48 @@ package personajes;
 import Juego.*;
 
 
-
+/**
+ * Clase para instancia a Rockford. Éste puede moverse, recolectar diamantes, morir.
+ * 
+ * @author Ezequiel Humar - Sebastián Sauer
+ *
+ */
 public class Rockford extends Animados{
+	
+	private boolean muerto=false;  
+	
+	
 	public Rockford() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Constructor para instanciar al jugador en la posicion dada
+	 * @param i Coordenada X
+	 * @param j Coordenada Y
+	 */
 	public Rockford(int i, int j) {
 		super(i, j);
 		// TODO Auto-generated constructor stub
 	}
-
-	private boolean muerto=false;  //Indica si rockford esta muerto
 	
-	public void agarrarDiamante(Mapa m){  //Modifica la cantidad de diamantes recolectados
+	/**
+	 * Modifica la cantidad de diamantes recoletados.
+	 * @param m Mapa
+	 */
+	public void agarrarDiamante(Mapa m){  
 		if(!muerto){
 			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 			m.setDiamantesRecolectados(m.getDiamantesRecolectados()+1);
 		}
 	}
 	
-	public void explotar(Mapa m){  //Evalua si rockford debe explotar. De ser asi lo hace
+	/**
+	 * Evalua si Rockford debe explotar. De ser el caso, lo hace.
+	 * @param m
+	 */
+	public void explotar(Mapa m){  
 		if(!muerto){
 			if (((m.getEspacios()[this.getX()][this.getY()-1]) instanceof EspacioVacio)
 					&& ((m.getEspacios()[this.getX()][this.getY()-2]) instanceof Roca)){
@@ -103,6 +123,12 @@ public class Rockford extends Animados{
 		}
 	}
 	
+	/**
+	 * Evalua el elemento que hay en la derecha de Rockford, se de basura o espacio vacio lo mueve.
+	 * Si es un diamante lo mueve y ejecuta el metodo para recolectar diamantes
+	 * Si es la puerta consulta si con la cantidad de diamantes recolectados esta disponible 
+	 * @param m Mapa
+	 */
 	public void moverDerecha(Mapa m){
 		if(!muerto){
 			if ((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Basura){
@@ -170,9 +196,12 @@ public class Rockford extends Animados{
 	}
 }
 
-	
-	//Los metodos de movimiento evaluan que que elemento hay en el lugar donde rockford debe moverse y si puede moverse lo hace
-	
+	/**
+	 * Evalua el elemento que hay a la izquierda de Rockford, se de basura o espacio vacio lo mueve.
+	 * Si es un diamante lo mueve y ejecuta el metodo para recolectar diamantes
+	 * Si es la puerta consulta si con la cantidad de diamantes recolectados esta disponible 
+	 * @param m Mapa
+	 */
 	public void moverIzquierda(Mapa m){
 		
 		if (!muerto){
@@ -233,6 +262,12 @@ public class Rockford extends Animados{
 	}
 }
 	
+	/**
+	 * Evalua el elemento que hay abajo de Rockford, se de basura o espacio vacio lo mueve.
+	 * Si es un diamante lo mueve y ejecuta el metodo para recolectar diamantes
+	 * Si es la puerta consulta si con la cantidad de diamantes recolectados esta disponible 
+	 * @param m Mapa
+	 */
 	public void moverAbajo(Mapa m){
 		if (!muerto){
 			if ((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Basura){
@@ -294,6 +329,12 @@ public class Rockford extends Animados{
 	}
 }
 	
+	/**
+	 * Evalua el elemento que hay arriba de Rockford, se de basura o espacio vacio lo mueve.
+	 * Si es un diamante lo mueve y ejecuta el metodo para recolectar diamantes
+	 * Si es la puerta consulta si con la cantidad de diamantes recolectados esta disponible 
+	 * @param m Mapa
+	 */
 	public void moverArriba(Mapa m){
 		if(!muerto){
 			if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Basura){
@@ -355,16 +396,16 @@ public class Rockford extends Animados{
 	}
 }
 	
+	
+	
 	public boolean isMuerto() {
 		return muerto;
 	}
-	public void setMuerto(boolean muerto) {
-		this.muerto = muerto;
-	}
+	
 	public void setMuerto(boolean muerto,Mapa m) {
 		this.muerto = muerto;
 		m.setNivelTerminado(true);
-		System.out.println("Murio Rockford");
+		System.out.println("El jugador ha muerto");
 	}
 	
 	public void actualizar(Mapa m){

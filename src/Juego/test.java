@@ -2,7 +2,12 @@ package Juego;
 import personajes.*;
 import java.util.Scanner;
 
-
+/**
+ * Clase princial, donde se controla y ejecuta todo el juego
+ * 
+ * @author Ezequiel Humar - Sebastián Sauer Rosas
+ *
+ */
 public class test {
 	
 	public static void main(String[] args){

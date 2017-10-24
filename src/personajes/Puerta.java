@@ -2,19 +2,32 @@ package personajes;
 
 import Juego.Mapa;
 
+/**
+ * Clase que instancia la puerta. Mientras no se hayan recolectados los diamantes necesarios
+ * en el nivel que se esta jugando, esta permanece cerrada.
+ * 
+ * @author Ezequiel Humar - Sebastián Sauer Rosas
+ *
+ */
 public class Puerta extends Inanimados{
+	
+	private boolean abierta;  
 	
 	public Puerta() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Constructor que setea coordenadas.
+	 * 
+	 * @param i Coordenada X
+	 * @param j Coordenada Y
+	 */
 	public Puerta(int i, int j) {
 		super(i, j);
 		// TODO Auto-generated constructor stub
 	}
-
-	private boolean abierta;  //Variable que indica si la puerta esta abierta. Si esta abierta es true
 
 	public void informar(){
 		if (abierta){
@@ -31,7 +44,13 @@ public class Puerta extends Inanimados{
 		this.abierta = abierta;
 	}
 	
-	public void actualizar(Mapa m){		//Evalua si se recolectaros todos los diamantes. De ser asi se abre la puerta
+	/**
+	 * Evalua si se recolectaros todos los diamantes. De ser asi se abre la puerta para pasar
+	 * al siguiente nivel.
+	 * 
+	 * @param m Mapa
+	 */
+	public void actualizar(Mapa m){		
 		if(m.getTotalDiamantes()-m.getDiamantesRecolectados()==0){
 			this.setAbierta(true);
 		}

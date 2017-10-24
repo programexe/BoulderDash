@@ -2,19 +2,38 @@ package personajes;
 
 import Juego.Mapa;
 
-
+/**
+ * Clase para instanciar mariposas. Si una roca se encuentra sobre ella y esta es una roca cayente,
+ * la mariposa explota convirtiendo un area de 3*3 en diamantes. De otra manera, la mariposa 
+ * trata de moverse. Cada mariposa tiene una “direccion actual" (arriba, abajo, izquierda o derecha).
+ * Si el siguiente casillero en su direccion está vacio, la mariposa se mueve a ese espacio. Si el 
+ * siguiente  casillero no está vacio, la mariposa cambia su direccion en sentido contrario a las agujas 
+ * del reloj, por ejemplo: si la dirección actual es arriba, la nueva direccion será hacia la izquierda.
+ * 
+ * @author Ezequiel Humar - Sebastián Sauer Rosas
+ *
+ */
 public class Mariposa extends Explosivos {
 	
 	public Mariposa() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Constructor que setea coordenadas.
+	 * 
+	 * @param i Coordenada X
+	 * @param j Coordenada Y
+	 */	
 	public Mariposa(int i, int j) {
 		super(i, j);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Cambia el sentido de la direccion de la mariposa.
+	 */
 	public void cambiarDireccion(){
 		
 		switch (this.getDireccionActual()){
@@ -33,8 +52,12 @@ public class Mariposa extends Explosivos {
 		}
 	}
 	
-	public void moverse(Mapa m){	//Evelua a donde debe moverse la mariposa y en que direccion
-									//Si debe moverse lo hace
+	/**
+	 * Mueve la luciernaga segun la direccion actual.
+	 * @param m Mapa
+	 */
+	public void moverse(Mapa m){	
+									
 		switch (this.getDireccionActual()){
 		
 		case "Derecha": {
@@ -90,7 +113,12 @@ public class Mariposa extends Explosivos {
 	}
 	}
 	
-	public void explotar(Mapa m){		//Evalua si debe explotar y de ser asi lo hace
+	
+	/**
+	 * Explota convirtiendo un área de 3*3 en diamantes.
+	 * @param m Mapa
+	 */
+	public void explotar(Mapa m){		
 		
 		if ((m.getEspacios()[this.getX()][this.getY()-1] instanceof Roca)){
 			
@@ -130,6 +158,10 @@ public class Mariposa extends Explosivos {
 		
 	}
 	
+	/**
+	 * Actualiza el mapa para mover a la mariposa y evaluar si esta debe explotar.
+	 * @param m Mapa
+	 */
 	public void actualizar (Mapa m){
 		this.moverse(m);
 		this.explotar(m);

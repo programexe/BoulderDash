@@ -1,21 +1,37 @@
 package personajes;
 import Juego.*;
 
-public class Ameba extends Animados {
-	
-	
 
+/**
+ * Clase para instanciar amebas. La ameba no se mueve y su toque es inofensivo para cualquiera, pero esta 
+ * lentamente se va expandiendo por los casilleros vacíos, haciendo eventualmente imposible moverse al jugador. 
+ * En cada turno, la ameba tiene “pocas probabilidades” de expandirse. La expansión busca un casillero vecino 
+ * en una dirección elegida de manera random, y si ese casillero está vacío o sucio, se convierte en una ameba.
+ * 
+ * @author Ezequiel Humar - Sebastián Sauer Rosas
+ *
+ */
+public class Ameba extends Animados {
 
 	public Ameba() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Constructor que setea coordenadas.
+	 * 
+	 * @param i Coordenada X
+	 * @param j Coordenada Y
+	 */
 	public Ameba(int i, int j) {
 		super(i, j);
 		// TODO Auto-generated constructor stub
 	}
-
+	 
+	/**
+	 * Metodo que cambiar la direccion en la que se expande la ameba de manera aleatoria
+	 */
 	public void cambiarDireccion(){
 		int n = (int) (Math.random() * 4) + 1;
 		
@@ -35,17 +51,29 @@ public class Ameba extends Animados {
 	}
 	}
 	
+	/**
+	 * Actualiza el mapa para expandir a la ameba.
+	 * @param m Mapa
+	 */
 	public void actualizar(Mapa m){
 		expandirse(m);
 	}
 	
+	/*
 	public void actualizarPorTimer(Mapa m){
+	
 		
 		expandirse(m);	
 	}
+	*/
 	
-	public void expandirse(Mapa m){			//Evalua si la ameba tiene que expandirse y en cual direccion.
-											//Si debe expandirse lo hace
+	/**
+	 * Evalua si la ameba puede expandirse en la direccion actual que tiene, y en caso de tener 
+	 * el casillero vecino, indicado en dicha direccion, con basura o un espaco vacio se expande.
+	 * @param m Mapa
+	 */
+	public void expandirse(Mapa m){			
+											
 		
 		switch (this.getDireccionActual()){
 		

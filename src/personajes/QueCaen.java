@@ -2,6 +2,12 @@ package personajes;
 
 import Juego.Mapa;
 
+/**
+ * Esta es la clase padre de los elementos que pueden caer como la roca o el diamante.
+ * 
+ * @author Ezequiel Humar - Sebastián Sauer Rosas
+ *
+ */
 public abstract class QueCaen extends Animados{
 	
 	
@@ -10,7 +16,14 @@ public abstract class QueCaen extends Animados{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Contructor del elemento que indica la posicion y si es un elemento que debe caer
+	 * desde un principio o no.
+	 * @param i Coordenada X
+	 * @param j Coordenada Y
+	 * @param cayendo Indica si el elemento debe caer
+	 */
 	public QueCaen(int i, int j, boolean cayendo) {
 		super(i, j);
 		this.cayendo = cayendo;
@@ -34,8 +47,11 @@ public abstract class QueCaen extends Animados{
 	}
 	
 
-	
-	public void isEstacionario(Mapa m){		//Se evalua si el elemento debe caer, y de ser asi se setea como verdadera la variable cayendo
+	/**
+	 * Se evalua si el elemento debe caer, y de ser asi se setea como verdadera la variable cayendo
+	 * @param m Mapa
+	 */
+	public void isEstacionario(Mapa m){		
 		
 		if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){ 
 			this.setCayendo(true);
@@ -64,7 +80,11 @@ public abstract class QueCaen extends Animados{
 		}
 	}
 		
-	public void caer(Mapa m){  //Si cayendo es true hace caer el elemento
+	/**
+	 * Si la variable cayendo es verdadera modifica la posicion del elemento
+	 * @param m Mapa
+	 */
+	public void caer(Mapa m){  
 		if (m.getEspacios()[this.getY()][this.getY()+1] instanceof EspacioVacio){
 			this.setY(this.getY()+1);
 			m.modificarEspacio(this.getX(), this.getY(), this);
@@ -78,6 +98,10 @@ public abstract class QueCaen extends Animados{
 		}
 	}
 	
+	/**
+	 * Actualizar que ejecuta el metodo correspondiente de acuerdo al estado de cayendo
+	 * @param Mapa
+	 */
 	public void actualizar(Mapa m){ //
 		if (this.isCayendo()){
 			this.caer(m);

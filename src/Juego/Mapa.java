@@ -1,10 +1,18 @@
 package Juego;
 import personajes.*;
-import java.util.Timer;
+/*import java.util.Timer;
 import java.util.TimerTask;
-
+*/
 import CargaDeNiveles.*;
+
+/**
+ * Mapa donde se desarolla el juego
+ * 
+ * @author Ezequiel Humar - Sebastián Sauer Rosas
+ *
+ */
 public class Mapa {
+	
 	private int totalDiamantes;
 	private int diamantesRecolectados=0;
 	private int tiempo;
@@ -19,6 +27,9 @@ public class Mapa {
 		
 	}
 	
+	/**
+	 * @return la unica instancia existe de mapa.
+	 */
 	
 	public static Mapa getInstance(Mapa m){
 		if (m == null){
@@ -41,18 +52,28 @@ public class Mapa {
 		}
 	};*/
 	
+	/**
+	 * Actualiza las posiciones de cada elemento en el mapa
+	 */
+	
 	public void actualizarMapa(){
 		if (!this.isNivelTerminado()){
 			for(int i=0;i<40;i++){
 				for(int j=0;j<22;j++){
-					if(espacios[i][j]==null){
-						System.out.println("Es null");
-					}
 					espacios[i][j].actualizar(this);
 				}
 			}
 		}
 	}
+	
+	/**
+	 * Carga el mapa a partir del nivel dado en su estilo original.
+	 * Lee el archivo levels.xml y apartir de este 
+	 * crea una matriz con los elementos correpondientes
+	 * En el momento que crea el mapa, cuando encuentra a rockford crea una instancia de este y la retorna
+	 * @param lvl 
+	 * @return Retorna la instancia creada de Rockford
+	 */
 
 	public Rockford crearMapa(int lvl){  //Lee el archivo levels.xml y apartir de este crea una matriz con los elementos correpondientes
 										 //En el momento que crea el mapa, cuando encuentra a rockford crea una instancia de este y la retorna
@@ -117,11 +138,15 @@ public class Mapa {
 			e.printStackTrace();
 		}
 		
-		/*this.setTiempo(150);
+		/*
+		this.setTiempo(150);
 		Timer timer=new Timer();
 		timer.schedule(tarea, 1000);	
 		this.setTotalDiamantes(lector.getDiamondsNeeded());
-		nivelTerminado=false;*/
+		nivelTerminado=false;
+		*/
+		
+		
 		this.actualizarMapa();
 		return player;
 	}
@@ -135,14 +160,30 @@ public class Mapa {
 		this.lector = lector;
 	}
 */
+	
+	/**
+	 * @return La matriz del mapa con los elementos en su ubicacion
+	 */
 	public Elementos[][] getEspacios() {
 		return espacios;
 	}
 
+	/**
+	 * @param espacios 
+	 */
 	public void setEspacios(Elementos[][] espacios) {
 		this.espacios = espacios;
 	}
 	
+	/**
+	 * Agrega un elemento en la posicion dada.
+	 * 
+	 * @param x coordenada X
+	 * 
+	 * @param y coordenada Y
+	 * 
+	 * @param espacio elemento a ubicar
+	 */
 	public void modificarEspacio(int x,int y, Elementos espacio){
 		this.espacios[x][y]=espacio;
 	}
@@ -172,7 +213,7 @@ public class Mapa {
 	}
 
 
-	public int getTiempo() {
+	/*public int getTiempo() {
 		return tiempo;
 	}
 
@@ -180,4 +221,5 @@ public class Mapa {
 	public void setTiempo(int tiempo) {
 		this.tiempo = tiempo;
 	}
+	*/
 }
