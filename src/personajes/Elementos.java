@@ -6,7 +6,6 @@ import Juego.*;
 public abstract class Elementos{
 	private int x;
 	private int y;
-	private boolean destructible;
 	
 	public Elementos(){
 		
@@ -24,17 +23,9 @@ public abstract class Elementos{
 	}
 	
 	public void informar(){
-		System.out.print("Es elemento");
+		System.out.print("Es elemento ");
 	}
 
-
-	public boolean isDestructible() {
-		return destructible;
-	}
-
-	public void setDestructible(boolean destructible) {
-		this.destructible = destructible;
-	}
 
 	public int getX() {
 		return x;

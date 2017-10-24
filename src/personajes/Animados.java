@@ -1,5 +1,5 @@
 package personajes;
-
+import Juego.Mapa;
 
 public abstract class Animados extends Elementos {
 	public Animados() {
@@ -29,7 +29,7 @@ public abstract class Animados extends Elementos {
 	public void informar(){
 	}
 	
-	public void Explotar(){
+	public void Explotar(Mapa m){
 		
 	}
 }

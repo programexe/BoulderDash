@@ -30,7 +30,7 @@ public class Mapa {
 	}
 	
 	
-	TimerTask tarea=new TimerTask(){
+	/*TimerTask tarea=new TimerTask(){
 		public void run(){
 			for(int i=0;i<40;i++){
 				for(int j=0;j<22;j++){
@@ -39,7 +39,7 @@ public class Mapa {
 				}
 			setTiempo(getTiempo()-1);
 		}
-	};
+	};*/
 	
 	public void actualizarMapa(){
 		if (!this.isNivelTerminado()){
@@ -79,16 +79,16 @@ public class Mapa {
 						case WALL: espacios[i][j]=new MuroTitanio(i,j);
 							break;              
 						
-						case ROCK: espacios[i][j]=new Roca(i,j);
+						case ROCK: espacios[i][j]=new Roca(i,j, false);
 							break;               
 						
-						case FALLINGROCK: espacios[i][j]=new Roca(i,j);
+						case FALLINGROCK: espacios[i][j]=new Roca(i,j, true);
 							break;        
 						
-						case DIAMOND: espacios[i][j]=new Diamante(i,j);
+						case DIAMOND: espacios[i][j]=new Diamante(i,j, false);
 							break;             
 						
-						case FALLINGDIAMOND: espacios[i][j]=new Diamante(i,j);
+						case FALLINGDIAMOND: espacios[i][j]=new Diamante(i,j, true);
 							break;     
 						
 						case AMOEBA: espacios[i][j]=new Ameba(i,j);
@@ -117,11 +117,12 @@ public class Mapa {
 			e.printStackTrace();
 		}
 		
-		this.setTiempo(150);
+		/*this.setTiempo(150);
 		Timer timer=new Timer();
 		timer.schedule(tarea, 1000);	
 		this.setTotalDiamantes(lector.getDiamondsNeeded());
-		nivelTerminado=false;
+		nivelTerminado=false;*/
+		this.actualizarMapa();
 		return player;
 	}
 

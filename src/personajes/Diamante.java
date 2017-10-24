@@ -7,8 +7,8 @@ public class Diamante extends QueCaen {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Diamante(int i, int j) {
-		super(i, j);
+	public Diamante(int i, int j, boolean cayendo) {
+		super(i, j, cayendo);
 		// TODO Auto-generated constructor stub
 	}
 
