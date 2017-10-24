@@ -100,6 +100,26 @@ public class Luciernaga extends Explosivos {
 				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
 				
 			}
+			
+			if(!(m.getEspacios()[this.getX()-1][this.getY()-1] instanceof Muro)){
+				m.modificarEspacio(this.getX()-1, this.getY()-1, new EspacioVacio(this.getX()-1, this.getY()-1));
+				
+			}
+			
+			if(!(m.getEspacios()[this.getX()+1][this.getY()-1] instanceof Muro)){
+				m.modificarEspacio(this.getX()+1, this.getY()-1, new EspacioVacio(this.getX()+1, this.getY()-1));
+				
+			}
+			
+			if(!(m.getEspacios()[this.getX()-1][this.getY()+1] instanceof Muro)){
+				m.modificarEspacio(this.getX()-1, this.getY()+1, new EspacioVacio(this.getX()-1, this.getY()+1));
+				
+			}
+			
+			if(!(m.getEspacios()[this.getX()+1][this.getY()+1] instanceof Muro)){
+				m.modificarEspacio(this.getX()+1, this.getY()+1, new EspacioVacio(this.getX()+1, this.getY()+1));
+				
+			}
 		
 		}
 }

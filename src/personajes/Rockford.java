@@ -69,8 +69,23 @@ public class Rockford extends Animados{
 				}
 				
 				if(!(m.getEspacios()[this.getX()][this.getY()+1] instanceof Muro)){
-					m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
-					
+					m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));					
+				}
+				
+				if(!(m.getEspacios()[this.getX()+1][this.getY()+1] instanceof Muro)){
+					m.modificarEspacio(this.getX()+1, this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				}
+				
+				if(!(m.getEspacios()[this.getX()-1][this.getY()+1] instanceof Muro)){
+					m.modificarEspacio(this.getX()-1, this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				}
+				
+				if(!(m.getEspacios()[this.getX()+1][this.getY()-1] instanceof Muro)){
+					m.modificarEspacio(this.getX()+1, this.getY()-1, new EspacioVacio(this.getX(), this.getY()+1));
+				}
+				
+				if(!(m.getEspacios()[this.getX()-1][this.getY()-1] instanceof Muro)){
+					m.modificarEspacio(this.getX()-1, this.getY()-1, new EspacioVacio(this.getX(), this.getY()+1));
 				}
 				this.setMuerto(true,m);
 				m.actualizarMapa();
@@ -83,6 +98,10 @@ public class Rockford extends Animados{
 				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()+1, this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()-1, this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()+1, this.getY()-1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()-1, this.getY()-1, new EspacioVacio(this.getX(), this.getY()+1));
 				this.setMuerto(true,m);
 				m.actualizarMapa();
 				 
@@ -95,6 +114,10 @@ public class Rockford extends Animados{
 				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()+1, this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()-1, this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()+1, this.getY()-1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()-1, this.getY()-1, new EspacioVacio(this.getX(), this.getY()+1));
 				this.setMuerto(true,m);
 				m.actualizarMapa();
 			}
@@ -106,6 +129,10 @@ public class Rockford extends Animados{
 				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()+1, this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()-1, this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()+1, this.getY()-1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()-1, this.getY()-1, new EspacioVacio(this.getX(), this.getY()+1));
 				this.setMuerto(true,m);
 				m.actualizarMapa();
 			}
@@ -117,6 +144,10 @@ public class Rockford extends Animados{
 				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
 				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
 				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()+1, this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()-1, this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()+1, this.getY()-1, new EspacioVacio(this.getX(), this.getY()+1));
+				m.modificarEspacio(this.getX()-1, this.getY()-1, new EspacioVacio(this.getX(), this.getY()+1));
 				this.setMuerto(true,m);
 				m.actualizarMapa();
 			}
