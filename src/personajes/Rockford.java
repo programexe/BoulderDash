@@ -17,149 +17,156 @@ public class Rockford extends Animados{
 	private boolean muerto=false;  //Indica si rockford esta muerto
 	
 	public void agarrarDiamante(Mapa m){  //Modifica la cantidad de diamantes recolectados
-		m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-		m.setDiamantesRecolectados(m.getDiamantesRecolectados()+1);
+		if(!muerto){
+			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+			m.setDiamantesRecolectados(m.getDiamantesRecolectados()+1);
+		}
 	}
 	
 	public void explotar(Mapa m){  //Evalua si rockford debe explotar. De ser asi lo hace
+		if(!muerto){
+			if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca){
+				
+				if(!(m.getEspacios()[this.getX()][this.getY()] instanceof Muro)){
+					m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+					
+				}
+				
+				if(!(m.getEspacios()[this.getX()-1][this.getY()] instanceof Muro)){
+					m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+					
+				}
+				
+				if(!(m.getEspacios()[this.getX()+1][this.getY()] instanceof Muro)){
+					m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+					
+				}
+				
+				if(!(m.getEspacios()[this.getX()][this.getY()-1] instanceof Muro)){
+					m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+					
+				}
+				
+				if(!(m.getEspacios()[this.getX()][this.getY()+1] instanceof Muro)){
+					m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+					
+				}
+				this.setMuerto(true,m);
+				m.actualizarMapa();
+			} 
 		
-		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca){
-			
-			if(!(m.getEspacios()[this.getX()][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()-1][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()+1][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()][this.getY()-1] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()][this.getY()+1] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
-				
-			}
-			this.setMuerto(true,m);
-			m.actualizarMapa();
-			 
-		}
 
-		if (((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Luciernaga) || (m.getEspacios()[this.getX()][this.getY()-1]) instanceof Mariposa){
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
-			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
-			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
-			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
-			this.setMuerto(true,m);
-			m.actualizarMapa();
-			 
-		}
-		
-		if (((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Luciernaga) || (m.getEspacios()[this.getX()][this.getY()+1]) instanceof Mariposa){
+			if (((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Luciernaga) || (m.getEspacios()[this.getX()][this.getY()-1]) instanceof Mariposa){
+				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				this.setMuerto(true,m);
+				m.actualizarMapa();
+				 
+			}
 			
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
-			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
-			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
-			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
-			this.setMuerto(true,m);
-			m.actualizarMapa();
-		}
-		
-		if (((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Luciernaga) || (m.getEspacios()[this.getX()-1][this.getY()]) instanceof Mariposa){
+			if (((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Luciernaga) || (m.getEspacios()[this.getX()][this.getY()+1]) instanceof Mariposa){
+				
+				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				this.setMuerto(true,m);
+				m.actualizarMapa();
+			}
 			
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
-			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
-			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
-			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
-			this.setMuerto(true,m);
-			m.actualizarMapa();
-		}
-		
-		if (((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Luciernaga) || (m.getEspacios()[this.getX()+1][this.getY()]) instanceof Mariposa){
+			if (((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Luciernaga) || (m.getEspacios()[this.getX()-1][this.getY()]) instanceof Mariposa){
+				
+				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				this.setMuerto(true,m);
+				m.actualizarMapa();
+			}
 			
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-			m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
-			m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
-			m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
-			m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
-			this.setMuerto(true,m);
-			m.actualizarMapa();
+			if (((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Luciernaga) || (m.getEspacios()[this.getX()+1][this.getY()]) instanceof Mariposa){
+				
+				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
+				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
+				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
+				this.setMuerto(true,m);
+				m.actualizarMapa();
+			}
 		}
 	}
 	
 	public void moverDerecha(Mapa m){
-		if ((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Basura){
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-			this.setX(this.getX()+1);
-			m.modificarEspacio(this.getX(), this.getY(), this);
-			m.getEspacios()[this.getX()][this.getY()].informar();
-		}
-		else
-		{
-			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
+		if(!muerto){
+			if ((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Basura){
 				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 				this.setX(this.getX()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.getEspacios()[this.getX()][this.getY()].informar();
 			}
-			else{
-				
-				if (m.getEspacios()[this.getX()+1][this.getY()] instanceof Puerta){
-
-					Puerta puertaAuxiliar= (Puerta) m.getEspacios()[this.getX()+1][this.getY()];
-					if(!puertaAuxiliar.isAbierta()){
-						System.out.print("La puerta esta cerrada");
-					}						
-					
-					else{
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-						System.out.println("Nivel Terminado");
-						m.setNivelTerminado(true);
-
-					}
+			else
+			{
+				if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
+					m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+					this.setX(this.getX()+1);
+					m.modificarEspacio(this.getX(), this.getY(), this);
+					m.getEspacios()[this.getX()][this.getY()].informar();
 				}
-				else
-				{
-					if((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Diamante){
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-						this.setX(this.getX()+1);
-						agarrarDiamante(m);
-						System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
-						m.modificarEspacio(this.getX(), this.getY(), this);
-						m.getEspacios()[this.getX()][this.getY()].informar();
+				else{
+					
+					if (m.getEspacios()[this.getX()+1][this.getY()] instanceof Puerta){
+	
+						Puerta puertaAuxiliar= (Puerta) m.getEspacios()[this.getX()+1][this.getY()];
+						if(!puertaAuxiliar.isAbierta()){
+							System.out.print("La puerta esta cerrada");
+						}						
+						
+						else{
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+							System.out.println("Nivel Terminado");
+							m.setNivelTerminado(true);
+	
+						}
 					}
-					else {
-						if(((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Roca) && ((m.getEspacios()[this.getX()+2][this.getY()]) instanceof EspacioVacio)) {
-							m.modificarEspacio(this.getX()+2, this.getY(), m.getEspacios()[this.getX()+1][this.getY()]);
+					else
+					{
+						if((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Diamante){
 							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 							this.setX(this.getX()+1);
+							agarrarDiamante(m);
+							System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
 							m.modificarEspacio(this.getX(), this.getY(), this);
 							m.getEspacios()[this.getX()][this.getY()].informar();
 						}
+						else {
+							if(((m.getEspacios()[this.getX()+1][this.getY()]) instanceof Roca) && ((m.getEspacios()[this.getX()+2][this.getY()]) instanceof EspacioVacio)) {
+								m.modificarEspacio(this.getX()+2, this.getY(), m.getEspacios()[this.getX()+1][this.getY()]);
+								m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+								this.setX(this.getX()+1);
+								m.modificarEspacio(this.getX(), this.getY(), this);
+								m.getEspacios()[this.getX()][this.getY()].informar();
+							}
+								
+							else{
+								System.out.print("Rockford no puede moverse a ese lugar");
+							}
 							
-						else{
-							System.out.print("Rockford no puede moverse a ese lugar");
-						}
 						
-					
+					}
 				}
 			}
 		}
-	}
+
+		
 	System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
 	m.actualizarMapa();
+	}
 }
 
 	
@@ -167,180 +174,184 @@ public class Rockford extends Animados{
 	
 	public void moverIzquierda(Mapa m){
 		
-		if ((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Basura){
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-			this.setX(this.getX()-1);
-			m.modificarEspacio(this.getX(), this.getY(), this);
-			m.getEspacios()[this.getX()][this.getY()].informar();
-		}
-		else
-		{
-			if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
+		if (!muerto){
+			if ((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Basura){
 				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 				this.setX(this.getX()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.getEspacios()[this.getX()][this.getY()].informar();
 			}
-			else{
-				
-				if (m.getEspacios()[this.getX()-1][this.getY()] instanceof Puerta){
-					Puerta puertaAuxiliar= (Puerta) m.getEspacios()[this.getX()-1][this.getY()];
-					if(!puertaAuxiliar.isAbierta()){
-						System.out.print("La puerta esta cerrada");
-					}
-					else{
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-						m.setNivelTerminado(true);
-					}
+			else
+			{
+				if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
+					m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+					this.setX(this.getX()-1);
+					m.modificarEspacio(this.getX(), this.getY(), this);
+					m.getEspacios()[this.getX()][this.getY()].informar();
 				}
-				else
-				{
-					if((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Diamante){
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-						this.setX(this.getX()-1);
-						agarrarDiamante(m);
-						System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
-						m.modificarEspacio(this.getX(), this.getY(), this);
-						m.getEspacios()[this.getX()][this.getY()].informar();
+				else{
+					
+					if (m.getEspacios()[this.getX()-1][this.getY()] instanceof Puerta){
+						Puerta puertaAuxiliar= (Puerta) m.getEspacios()[this.getX()-1][this.getY()];
+						if(!puertaAuxiliar.isAbierta()){
+							System.out.print("La puerta esta cerrada");
+						}
+						else{
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+							m.setNivelTerminado(true);
+						}
 					}
-					else {
-						if(((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Roca) && ((m.getEspacios()[this.getX()-2][this.getY()]) instanceof EspacioVacio)) {
-							m.modificarEspacio(this.getX()-2, this.getY(), m.getEspacios()[this.getX()-1][this.getY()]);
+					else
+					{
+						if((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Diamante){
 							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 							this.setX(this.getX()-1);
+							agarrarDiamante(m);
+							System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
 							m.modificarEspacio(this.getX(), this.getY(), this);
 							m.getEspacios()[this.getX()][this.getY()].informar();
 						}
-							
-						else{
-							System.out.print("Rockford no puede moverse a ese lugar");
-						}
+						else {
+							if(((m.getEspacios()[this.getX()-1][this.getY()]) instanceof Roca) && ((m.getEspacios()[this.getX()-2][this.getY()]) instanceof EspacioVacio)) {
+								m.modificarEspacio(this.getX()-2, this.getY(), m.getEspacios()[this.getX()-1][this.getY()]);
+								m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+								this.setX(this.getX()-1);
+								m.modificarEspacio(this.getX(), this.getY(), this);
+								m.getEspacios()[this.getX()][this.getY()].informar();
+							}
+								
+							else{
+								System.out.print("Rockford no puede moverse a ese lugar");
+							}
+					}
 				}
-			}
-		}	
+			}	
+		}
+		System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
+		m.actualizarMapa();
 	}
-	System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
-	m.actualizarMapa();
 }
 	
 	public void moverAbajo(Mapa m){
-		
-		if ((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Basura){
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-			this.setY(this.getY()+1);
-			m.modificarEspacio(this.getX(), this.getY(), this);
-			m.getEspacios()[this.getX()][this.getY()].informar();
-		}
-		else
-		{
-			if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
+		if (!muerto){
+			if ((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Basura){
 				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 				this.setY(this.getY()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.getEspacios()[this.getX()][this.getY()].informar();
 			}
-			else{
-				
-				if (m.getEspacios()[this.getX()][this.getY()+1] instanceof Puerta){
-					Puerta puertaAuxiliar= (Puerta) m.getEspacios()[this.getX()][this.getY()+1];
-					if(!puertaAuxiliar.isAbierta()){
-						System.out.print("La puerta esta cerrada");
-					}
-					else{
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-						m.setNivelTerminado(true);
-					}
+			else
+			{
+				if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
+					m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+					this.setY(this.getY()+1);
+					m.modificarEspacio(this.getX(), this.getY(), this);
+					m.getEspacios()[this.getX()][this.getY()].informar();
 				}
-				else
-				{
-					if((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Diamante){
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-						this.setY(this.getY()+1);
-						agarrarDiamante(m);
-						System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
-						m.modificarEspacio(this.getX(), this.getY(), this);
-						m.getEspacios()[this.getX()][this.getY()].informar();
+				else{
+					
+					if (m.getEspacios()[this.getX()][this.getY()+1] instanceof Puerta){
+						Puerta puertaAuxiliar= (Puerta) m.getEspacios()[this.getX()][this.getY()+1];
+						if(!puertaAuxiliar.isAbierta()){
+							System.out.print("La puerta esta cerrada");
+						}
+						else{
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+							m.setNivelTerminado(true);
+						}
 					}
-					else {
-						if(((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Roca) && ((m.getEspacios()[this.getX()][this.getY()+2]) instanceof EspacioVacio)) {
-							m.modificarEspacio(this.getX(), this.getY()+2, m.getEspacios()[this.getX()][this.getY()+1]);
+					else
+					{
+						if((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Diamante){
 							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 							this.setY(this.getY()+1);
+							agarrarDiamante(m);
+							System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
 							m.modificarEspacio(this.getX(), this.getY(), this);
 							m.getEspacios()[this.getX()][this.getY()].informar();
 						}
+						else {
+							if(((m.getEspacios()[this.getX()][this.getY()+1]) instanceof Roca) && ((m.getEspacios()[this.getX()][this.getY()+2]) instanceof EspacioVacio)) {
+								m.modificarEspacio(this.getX(), this.getY()+2, m.getEspacios()[this.getX()][this.getY()+1]);
+								m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+								this.setY(this.getY()+1);
+								m.modificarEspacio(this.getX(), this.getY(), this);
+								m.getEspacios()[this.getX()][this.getY()].informar();
+							}
+								
+							else{
+								System.out.print("Rockford no puede moverse a ese lugar");
+							}
 							
-						else{
-							System.out.print("Rockford no puede moverse a ese lugar");
-						}
 						
-					
+					}
 				}
 			}
 		}
+		System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
+		m.actualizarMapa();
 	}
-	System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
-	m.actualizarMapa();
 }
 	
 	public void moverArriba(Mapa m){
-		
-		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Basura){
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-			this.setY(this.getY()-1);
-			m.modificarEspacio(this.getX(), this.getY(), this);
-			m.getEspacios()[this.getX()][this.getY()].informar();
-		}
-		else
-		{
-			if (m.getEspacios()[this.getX()][this.getY()-1] instanceof EspacioVacio){
+		if(!muerto){
+			if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Basura){
 				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 				this.setY(this.getY()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
 				m.getEspacios()[this.getX()][this.getY()].informar();
 			}
-			else{
-				
-				if (m.getEspacios()[this.getX()][this.getY()-1] instanceof Puerta){
-					Puerta puertaAuxiliar= (Puerta) m.getEspacios()[this.getX()][this.getY()-1];
-					if(!puertaAuxiliar.isAbierta()){
-						System.out.print("La puerta esta cerrada");
-					}
-					else{
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-						m.setNivelTerminado(true);
-					}
+			else
+			{
+				if (m.getEspacios()[this.getX()][this.getY()-1] instanceof EspacioVacio){
+					m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+					this.setY(this.getY()-1);
+					m.modificarEspacio(this.getX(), this.getY(), this);
+					m.getEspacios()[this.getX()][this.getY()].informar();
 				}
-				else
-				{
-					if((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Diamante){
-						m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-						this.setY(this.getY()-1);
-						agarrarDiamante(m);
-						System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
-						m.modificarEspacio(this.getX(), this.getY(), this);
-						m.getEspacios()[this.getX()][this.getY()].informar();
+				else{
+					
+					if (m.getEspacios()[this.getX()][this.getY()-1] instanceof Puerta){
+						Puerta puertaAuxiliar= (Puerta) m.getEspacios()[this.getX()][this.getY()-1];
+						if(!puertaAuxiliar.isAbierta()){
+							System.out.print("La puerta esta cerrada");
+						}
+						else{
+							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+							m.setNivelTerminado(true);
+						}
 					}
-					else {
-						if(((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca) && ((m.getEspacios()[this.getX()][this.getY()-2]) instanceof EspacioVacio)) {
-							m.modificarEspacio(this.getX(), this.getY()-2, m.getEspacios()[this.getX()][this.getY()-1]);
+					else
+					{
+						if((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Diamante){
 							m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
 							this.setY(this.getY()-1);
+							agarrarDiamante(m);
+							System.out.println("Rockford agarro el diamante de la posicion: " + this.getX() + "," + this.getY());
 							m.modificarEspacio(this.getX(), this.getY(), this);
 							m.getEspacios()[this.getX()][this.getY()].informar();
 						}
+						else {
+							if(((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca) && ((m.getEspacios()[this.getX()][this.getY()-2]) instanceof EspacioVacio)) {
+								m.modificarEspacio(this.getX(), this.getY()-2, m.getEspacios()[this.getX()][this.getY()-1]);
+								m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
+								this.setY(this.getY()-1);
+								m.modificarEspacio(this.getX(), this.getY(), this);
+								m.getEspacios()[this.getX()][this.getY()].informar();
+							}
+								
+							else{
+								System.out.print("Rockford no puede moverse a ese lugar");
+							}
 							
-						else{
-							System.out.print("Rockford no puede moverse a ese lugar");
-						}
 						
-					
+					}
 				}
 			}
 		}
+		System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
+		m.actualizarMapa();
 	}
-	System.out.println("Rockford esta en:" + this.getX() + ";" + this.getY());
-	m.actualizarMapa();
 }
 	
 	public boolean isMuerto() {
@@ -352,6 +363,7 @@ public class Rockford extends Animados{
 	public void setMuerto(boolean muerto,Mapa m) {
 		this.muerto = muerto;
 		m.setNivelTerminado(true);
+		System.out.println("Murio Rockford");
 	}
 	
 	public void actualizar(Mapa m){
