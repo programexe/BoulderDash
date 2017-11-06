@@ -1,5 +1,6 @@
 package personajes;
 import Juego.*;
+import static personajes.direccionAnimados.*;
 
 /**
  * Clase para instanciar luciernagas. Si una roca se encuentra sobre ella y esta es una roca cayente,
@@ -36,16 +37,16 @@ public class Luciernaga extends Explosivos {
 	public void cambiarDireccion(){		
 		
 		switch (this.getDireccionActual()){
-			case "Izquierda": this.setDireccionActual("Arriba");
+			case IZQUIERDA: this.setDireccionActual(ARRIBA);
 				break;
 			
-			case "Arriba": this.setDireccionActual("Derecha");
+			case ARRIBA: this.setDireccionActual(DERECHA);
 				break;
 		
-			case "Derecha": this.setDireccionActual("Abajo");		
+			case DERECHA: this.setDireccionActual(ABAJO);		
 				break;
 		
-			case "Abajo": this.setDireccionActual("Izquierda");
+			case ABAJO: this.setDireccionActual(IZQUIERDA);
 				break;
 		}
 	}
@@ -131,7 +132,7 @@ public class Luciernaga extends Explosivos {
 	public void moverse(Mapa m){
 		switch (this.getDireccionActual()){
 		
-		case "Derecha": {
+		case DERECHA: {
 			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
 				this.setX(this.getX()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
@@ -144,7 +145,7 @@ public class Luciernaga extends Explosivos {
 			}
 		break;
 		
-		case "Abajo": {
+		case ABAJO: {
 			if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
 				this.setY(this.getY()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
@@ -160,7 +161,7 @@ public class Luciernaga extends Explosivos {
 		
 		
 		
-		case "Izquierda": {
+		case IZQUIERDA: {
 			if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
 				this.setX(this.getX()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
@@ -173,7 +174,7 @@ public class Luciernaga extends Explosivos {
 			break;
 			}
 		
-		case "Arriba": {
+		case ARRIBA: {
 			if (m.getEspacios()[this.getX()][this.getY()-1] instanceof EspacioVacio){
 				this.setY(this.getY()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);

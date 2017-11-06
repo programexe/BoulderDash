@@ -1,5 +1,6 @@
 package personajes;
 import Juego.Mapa;
+import static personajes.direccionAnimados.*;
 
 /**
 * Clase padre de todos los elementos que son capaces de cambiar su ubicacion en el mapa del juego.
@@ -10,7 +11,7 @@ import Juego.Mapa;
 */
 public abstract class Animados extends Elementos {
 	
-	private String direccionActual;		
+	private direccionAnimados direccionActual;		
 	public Animados() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -24,7 +25,7 @@ public abstract class Animados extends Elementos {
 	 */	
 	public Animados(int i, int j) {
 		super(i, j);
-		this.setDireccionActual("Derecha");
+		this.setDireccionActual(ABAJO);
 		
 	}
 	
@@ -32,10 +33,10 @@ public abstract class Animados extends Elementos {
 		
 	}
 	
-	public String getDireccionActual() {
+	public direccionAnimados getDireccionActual() {
 		return direccionActual;
 	}
-	public void setDireccionActual(String direccionActual) {
+	public void setDireccionActual(direccionAnimados direccionActual) {
 		this.direccionActual = direccionActual;
 	}
 	

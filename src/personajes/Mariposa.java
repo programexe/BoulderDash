@@ -1,5 +1,5 @@
 package personajes; 
-
+import static personajes.direccionAnimados.*;
 import Juego.Mapa;
 
 /**
@@ -38,16 +38,16 @@ public class Mariposa extends Explosivos {
 		
 		switch (this.getDireccionActual()){
 		
-			case "Izquierda": this.setDireccionActual("Abajo");
+			case IZQUIERDA: this.setDireccionActual(ABAJO);
 				break;
 				
-			case "Arriba": this.setDireccionActual("Izquierda");
+			case ARRIBA: this.setDireccionActual(IZQUIERDA);
 				break;
 		
-			case "Derecha": this.setDireccionActual("Arriba");
+			case DERECHA: this.setDireccionActual(ARRIBA);
 				break;
 		
-			case "Abajo": this.setDireccionActual("Derecha");
+			case ABAJO: this.setDireccionActual(DERECHA);
 				break;
 		}
 	}
@@ -60,7 +60,7 @@ public class Mariposa extends Explosivos {
 									
 		switch (this.getDireccionActual()){
 		
-		case "Derecha": {
+		case DERECHA: {
 			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
 				this.setX(this.getX()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
@@ -72,7 +72,7 @@ public class Mariposa extends Explosivos {
 			}
 		break;
 		
-		case "Abajo": {
+		case ABAJO: {
 			if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
 				this.setY(this.getY()+1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
@@ -87,7 +87,7 @@ public class Mariposa extends Explosivos {
 		
 		
 		
-		case "Izquierda": {
+		case IZQUIERDA: {
 			if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
 				this.setX(this.getX()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
@@ -99,7 +99,7 @@ public class Mariposa extends Explosivos {
 			break;
 			}
 		
-		case "Arriba": {
+		case ARRIBA: {
 			if (m.getEspacios()[this.getX()][this.getY()-11] instanceof EspacioVacio){
 				this.setY(this.getY()-1);
 				m.modificarEspacio(this.getX(), this.getY(), this);
