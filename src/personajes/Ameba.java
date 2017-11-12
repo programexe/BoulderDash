@@ -1,5 +1,6 @@
 package personajes;
 import Juego.*;
+import static personajes.direccionAnimados.*;
 
 
 /**
@@ -37,16 +38,16 @@ public class Ameba extends Animados {
 		
 		switch (n){
 		
-		case 1: this.setDireccionActual("Abajo");
+		case 1: this.setDireccionActual(ABAJO);
 			break;
 			
-		case 2: this.setDireccionActual("Izquierda");
+		case 2: this.setDireccionActual(IZQUIERDA);
 			break;
 	
-		case 3: this.setDireccionActual("Arriba");
+		case 3: this.setDireccionActual(ARRIBA);
 			break;
 	
-		case 4: this.setDireccionActual("Derecha");
+		case 4: this.setDireccionActual(DERECHA);
 			break;
 	}
 	}
@@ -78,7 +79,7 @@ public class Ameba extends Animados {
 		
 		switch (this.getDireccionActual()){
 		
-		case "Izquierda":{
+		case IZQUIERDA:{
 			if ((m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio) ||
 					(m.getEspacios()[this.getX()-1][this.getY()] instanceof Basura)) {
 				this.setX(this.getX()-1);
@@ -90,7 +91,7 @@ public class Ameba extends Animados {
 		}
 		break;
 	
-		case "Abajo":{
+		case ABAJO:{
 			if ((m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio) ||
 				(m.getEspacios()[this.getX()][this.getY()+1] instanceof Basura)){
 				this.setY(this.getY()+1);
@@ -102,7 +103,7 @@ public class Ameba extends Animados {
 		}
 		break;
 		
-		case "Derecha":{
+		case DERECHA:{
 			if ((m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio) ||
 					(m.getEspacios()[this.getX()+1][this.getY()] instanceof Basura)){
 				this.setX(this.getX()+1);
@@ -114,7 +115,7 @@ public class Ameba extends Animados {
 		}
 		break;
 		
-		case "Arriba":{
+		case ARRIBA:{
 			if ((m.getEspacios()[this.getX()][this.getY()-1] instanceof EspacioVacio) ||
 					(m.getEspacios()[this.getX()][this.getY()-1] instanceof Basura)){
 				this.setY(this.getY()-1);
