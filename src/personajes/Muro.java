@@ -3,7 +3,7 @@ package personajes;
 /**
 * Clase para intanciar muros. Es la clase padre del muro magico y el de titanio.
 * 
-* @author Ezequiel Humar - Sebastián Sauer
+* @author Ezequiel Humar - Sebastiï¿½n Sauer
 * 
 */
 public abstract class Muro extends Inanimados{
@@ -26,6 +26,10 @@ public abstract class Muro extends Inanimados{
 
 	public void informar(){
 		System.out.print("Es un muro");
+	}
+	
+	public boolean isMuro() {
+		return true;
 	}
 
 }

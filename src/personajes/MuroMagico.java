@@ -4,7 +4,7 @@ import Juego.Mapa;
 
 /**
  * Clase para instanciar muros magicos. Este muro puede activarse, cuando lo hace convierte 
- * los elementos alrededor en diamantes siempre  y cuando no sea un muro. El tiempo que estará 
+ * los elementos alrededor en diamantes siempre  y cuando no sea un muro. El tiempo que estarï¿½ 
  * activo es de 5 segundos cada 30 segundos
  */
 public class MuroMagico extends Muro {
@@ -105,6 +105,10 @@ public class MuroMagico extends Muro {
 
 	public void setTiempo(int tiempo) {
 		this.tiempo = tiempo;
+	}
+	
+	public boolean isMuroMagico() {
+		return true;
 	}
 	
 	

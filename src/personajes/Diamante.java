@@ -3,7 +3,7 @@ package personajes;
 /**
  * Clase para instancia diamantes. Un diamante pude caer o no.
  * 
- * @author Ezequiel Humar - Sebastián Sauer Rosas
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
  *
  */
 public class Diamante extends QueCaen {
@@ -28,4 +28,9 @@ public class Diamante extends QueCaen {
 	public void informar(){
 		System.out.print("Es diamante");
 	}
+	
+	public boolean isDiamante() {
+		return true;
+	}
+	
 }

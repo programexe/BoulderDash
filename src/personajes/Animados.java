@@ -6,7 +6,7 @@ import static personajes.direccionAnimados.*;
 * Clase padre de todos los elementos que son capaces de cambiar su ubicacion en el mapa del juego.
 * Consta de una atributo que indica la direccion en la cual debe moverse el elemento.
 * 
-* @author Ezequiel Humar - Sebastián Sauer Rosas
+* @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
 * 
 */
 public abstract class Animados extends Elementos {
@@ -45,5 +45,9 @@ public abstract class Animados extends Elementos {
 	
 	public void Explotar(Mapa m){
 		
+	}
+	
+	public boolean isAnimados() {
+		return true;
 	}
 }

@@ -5,7 +5,7 @@ package personajes;
  * para sostener otros elementos del mapa.
  * 
  * 
- * @author Ezequiel Humar - Sebastián Sauer Rosas
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
  * 
  */
 public class Basura extends Inanimados {
@@ -28,5 +28,9 @@ public class Basura extends Inanimados {
 
 	public void informar(){
 		System.out.print("Es basura");
+	}
+	
+	public boolean isBasura() {
+		return true;
 	}
 }

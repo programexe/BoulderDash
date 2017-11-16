@@ -3,9 +3,9 @@ import Juego.*;
 
 
 /**
- * Clase para instancia a Rockford. Éste puede moverse, recolectar diamantes, morir.
+ * Clase para instancia a Rockford. ï¿½ste puede moverse, recolectar diamantes, morir.
  * 
- * @author Ezequiel Humar - Sebastián Sauer
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer
  *
  */
 public class Rockford extends Animados{
@@ -441,5 +441,9 @@ public class Rockford extends Animados{
 	
 	public void actualizar(Mapa m){
 		this.explotar(m);
+	}
+	
+	public boolean isRockford() {
+		return true;
 	}
 }

@@ -5,7 +5,7 @@ import Juego.Mapa;
 /**
  * Esta es la clase padre de los elementos que pueden caer como la roca o el diamante.
  * 
- * @author Ezequiel Humar - Sebastián Sauer Rosas
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
  *
  */
 public abstract class QueCaen extends Animados{
@@ -109,6 +109,10 @@ public abstract class QueCaen extends Animados{
 	
 	public void informarCaida(){
 		System.out.println("La roca de la posicion " + this.getX() + "," + (this.getY()-1) + " cayo a " + this.getX() + "," + this.getY());
+	}
+	
+	public boolean isQueCaen() {
+		return true;
 	}
 
 }

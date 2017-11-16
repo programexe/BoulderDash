@@ -3,7 +3,7 @@ package personajes;
 /**
  * Esta es la clase padre de los elementos que no pueden caer.
  * 
- * @author Ezequiel Humar - Sebastián Sauer Rosas
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
  *
  */
 public abstract class QueNoCaen extends Animados{
@@ -29,4 +29,7 @@ public abstract class QueNoCaen extends Animados{
 		System.out.print("Es un elemento que no cae");
 	}
 	
+	public boolean isQueNoCaen() {
+		return true;
+	}
 }

@@ -4,7 +4,7 @@ package personajes;
 * Clase para intanciar espacios vacios. No tienen ningun comportamiendo, solo existe
 * para identificar los huecos en el mapa.
 * 
-* @author Ezequiel Humar - Sebastián Sauer Rosas
+* @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
 * 
 */
 public class EspacioVacio extends Inanimados {
@@ -27,6 +27,10 @@ public class EspacioVacio extends Inanimados {
 
 	public void informar(){
 		System.out.print("Es un espacio vacio");
+	}
+	
+	public boolean isEspacioVacio() {
+		return true;
 	}
 
 }

@@ -3,7 +3,7 @@ package personajes;
 /**
  * Clase para instanciar rocas. Una roca pude caer o no.
  * 
- * @author Ezequiel Humar - Sebastián Sauer Rosas
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
  *
  */
 public class Roca extends QueCaen{
@@ -27,5 +27,9 @@ public class Roca extends QueCaen{
 
 	public void informar(){
 		System.out.print("Es una roca");
+	}
+	
+	public boolean isRoca() {
+		return true;
 	}
 }

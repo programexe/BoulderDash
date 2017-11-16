@@ -3,7 +3,7 @@ package personajes;
 /**
 * Clase padre de todos los elementos que son no son capaces de cambiar su ubicacion en el mapa del juego..
 * 
-* @author Ezequiel Humar - Sebastián Sauer Rosas
+* @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
 * 
 */
 public abstract class Inanimados extends Elementos{
@@ -26,4 +26,9 @@ public abstract class Inanimados extends Elementos{
 	public void informar(){
 		System.out.print("Es un elemento inanimado");
 	}
+	
+	public boolean isInanimados() {
+		return true;
+	}
+	
 }

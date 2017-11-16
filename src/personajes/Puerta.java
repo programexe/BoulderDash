@@ -6,7 +6,7 @@ import Juego.Mapa;
  * Clase que instancia la puerta. Mientras no se hayan recolectados los diamantes necesarios
  * en el nivel que se esta jugando, esta permanece cerrada.
  * 
- * @author Ezequiel Humar - Sebastián Sauer Rosas
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
  *
  */
 public class Puerta extends Inanimados{
@@ -54,5 +54,9 @@ public class Puerta extends Inanimados{
 		if(m.getTotalDiamantes()-m.getDiamantesRecolectados()==0){
 			this.setAbierta(true);
 		}
+	}
+	
+	public boolean isPuerta() {
+		return true;
 	}
 }

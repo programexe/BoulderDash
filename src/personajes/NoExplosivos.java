@@ -3,7 +3,7 @@ package personajes;
 /**
 * Clase padre de todos los elementos que no explota en el mapa del juego.
 * 
-* @author Ezequiel Humar - Sebastián Sauer Rosas
+* @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
 * 
 */
 public abstract class NoExplosivos extends QueNoCaen{
@@ -30,5 +30,9 @@ public abstract class NoExplosivos extends QueNoCaen{
 	
 	public void expandirse(){
 		
+	}
+	
+	public boolean isNoExplosivos() {
+		return true;
 	}
 }

@@ -56,6 +56,81 @@ public abstract class Elementos{
 		this.y = y;
 	}
 	
+	public boolean isAmeba() {
+		return false;
+	}
+	
+	public boolean isAnimados() {
+		return false;
+	}
+	
+	public boolean isBasura() {
+		return false;
+	}
+	
+	public boolean isDiamante() {
+		return false;
+	}
+	
+	public boolean isElementos() {
+		return false;
+	}
+	
+	public boolean isEspacioVacio() {
+		return false;
+	}
+	
+	public boolean isExplosivos() {
+		return false;
+	}
+	public boolean isInanimados() {
+		return false;
+	}
+	
+	public boolean isLuciernaga() {
+		return false;
+	}
+	
+	public boolean isMariposa() {
+		return false;
+	}
+	
+	public boolean isMuro() {
+		return false;
+	}
+	
+	public boolean isMuroMagico() {
+		return false;
+	}
+	
+	public boolean isMuroTitanio() {
+		return false;
+	}
+	
+	public boolean isNoExplosivos() {
+		return false;
+	}
+	
+	public boolean isPuerta() {
+		return false;
+	}
+	
+	public boolean isQueCaen() {
+		return false;
+	}
+	
+	public boolean isQueNoCaen() {
+		return false;
+	}
+	
+	public boolean isRoca() {
+		return false;
+	}
+	
+	public boolean isRockford() {
+		return false;
+	}
+	
 	public Elementos devolverPos(direccionAnimados dir, Mapa m){
 		switch (dir){
 		
@@ -83,5 +158,6 @@ public abstract class Elementos{
 		}
 		
 	}
+	
 
 }

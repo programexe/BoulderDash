@@ -5,12 +5,12 @@ import Juego.Mapa;
 /**
  * Clase para instanciar mariposas. Si una roca se encuentra sobre ella y esta es una roca cayente,
  * la mariposa explota convirtiendo un area de 3*3 en diamantes. De otra manera, la mariposa 
- * trata de moverse. Cada mariposa tiene una “direccion actual" (arriba, abajo, izquierda o derecha).
- * Si el siguiente casillero en su direccion está vacio, la mariposa se mueve a ese espacio. Si el 
- * siguiente  casillero no está vacio, la mariposa cambia su direccion en sentido contrario a las agujas 
- * del reloj, por ejemplo: si la dirección actual es arriba, la nueva direccion será hacia la izquierda.
+ * trata de moverse. Cada mariposa tiene una ï¿½direccion actual" (arriba, abajo, izquierda o derecha).
+ * Si el siguiente casillero en su direccion estï¿½ vacio, la mariposa se mueve a ese espacio. Si el 
+ * siguiente  casillero no estï¿½ vacio, la mariposa cambia su direccion en sentido contrario a las agujas 
+ * del reloj, por ejemplo: si la direcciï¿½n actual es arriba, la nueva direccion serï¿½ hacia la izquierda.
  * 
- * @author Ezequiel Humar - Sebastián Sauer Rosas
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
  *
  */
 public class Mariposa extends Explosivos {
@@ -115,7 +115,7 @@ public class Mariposa extends Explosivos {
 	
 	
 	/**
-	 * Explota convirtiendo un área de 3*3 en diamantes.
+	 * Explota convirtiendo un ï¿½rea de 3*3 en diamantes.
 	 * @param m Mapa
 	 */
 	public void explotar(Mapa m){		
@@ -205,6 +205,10 @@ public class Mariposa extends Explosivos {
 
 	public void informar(){
 		System.out.print("Es una mariposa");
+	}
+	
+	public boolean isMariposa() {
+		return true;
 	}
 
 

@@ -3,7 +3,7 @@ package personajes;
 /**
 * Clase padre de todos los elementos que pueden explotar en el mapa del juego.
 * 
-* @author Ezequiel Humar - Sebastián Sauer Rosas
+* @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
 * 
 */
 public abstract class Explosivos extends QueNoCaen{
@@ -28,5 +28,9 @@ public abstract class Explosivos extends QueNoCaen{
 
 	public void informar(){
 		System.out.print("Es explosivo");
+	}
+	
+	public boolean isExplosivos() {
+		return true;
 	}
 }

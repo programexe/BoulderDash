@@ -5,11 +5,11 @@ import static personajes.direccionAnimados.*;
 
 /**
  * Clase para instanciar amebas. La ameba no se mueve y su toque es inofensivo para cualquiera, pero esta 
- * lentamente se va expandiendo por los casilleros vacíos, haciendo eventualmente imposible moverse al jugador. 
- * En cada turno, la ameba tiene “pocas probabilidades” de expandirse. La expansión busca un casillero vecino 
- * en una dirección elegida de manera random, y si ese casillero está vacío o sucio, se convierte en una ameba.
+ * lentamente se va expandiendo por los casilleros vacï¿½os, haciendo eventualmente imposible moverse al jugador. 
+ * En cada turno, la ameba tiene ï¿½pocas probabilidadesï¿½ de expandirse. La expansiï¿½n busca un casillero vecino 
+ * en una direcciï¿½n elegida de manera random, y si ese casillero estï¿½ vacï¿½o o sucio, se convierte en una ameba.
  * 
- * @author Ezequiel Humar - Sebastián Sauer Rosas
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
  *
  */
 public class Ameba extends Animados {
@@ -128,6 +128,10 @@ public class Ameba extends Animados {
 		break;
 	}
 }
+	
+	public boolean isAmeba() {
+		return true;
+	}
 	
 	public void informar(){
 		System.out.print("Es ameba");

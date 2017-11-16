@@ -5,12 +5,12 @@ import static personajes.direccionAnimados.*;
 /**
  * Clase para instanciar luciernagas. Si una roca se encuentra sobre ella y esta es una roca cayente,
  * la luciernaga explota convirtiendo un area de 3*3 en espacio vacio. De otra manera, la luciernaga 
- * trata de moverse. Cada luciernaga tiene una “direccion actual" (arriba, abajo, izquierda o derecha).
- * Si el siguiente casillero en su direccion está vacio, la luciernaga se mueve a ese espacio. Si el 
- * siguiente  casillero no está vacio, la luciérnaga cambia su direccion de acuerdo a las agujas del 
- * reloj, por ejemplo: si la dirección actual es arriba, la nueva direccion será hacia la derecha.
+ * trata de moverse. Cada luciernaga tiene una ï¿½direccion actual" (arriba, abajo, izquierda o derecha).
+ * Si el siguiente casillero en su direccion estï¿½ vacio, la luciernaga se mueve a ese espacio. Si el 
+ * siguiente  casillero no estï¿½ vacio, la luciï¿½rnaga cambia su direccion de acuerdo a las agujas del 
+ * reloj, por ejemplo: si la direcciï¿½n actual es arriba, la nueva direccion serï¿½ hacia la derecha.
  * 
- * @author Ezequiel Humar - Sebastián Sauer Rosas
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
  *
  */
 public class Luciernaga extends Explosivos {
@@ -71,7 +71,7 @@ public class Luciernaga extends Explosivos {
 	}
 	
 	/**
-	 * Explota convirtiendo un área de 3*3 en espacios vacios.
+	 * Explota convirtiendo un ï¿½rea de 3*3 en espacios vacios.
 	 * @param m Mapa
 	 */
 	public void explotar(Mapa m){		
@@ -191,6 +191,10 @@ public class Luciernaga extends Explosivos {
 				
 	public void informar(){
 		System.out.println("Es una luciernaga");
+	}
+	
+	public boolean isLuciernaga() {
+		return true;
 	}
 
 }
