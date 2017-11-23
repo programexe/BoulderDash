@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class reglas extends JFrame{
-	JTextArea textoReglas=new JTextArea("Reglas del juego bla bla bla", 10,15);
+	JTextArea textoReglas=new JTextArea("Reglas del juego", 10,15);
 	
 	public reglas() {
 		JPanel panel=new JPanel();
