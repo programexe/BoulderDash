@@ -49,68 +49,94 @@ public class Mariposa extends Explosivos {
 		
 			case ABAJO: this.setDireccionActual(DERECHA);
 				break;
+			default:
+				break;
 		}
 	}
 	
+	private void moverArriba(){
+		mapa.modificarEspacio(x, y - 1, this);
+		mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+		this.y--;
+	}
+	
+	private void moverDerecha(){
+		mapa.modificarEspacio(x + 1, y, this);
+		mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+		this.x++;
+	}
+	
+	private void moverAbajo(){
+		mapa.modificarEspacio(x, y + 1, this);
+		mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+		this.y--;
+	}
+	
+	private void moverIzquierda(){
+		mapa.modificarEspacio(x - 1, y, this);
+		mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+		this.x--;
+	}
+	
 	/**
-	 * Mueve la luciernaga segun la direccion actual.
-	 * @param m Mapa
+	 * Mueve la mariposa segun la direccion actual.
 	 */
-	public void moverse(Mapa m){	
-									
+public void moverse(){
+		
+		Elementos e;
 		switch (this.getDireccionActual()){
 		
-		case DERECHA: {
-			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
-				this.setX(this.getX()+1);
-				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
-				m.actualizarMapa();
+			case DERECHA: {
+				e = this.devolverPos(DERECHA);
+				if (e.isEspacioVacio()){
+					this.moverDerecha();
+					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
+					mapa.actualizarMapa();
+				}
+					else
+						this.cambiarDireccion();
 			}
-				else
-					this.cambiarDireccion();
+				break;
+			
+			case ABAJO: {
+				e = this.devolverPos(ABAJO);
+				if (e.isEspacioVacio()){
+					this.moverAbajo();
+					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
+					mapa.actualizarMapa();
+				}
+					else
+						this.cambiarDireccion();
 			}
-		break;
-		
-		case ABAJO: {
-			if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
-				this.setY(this.getY()+1);
-				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
-				m.actualizarMapa();
+				break;
+			
+			case IZQUIERDA: {
+				e = this.devolverPos(IZQUIERDA);
+				if (e.isEspacioVacio()){
+					this.moverIzquierda();
+					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
+					mapa.actualizarMapa();
+				}
+					else
+						this.cambiarDireccion();
 			}
-
-				else
-					this.cambiarDireccion();
-			break;
+				break;
+			
+			case ARRIBA: {
+				e = this.devolverPos(ARRIBA);
+				if (e.isEspacioVacio()){
+					this.moverArriba();
+					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
+					mapa.actualizarMapa();
+				}
+					else
+						this.cambiarDireccion();
 			}
-		
-		
-		
-		case IZQUIERDA: {
-			if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
-				this.setX(this.getX()-1);
-				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
-				m.actualizarMapa();
-			}
-				else
-					this.cambiarDireccion();
-			break;
-			}
-		
-		case ARRIBA: {
-			if (m.getEspacios()[this.getX()][this.getY()-11] instanceof EspacioVacio){
-				this.setY(this.getY()-1);
-				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
-				m.actualizarMapa();
-			}
-				else
-					this.cambiarDireccion();
-			break;
-			}
-	}
+				break;
+			
+			default: 
+				break;
+		}
 	}
 	
 	
@@ -118,81 +144,54 @@ public class Mariposa extends Explosivos {
 	 * Explota convirtiendo un �rea de 3*3 en diamantes.
 	 * @param m Mapa
 	 */
-	public void explotar(Mapa m){		
-		
-		if ((m.getEspacios()[this.getX()][this.getY()-1] instanceof Roca)){
-			
-			if(!(m.getEspacios()[this.getX()+1][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX()+1, this.getY(), new Diamante(this.getX()+1, this.getY(), true));
+	public void explotar(){		
+		mapa.explotarDiamantes(x, y);
+	}
+	
+	
+	public void detectar(){
+		Elementos e = this.devolverPos(ARRIBA);
+		if (e.isRoca())
+			if ( ((Roca) e).isCayendo())
+				this.explotar();
+		else {
+			if (e.isRockford()){
+				this.explotar();
+				e.explotar();
 			}
-			else{
-				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
+			else {
+				e = this.devolverPos(DERECHA);
+				if (e.isRockford()){
+					this.explotar();
+					e.explotar();
+				}
+				else {
+					e = this.devolverPos(ABAJO);
+					if (e.isRockford()){
+						this.explotar();
+						e.explotar();
+					}
+					else {
+						e = this.devolverPos(IZQUIERDA);
+						if (e.isRockford()){
+							this.explotar();
+							e.explotar();
+						}
+					}
+				}
 			}
-			
-			if(!(m.getEspacios()[this.getX()-1][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX()-1, this.getY(), new Diamante(this.getX()-1, this.getY(), true));
-			}
-			else{
-				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
-			}
-			
-			if(!(m.getEspacios()[this.getX()][this.getY()+1] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY()+1, new Diamante(this.getX(), this.getY()+1, true));
-			}
-			else{
-				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
-			}
-			
-			if(!(m.getEspacios()[this.getX()][this.getY()-1] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY()-1, new Diamante(this.getX(), this.getY()-1, true));
-			}
-			else{
-				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
-			}
-			
-			if(!(m.getEspacios()[this.getX()-1][this.getY()-1] instanceof Muro)){
-				m.modificarEspacio(this.getX()-1, this.getY()-1, new Diamante(this.getX()-1, this.getY()-1, true));
-			}
-			else{
-				m.modificarEspacio(this.getX()-1, this.getY()-1, new EspacioVacio(this.getX()-1, this.getY()-1));
-			}
-			
-			if(!(m.getEspacios()[this.getX()+1][this.getY()-1] instanceof Muro)){
-				m.modificarEspacio(this.getX()+1, this.getY()-1, new Diamante(this.getX()+1, this.getY()-1, true));
-			}
-			else{
-				m.modificarEspacio(this.getX()+1, this.getY()-1, new EspacioVacio(this.getX()+1, this.getY()-1));
-			}
-			
-			if(!(m.getEspacios()[this.getX()-1][this.getY()+1] instanceof Muro)){
-				m.modificarEspacio(this.getX()-1, this.getY()+1, new Diamante(this.getX()-1, this.getY()-1, true));
-			}
-			else{
-				m.modificarEspacio(this.getX()-1, this.getY()+1, new EspacioVacio(this.getX()-1, this.getY()+1));
-			}
-			
-			if(!(m.getEspacios()[this.getX()+1][this.getY()+1] instanceof Muro)){
-				m.modificarEspacio(this.getX()+1, this.getY()+1, new Diamante(this.getX()+1, this.getY()+1, true));
-			}
-			else{
-				m.modificarEspacio(this.getX()+1, this.getY()+1, new EspacioVacio(this.getX()+1, this.getY()+1));
-			}
-			
-			m.modificarEspacio(this.getX()+1, this.getY(), new Diamante(this.getX()+1, this.getY(), true));
-			m.actualizarMapa();
-			
-			
 		}
 		
 	}
+	
 	
 	/**
 	 * Actualiza el mapa para mover a la mariposa y evaluar si esta debe explotar.
 	 * @param m Mapa
 	 */
-	public void actualizar (Mapa m){
-		this.moverse(m);
-		this.explotar(m);
+	public void actualizar (){
+		this.moverse();
+		this.explotar();
 		}
 	
 	/**
@@ -200,7 +199,7 @@ public class Mariposa extends Explosivos {
 	 * @param m Mapa
 	 */
 	public void actualizarPorTimer(Mapa m){
-		this.moverse(m);
+		this.moverse();
 	}
 
 	public void informar(){
@@ -211,5 +210,6 @@ public class Mariposa extends Explosivos {
 		return true;
 	}
 
+	
 
 }

@@ -33,4 +33,9 @@ public class Basura extends Inanimados {
 	public boolean isBasura() {
 		return true;
 	}
+	
+	public void explotar(){
+		
+	}	
+	
 }

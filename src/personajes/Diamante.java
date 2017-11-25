@@ -8,9 +8,11 @@ package personajes;
  */
 public class Diamante extends QueCaen {
 
-	public Diamante() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	
+	public Diamante(int i, int j){
+		this.x = i;
+		this.y = j;
 	}
 	
 	/**
@@ -31,6 +33,10 @@ public class Diamante extends QueCaen {
 	
 	public boolean isDiamante() {
 		return true;
+	}
+	
+	public void explotar(){
+		
 	}
 	
 }

@@ -33,4 +33,6 @@ public abstract class Explosivos extends QueNoCaen{
 	public boolean isExplosivos() {
 		return true;
 	}
+	
+	public abstract void explotar();
 }

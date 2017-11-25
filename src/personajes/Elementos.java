@@ -11,8 +11,8 @@ import personajes.direccionAnimados;
  */
 public abstract class Elementos{
 	
-	private int x;
-	private int y;
+	public int x;
+	public int y;
 	
 	public Elementos(){
 		
@@ -28,7 +28,13 @@ public abstract class Elementos{
 		this.x=i;
 	}
 	
-	public void actualizar(Mapa m){
+	/**
+	 * Todo elemento tiene sus cordenadas, una referencia al mapa y un estado
+	 * modificable.
+	 */
+	protected static final Mapa mapa = Mapa.getInstance();
+	
+	public void actualizar(Mapa mapa){
 	}
 	
 	public void actualizarPorTimer(Mapa m){
@@ -131,33 +137,47 @@ public abstract class Elementos{
 		return false;
 	}
 	
-	public Elementos devolverPos(direccionAnimados dir, Mapa m){
+	public Elementos devolverPos(direccionAnimados dir){
 		switch (dir){
 		
 		case IZQUIERDA:{
-			return m.getEspacios()[this.getX()-1][this.getY()];
+			return mapa.getEspacios()[this.getX()-1][this.getY()];
 		}
 		
 		case DERECHA:{
-			return m.getEspacios()[this.getX()+1][this.getY()];
+			return mapa.getEspacios()[this.getX()+1][this.getY()];
 		}
 		
 		case ARRIBA:{
-			return m.getEspacios()[this.getX()][this.getY()-1];
+			return mapa.getEspacios()[this.getX()][this.getY()-1];
 		}
 		
 		case ABAJO:{
-			return m.getEspacios()[this.getX()][this.getY()+1];
+			return mapa.getEspacios()[this.getX()][this.getY()+1];
 		}
 		
 		case ARRIBADER:{
-			return m.getEspacios()[this.getX()+1][this.getY()-1];
+			return mapa.getEspacios()[this.getX()+1][this.getY()-1];
+		}
+		
+		case ARRIBAIZQ:{
+			return mapa.getEspacios()[this.getX()-1][this.getY()-1];
+		}
+		
+		case ABAJODER:{
+			return mapa.getEspacios()[this.getX()+1][this.getY()+1];
+		}
+		
+		case ABAJOIZQ:{
+			return mapa.getEspacios()[this.getX()-1][this.getY()+1];
 		}
 		
 		default: return null;
 		}
 		
 	}
+	
+	public abstract void explotar();
 	
 
 }

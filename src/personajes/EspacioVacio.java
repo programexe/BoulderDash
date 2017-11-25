@@ -32,5 +32,9 @@ public class EspacioVacio extends Inanimados {
 	public boolean isEspacioVacio() {
 		return true;
 	}
+	
+	public void explotar(){
+		
+	}	
 
 }

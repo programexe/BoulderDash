@@ -1,5 +1,4 @@
 package personajes;
-import Juego.*;
 import static personajes.direccionAnimados.*;
 
 /**
@@ -48,146 +47,161 @@ public class Luciernaga extends Explosivos {
 		
 			case ABAJO: this.setDireccionActual(IZQUIERDA);
 				break;
+				
+			default:
+				break;
 		}
 	}
 	
 	
 	/**
 	 * Actualiza el mapa para mover a la luciernaga luego del tiempo determinado por el timer.
-	 * @param m Mapa
 	 */
-	public void actualizarPorTimer(Mapa m){
-		this.moverse(m);			
+	public void actualizarPorTimer(){
+		this.moverse();			
 	}
 	
 	
 	/**
 	 * Actualiza el mapa para mover a la luciernaga y evaluar si esta debe explotar.
-	 * @param m Mapa
 	 */
-	public void actualizar(Mapa m){	
-		this.moverse(m);
-		explotar(m);
+	public void actualizar(){	
+		this.moverse();
+		this.detectar();
 	}
 	
-	/**
-	 * Explota convirtiendo un �rea de 3*3 en espacios vacios.
-	 * @param m Mapa
-	 */
-	public void explotar(Mapa m){		
-		if ((m.getEspacios()[this.getX()][this.getY()-1]) instanceof Roca){
-			
-			if(!(m.getEspacios()[this.getX()][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()-1][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()+1][this.getY()] instanceof Muro)){
-				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()][this.getY()-1] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()][this.getY()+1] instanceof Muro)){
-				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()-1][this.getY()-1] instanceof Muro)){
-				m.modificarEspacio(this.getX()-1, this.getY()-1, new EspacioVacio(this.getX()-1, this.getY()-1));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()+1][this.getY()-1] instanceof Muro)){
-				m.modificarEspacio(this.getX()+1, this.getY()-1, new EspacioVacio(this.getX()+1, this.getY()-1));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()-1][this.getY()+1] instanceof Muro)){
-				m.modificarEspacio(this.getX()-1, this.getY()+1, new EspacioVacio(this.getX()-1, this.getY()+1));
-				
-			}
-			
-			if(!(m.getEspacios()[this.getX()+1][this.getY()+1] instanceof Muro)){
-				m.modificarEspacio(this.getX()+1, this.getY()+1, new EspacioVacio(this.getX()+1, this.getY()+1));
-				
-			}
-		
-		}
-}
+	
+	private void moverArriba(){
+		mapa.modificarEspacio(x, y - 1, this);
+		mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+		this.y--;
+	}
+	
+	private void moverDerecha(){
+		mapa.modificarEspacio(x + 1, y, this);
+		mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+		this.x++;
+	}
+	
+	private void moverAbajo(){
+		mapa.modificarEspacio(x, y + 1, this);
+		mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+		this.y--;
+	}
+	
+	private void moverIzquierda(){
+		mapa.modificarEspacio(x - 1, y, this);
+		mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+		this.x--;
+	}
+	
+	
 	
 	/**
 	 * Mueve la luciernaga segun la direccion actual.
 	 * @param m Mapa
 	 */
-	public void moverse(Mapa m){
+	public void moverse(){
+		
+		Elementos e;
 		switch (this.getDireccionActual()){
 		
-		case DERECHA: {
-			if (m.getEspacios()[this.getX()+1][this.getY()] instanceof EspacioVacio){
-				this.setX(this.getX()+1);
-				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX()-1, this.getY(), new EspacioVacio(this.getX()-1, this.getY()));
-				System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-				m.actualizarMapa();
+			case DERECHA: {
+				e = this.devolverPos(DERECHA);
+				if (e.isEspacioVacio()){
+					this.moverDerecha();
+					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
+					mapa.actualizarMapa();
+				}
+					else
+						this.cambiarDireccion();
 			}
-				else
-					this.cambiarDireccion();
+				break;
+			
+			case ABAJO: {
+				e = this.devolverPos(ABAJO);
+				if (e.isEspacioVacio()){
+					this.moverAbajo();
+					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
+					mapa.actualizarMapa();
+				}
+					else
+						this.cambiarDireccion();
 			}
-		break;
-		
-		case ABAJO: {
-			if (m.getEspacios()[this.getX()][this.getY()+1] instanceof EspacioVacio){
-				this.setY(this.getY()+1);
-				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX(), this.getY()-1, new EspacioVacio(this.getX(), this.getY()-1));
-				System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-				m.actualizarMapa();
+				break;
+			
+			case IZQUIERDA: {
+				e = this.devolverPos(IZQUIERDA);
+				if (e.isEspacioVacio()){
+					this.moverIzquierda();
+					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
+					mapa.actualizarMapa();
+				}
+					else
+						this.cambiarDireccion();
 			}
-
-				else
-					this.cambiarDireccion();
-			break;
+				break;
+			
+			case ARRIBA: {
+				e = this.devolverPos(ARRIBA);
+				if (e.isEspacioVacio()){
+					this.moverArriba();
+					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
+					mapa.actualizarMapa();
+				}
+					else
+						this.cambiarDireccion();
 			}
-		
-		
-		
-		case IZQUIERDA: {
-			if (m.getEspacios()[this.getX()-1][this.getY()] instanceof EspacioVacio){
-				this.setX(this.getX()-1);
-				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX()+1, this.getY(), new EspacioVacio(this.getX()+1, this.getY()));
-				System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-				m.actualizarMapa();
-			}
-				else
-					this.cambiarDireccion();
-			break;
-			}
-		
-		case ARRIBA: {
-			if (m.getEspacios()[this.getX()][this.getY()-1] instanceof EspacioVacio){
-				this.setY(this.getY()-1);
-				m.modificarEspacio(this.getX(), this.getY(), this);
-				m.modificarEspacio(this.getX(), this.getY()+1, new EspacioVacio(this.getX(), this.getY()+1));
-				System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-				m.actualizarMapa();
-			}
-				else
-					this.cambiarDireccion();
-			break;
-			}
+				break;
+			
+			default: 
+				break;
+		}
 	}
+	
+	
+	/**
+	 * Explota convirtiendo un �rea de 3*3 en espacios vacios.
+	 */
+	public void explotar(){		
+		mapa.explotar(x, y);
 	}
+	
+	public void detectar(){
+		Elementos e = this.devolverPos(ARRIBA);
+		if (e.isRoca())
+			if ( ((Roca) e).isCayendo())
+				this.explotar();
+		else {
+			if (e.isRockford()){
+				this.explotar();
+				e.explotar();
+			}
+			else {
+				e = this.devolverPos(DERECHA);
+				if (e.isRockford()){
+					this.explotar();
+					e.explotar();
+				}
+				else {
+					e = this.devolverPos(ABAJO);
+					if (e.isRockford()){
+						this.explotar();
+						e.explotar();
+					}
+					else {
+						e = this.devolverPos(IZQUIERDA);
+						if (e.isRockford()){
+							this.explotar();
+							e.explotar();
+						}
+					}
+				}
+			}
+		}
+		
+	}
+	
 				
 	public void informar(){
 		System.out.println("Es una luciernaga");

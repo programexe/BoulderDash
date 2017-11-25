@@ -16,44 +16,45 @@ public class test {
 		System.out.println("Ingrese nivel que quiere recorrer");
 		int lvl = sc.nextInt();
 		
-		Mapa m = Mapa.getInstance(null);
-		Rockford player=m.crearMapa(lvl);
+		Mapa m = Mapa.getInstance();
+		Rockford player= Rockford.getInstance();
+		m.crearMapa(lvl);
 				
 		switch (lvl){
 		
 			case 1 :{
-				player.moverAbajo(m);
+				player.moverAbajo();
 				for (int i = 0; i<6; i++){
-					player.moverDerecha(m);
+					player.moverDerecha();
 				}
 				for (int i=0; i<2; i++){
-					player.moverArriba(m);
+					player.moverArriba();
 				}
-				player.moverDerecha(m);
+				player.moverDerecha();
 				for (int i=0; i<2; i++){
-					player.moverAbajo(m);
+					player.moverAbajo();
 				}
 				for (int i=0; i<9; i++){
-					player.moverDerecha(m);
+					player.moverDerecha();
 				}
 				for (int i=0; i<2; i++){
-					player.moverAbajo(m);
+					player.moverAbajo();
 				}
 				for (int i=0; i<5; i++){
-					player.moverDerecha(m);
+					player.moverDerecha();
 				}
 			}
 			break;
 			
 			case 2:{
-				player.moverDerecha(m);
+				player.moverDerecha();
 				for (int i = 0; i<3; i++){
-					player.moverArriba(m);
+					player.moverArriba();
 				}
 				for (int i = 0; i<14; i++){
-					player.moverIzquierda(m);
+					player.moverIzquierda();
 				}
-				player.moverArriba(m);
+				player.moverArriba();
 			}
 			break;
 			

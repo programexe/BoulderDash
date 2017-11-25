@@ -24,6 +24,28 @@ public class Roca extends QueCaen{
 		super(i, j, cayendo);
 		// TODO Auto-generated constructor stub
 	}
+	
+	private void moverDerecha(){
+		mapa.modificarEspacio(x + 1, y, this);
+		mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+		this.x++;
+	}
+	
+	private void moverIzquierda(){
+		mapa.modificarEspacio(x - 1, y, this);
+		mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+		this.x--;
+	}
+	
+	public void empujarDerecha(){
+		if (mapa.getPosition(x + 1, y).isEspacioVacio() && !(this.isCayendo()))
+			this.moverDerecha();
+	}
+	
+	public void empujarIzquierda(){
+		if (mapa.getPosition(x - 1, y).isEspacioVacio() && !(this.isCayendo()))
+			this.moverIzquierda();
+	}
 
 	public void informar(){
 		System.out.print("Es una roca");
@@ -32,4 +54,8 @@ public class Roca extends QueCaen{
 	public boolean isRoca() {
 		return true;
 	}
+	
+	public void explotar(){
+		
+	}	
 }

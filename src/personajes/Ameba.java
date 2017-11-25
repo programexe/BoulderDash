@@ -136,5 +136,9 @@ public class Ameba extends Animados {
 	public void informar(){
 		System.out.print("Es ameba");
 	}
+	
+	public void explotar(){
+		
+	}
 
 }

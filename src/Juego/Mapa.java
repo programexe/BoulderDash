@@ -30,7 +30,7 @@ public class Mapa {
 	 * @return la unica instancia existe de mapa.
 	 */
 	
-	public static Mapa getInstance(Mapa m){
+	public static Mapa getInstance(){
 		if (m == null){
 			m = new Mapa();
 		}
@@ -46,7 +46,7 @@ public class Mapa {
 		public void run(){
 			for(int i=0;i<40;i++){
 				for(int j=0;j<22;j++){
-					espacios[i][j].actualizarPorTimer(Mapa.getInstance(m));
+					espacios[i][j].actualizarPorTimer(Mapa.getInstance());
 					}
 				}
 			setTiempo(getTiempo()-1);
@@ -75,9 +75,9 @@ public class Mapa {
 	 * @return Retorna la instancia creada de Rockford
 	 */
 
-	public Rockford crearMapa(int lvl){  //Lee el archivo levels.xml y apartir de este crea una matriz con los elementos correpondientes
+	public int crearMapa(int lvl){  //Lee el archivo levels.xml y apartir de este crea una matriz con los elementos correpondientes
 										 //En el momento que crea el mapa, cuando encuentra a rockford crea una instancia de este y la retorna
-		Rockford player=new Rockford();
+		
 		
 		try {
 			
@@ -124,8 +124,7 @@ public class Mapa {
 						case EXIT : espacios[i][j]=new Puerta(i,j);
 							break;
 							
-						case PLAYER : espacios[i][j]=new Rockford(i,j);
-						player= (Rockford) espacios[i][j];
+						case PLAYER : espacios[i][j]= Rockford.getInstanceSetPosition(i, j);
 							break;  
 					}
 				
@@ -134,9 +133,7 @@ public class Mapa {
 			
 			System.out.println("Se creo el mapa");
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		
 		
 		this.setTiempo(150);
@@ -148,7 +145,11 @@ public class Mapa {
 		
 		
 		this.actualizarMapa();
-		return player;
+		return 0;
+		} catch (Exception e) {
+				e.printStackTrace();
+				return 1;
+			}
 	}
 
 /*	
@@ -175,6 +176,20 @@ public class Mapa {
 		this.espacios = espacios;
 	}
 	
+	
+	/**
+	 * Devuelve el elemento en una posicion dada.
+	 * 
+	 * @param x
+	 *            cordenadaX
+	 * @param y
+	 *            cordenadaY
+	 * @return elemento del mapa.
+	 */
+	public Elementos getPosition(int x, int y) {
+		return this.espacios[x][y];
+	}
+	
 	/**
 	 * Agrega un elemento en la posicion dada.
 	 * 
@@ -184,8 +199,42 @@ public class Mapa {
 	 * 
 	 * @param espacio elemento a ubicar
 	 */
-	public void modificarEspacio(int x,int y, Elementos espacio){
-		this.espacios[x][y]=espacio;
+	public int modificarEspacio(int x, int y, Elementos espacio){
+		if (this.espacios[x][y].isMuroTitanio() || (this.espacios[x][y].isPuerta() && !((Puerta) this.espacios[x][y]).isAbierta())){
+			return 1;
+		}
+		else{
+			this.espacios[x][y] = espacio;
+			return 0;
+		}
+	}
+	
+	public void explotar(int x, int y) {
+		
+		modificarEspacio(x - 1, y -1, new EspacioVacio(x - 1,y - 1));
+		modificarEspacio(x, y -1, new EspacioVacio(x,y - 1));
+		modificarEspacio(x + 1, y -1, new EspacioVacio(x + 1,y - 1));
+		modificarEspacio(x - 1, y, new EspacioVacio(x - 1,y));
+		modificarEspacio(x, y, new EspacioVacio(x,y));
+		modificarEspacio(x + 1, y, new EspacioVacio(x + 1,y));
+		modificarEspacio(x - 1, y + 1, new EspacioVacio(x - 1,y + 1));
+		modificarEspacio(x, y + 1, new EspacioVacio(x,y + 1));
+		modificarEspacio(x + 1, y + 1, new EspacioVacio(x + 1,y + 1));
+		
+	}
+	
+	public void explotarDiamantes(int x, int y){
+		
+		modificarEspacio(x - 1, y -1, new Diamante(x - 1,y - 1));
+		modificarEspacio(x, y -1, new Diamante(x,y - 1));
+		modificarEspacio(x + 1, y -1, new Diamante(x + 1,y - 1));
+		modificarEspacio(x - 1, y, new Diamante(x - 1,y));
+		modificarEspacio(x, y, new Diamante(x,y));
+		modificarEspacio(x + 1, y, new Diamante(x + 1,y));
+		modificarEspacio(x - 1, y + 1, new Diamante(x - 1,y + 1));
+		modificarEspacio(x, y + 1, new Diamante(x,y + 1));
+		modificarEspacio(x + 1, y + 1, new Diamante(x + 1,y + 1));
+		
 	}
 
 	public int getTotalDiamantes() {
@@ -221,5 +270,7 @@ public class Mapa {
 	public void setTiempo(int tiempo) {
 		this.tiempo = tiempo;
 	}
+	
+	
 	
 }

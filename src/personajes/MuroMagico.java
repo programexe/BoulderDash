@@ -33,7 +33,7 @@ public class MuroMagico extends Muro {
 	}
 	
 	public void actualizar(Mapa m){
-		convertir(m);
+		//convertir(m);
 		}
 	/**
 	 * Por cada ejecucion de la tarea del timer disminuira el tiempo en que esta activo el muro magico
@@ -58,7 +58,7 @@ public class MuroMagico extends Muro {
 	 * 
 	 * @param m Mapa
 	 */
-	public void convertir(Mapa m){	
+	/*public void convertir(Mapa m){	
 		
 		if((this.getTiempo()!=0) && (m.getEspacios()[this.getX()+1][this.getY()] instanceof Diamante)){
 			m.modificarEspacio(this.getX()+1, this.getY(), new Roca());
@@ -96,7 +96,7 @@ public class MuroMagico extends Muro {
 			}
 		}
 	}
-	
+	*/
 	
 		
 	public int getTiempo() {
@@ -111,5 +111,7 @@ public class MuroMagico extends Muro {
 		return true;
 	}
 	
-	
+	public void explotar(){
+		
+	}	
 }

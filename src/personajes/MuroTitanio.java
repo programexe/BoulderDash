@@ -34,4 +34,7 @@ public class MuroTitanio extends Muro{
 		return true;
 	}
 
+	public void explotar(){
+		
+	}	
 }

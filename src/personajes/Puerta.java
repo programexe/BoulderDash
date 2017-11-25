@@ -59,4 +59,8 @@ public class Puerta extends Inanimados{
 	public boolean isPuerta() {
 		return true;
 	}
+	
+	public void explotar(){
+		
+	}	
 }
