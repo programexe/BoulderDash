@@ -11,7 +11,7 @@ import static personajes.direccionAnimados.*;
 */
 public abstract class Animados extends Elementos {
 	
-	private direccionAnimados direccionActual;		
+	public direccionAnimados direccionActual;		
 	public Animados() {
 		super();
 		// TODO Auto-generated constructor stub

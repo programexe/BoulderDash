@@ -18,35 +18,51 @@ public class test {
 		
 		Mapa m = Mapa.getInstance();
 		Rockford player= Rockford.getInstance();
-		m.crearMapa(lvl);
+		Juego juego = Juego.getInstance(); 
 				
 		switch (lvl){
 		
 			case 1 :{
+				juego.cargarNivel(lvl);
+				juego.actualizar();
 				player.moverAbajo();
+				juego.actualizar();
 				for (int i = 0; i<6; i++){
 					player.moverDerecha();
+					juego.actualizar();
 				}
 				for (int i=0; i<2; i++){
 					player.moverArriba();
+					juego.actualizar();
 				}
 				player.moverDerecha();
+				juego.actualizar();
 				for (int i=0; i<2; i++){
 					player.moverAbajo();
+					juego.actualizar();
 				}
 				for (int i=0; i<9; i++){
 					player.moverDerecha();
+					juego.actualizar();
 				}
 				for (int i=0; i<2; i++){
 					player.moverAbajo();
+					juego.actualizar();
 				}
 				for (int i=0; i<5; i++){
 					player.moverDerecha();
+					juego.actualizar();
 				}
 			}
+			System.out.println("Se termino el nivel");
+			System.out.println("Rockford termio en: " + player.getX() + " , " + player.getY());
+			if (player.isMuerto())
+				System.out.println("Rockford se murio");
 			break;
 			
 			case 2:{
+				juego.cargarNivel(lvl);
+				juego.actualizar();
 				player.moverDerecha();
 				for (int i = 0; i<3; i++){
 					player.moverArriba();
@@ -56,6 +72,10 @@ public class test {
 				}
 				player.moverArriba();
 			}
+			System.out.println("Se termino el nivel");
+			System.out.println("Rockford termio en: " + player.getX() + " , " + player.getY());
+			if (player.isMuerto())
+				System.out.println("Rockford se murio");
 			break;
 			
 			default:

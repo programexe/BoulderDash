@@ -1,5 +1,6 @@
 package personajes;
 
+import Juego.Juego;
 import Juego.Mapa;
 
 /**
@@ -12,22 +13,32 @@ import Juego.Mapa;
 public class Puerta extends Inanimados{
 	
 	private boolean abierta;  
+	private static Puerta puerta;
 	
-	public Puerta() {
-		super();
-		// TODO Auto-generated constructor stub
+	private Puerta(int i, int j){
+		this.x = i;
+		this.y = j;
+		this.setAbierta(false);
 	}
 	
-	/**
-	 * Constructor que setea coordenadas.
-	 * 
-	 * @param i Coordenada X
-	 * @param j Coordenada Y
-	 */
-	public Puerta(int i, int j) {
-		super(i, j);
-		// TODO Auto-generated constructor stub
+	public static Puerta getInstance(){
+		if (puerta == null)
+			puerta = new Puerta(0,0);
+			
+		return puerta;
 	}
+	
+	public static Puerta getInstanceSetPosition(int i, int j){
+		if (puerta == null){
+			puerta = new Puerta(i,j);
+		}
+		else{
+			puerta.setX(i);
+			puerta.setY(j);
+		}
+		return puerta;
+	}	
+	
 
 	public void informar(){
 		if (abierta){
@@ -44,17 +55,6 @@ public class Puerta extends Inanimados{
 		this.abierta = abierta;
 	}
 	
-	/**
-	 * Evalua si se recolectaros todos los diamantes. De ser asi se abre la puerta para pasar
-	 * al siguiente nivel.
-	 * 
-	 * @param m Mapa
-	 */
-	public void actualizar(Mapa m){		
-		if(m.getTotalDiamantes()-m.getDiamantesRecolectados()==0){
-			this.setAbierta(true);
-		}
-	}
 	
 	public boolean isPuerta() {
 		return true;

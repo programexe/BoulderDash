@@ -12,15 +12,13 @@ import CargaDeNiveles.*;
  */
 public class Mapa {
 	
-	private int totalDiamantes;
-	private int diamantesRecolectados=0;
+	
 	private int tiempo;
-	private boolean nivelTerminado=false;
 	BDLevelReader lector=new BDLevelReader();
 	Elementos espacios[][]= new Elementos[40][22];
 	
 
-	private static Mapa m = null; 
+	private static Mapa mapa = null; 
 	
 	private Mapa(){
 		
@@ -31,40 +29,16 @@ public class Mapa {
 	 */
 	
 	public static Mapa getInstance(){
-		if (m == null){
-			m = new Mapa();
-		}
-		else
-			System.out.println("No se puede crear el objeto porque ya existe un objeto de tipo Mapa");
-		return m;
+		if (mapa == null)
+			mapa = new Mapa();
+				
+		return mapa;
 	}
 	
-	/**
-	 * Actualiza las posiciones de cada elemento en el mapa
-	 */
-	TimerTask tarea = new TimerTask(){
-		public void run(){
-			for(int i=0;i<40;i++){
-				for(int j=0;j<22;j++){
-					espacios[i][j].actualizarPorTimer(Mapa.getInstance());
-					}
-				}
-			setTiempo(getTiempo()-1);
-		}
-	};
 	
-	/**
-	 * Actualiza las posiciones de cada elemento en el mapa luego de determinado tiempo
-	 */
-	public void actualizarMapa(){
-		if (!this.isNivelTerminado()){
-			for(int i=0;i<40;i++){
-				for(int j=0;j<22;j++){
-					espacios[i][j].actualizar(this);
-				}
-			}
-		}
-	}
+	
+	
+	
 	
 	/**
 	 * Carga el mapa a partir del nivel dado en su estilo original.
@@ -97,7 +71,7 @@ public class Mapa {
 						case TITANIUM: espacios[i][j]=new MuroTitanio(i,j);
 							break;       
 						
-						case WALL: espacios[i][j]=new MuroTitanio(i,j);
+						case WALL: espacios[i][j]=new Muro(i,j);
 							break;              
 						
 						case ROCK: espacios[i][j]=new Roca(i,j, false);
@@ -121,7 +95,7 @@ public class Mapa {
 						case BUTTERFLY: espacios[i][j]=new Mariposa(i,j);
 							break;
 							
-						case EXIT : espacios[i][j]=new Puerta(i,j);
+						case EXIT : espacios[i][j]= Puerta.getInstanceSetPosition(i, j);
 							break;
 							
 						case PLAYER : espacios[i][j]= Rockford.getInstanceSetPosition(i, j);
@@ -131,20 +105,8 @@ public class Mapa {
 				}
 			}
 			
-			System.out.println("Se creo el mapa");
-			
+			System.out.println("Se creo el mapa");	
 		
-		
-		
-		this.setTiempo(150);
-		Timer timer=new Timer();
-		timer.schedule(tarea, 1000);	
-		this.setTotalDiamantes(lector.getDiamondsNeeded());
-		nivelTerminado=false;
-	
-		
-		
-		this.actualizarMapa();
 		return 0;
 		} catch (Exception e) {
 				e.printStackTrace();
@@ -152,15 +114,7 @@ public class Mapa {
 			}
 	}
 
-/*	
-	public BDLevelReader getLector() {
-		return lector;
-	}
 
-	public void setLector(BDLevelReader lector) {
-		this.lector = lector;
-	}
-*/
 	
 	/**
 	 * @return La matriz del mapa con los elementos en su ubicacion
@@ -186,7 +140,7 @@ public class Mapa {
 	 *            cordenadaY
 	 * @return elemento del mapa.
 	 */
-	public Elementos getPosition(int x, int y) {
+	public Elementos getEspacio(int x, int y) {
 		return this.espacios[x][y];
 	}
 	
@@ -200,7 +154,7 @@ public class Mapa {
 	 * @param espacio elemento a ubicar
 	 */
 	public int modificarEspacio(int x, int y, Elementos espacio){
-		if (this.espacios[x][y].isMuroTitanio() || (this.espacios[x][y].isPuerta() && !((Puerta) this.espacios[x][y]).isAbierta())){
+		if (this.espacios[x][y].isMuros() || (this.espacios[x][y].isPuerta() && !((Puerta) this.espacios[x][y]).isAbierta())){
 			return 1;
 		}
 		else{
@@ -237,40 +191,6 @@ public class Mapa {
 		
 	}
 
-	public int getTotalDiamantes() {
-		return totalDiamantes;
-	}
-
-	public void setTotalDiamantes(int totalDiamantes) {
-		this.totalDiamantes = totalDiamantes;
-	}
-
-	public int getDiamantesRecolectados() {
-		return diamantesRecolectados;
-	}
-
-	public void setDiamantesRecolectados(int diamantesRecolectados) {
-		this.diamantesRecolectados = diamantesRecolectados;
-	}
-
-	public boolean isNivelTerminado() {
-		return nivelTerminado;
-	}
-
-	public void setNivelTerminado(boolean nivelTerminado) {
-		this.nivelTerminado = nivelTerminado;
-	}
-
-
-	public int getTiempo() {
-		return tiempo;
-	}
-
-
-	public void setTiempo(int tiempo) {
-		this.tiempo = tiempo;
-	}
-	
 	
 	
 }

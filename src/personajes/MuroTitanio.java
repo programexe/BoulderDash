@@ -8,7 +8,7 @@ package personajes;
  * @author Ezequiel Humar - Sebasti�n Sauer Rosas
  * 
  */
-public class MuroTitanio extends Muro{
+public class MuroTitanio extends Muros{
 	
 	public MuroTitanio() {
 		super();

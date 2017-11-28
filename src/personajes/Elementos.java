@@ -34,13 +34,10 @@ public abstract class Elementos{
 	 */
 	protected static final Mapa mapa = Mapa.getInstance();
 	
-	public void actualizar(Mapa mapa){
+	public void actualizar(){
 	}
 	
-	public void actualizarPorTimer(Mapa m){
-		
-	}
-	
+
 	public void informar(){
 		System.out.print("Es elemento ");
 	}
@@ -101,11 +98,11 @@ public abstract class Elementos{
 		return false;
 	}
 	
-	public boolean isMuro() {
+	public boolean isMuros() {
 		return false;
 	}
 	
-	public boolean isMuroMagico() {
+	public boolean isMuro() {
 		return false;
 	}
 	

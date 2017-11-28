@@ -1,5 +1,5 @@
 package personajes;
-import Juego.*;
+import Juego.DatosJuego;
 import personajes.direccionAnimados;
 
 
@@ -12,9 +12,8 @@ import personajes.direccionAnimados;
 public class Rockford extends Animados{
 	
 	private static Rockford player;
-	private direccionAnimados direccionActual;
-	private boolean muerto=false;  
-	
+	private boolean muerto=false; 
+	private static DatosJuego datos = DatosJuego.getInstance();
 	
 	
 	
@@ -35,8 +34,7 @@ public class Rockford extends Animados{
 	public static Rockford getInstance(){
 		if (player == null)
 			player = new Rockford(0, 0);
-		else
-			System.out.println("No se puede crear el objeto porque ya existe un objeto de tipo Rockford");
+		
 		return player;
 	}
 	
@@ -65,11 +63,8 @@ public class Rockford extends Animados{
 	 * Modifica la cantidad de diamantes recoletados.
 	 * @param m Mapa
 	 */
-	public void agarrarDiamante(Mapa m){  
-		if(!muerto){
-			m.modificarEspacio(this.getX(), this.getY(), new EspacioVacio(this.getX(), this.getY()));
-			m.setDiamantesRecolectados(m.getDiamantesRecolectados()+1);
-		}
+	public void agarrarDiamante(){
+		datos.increaseDiamantesRecolectados(1);		
 	}
 	
 	/**
@@ -87,7 +82,7 @@ public class Rockford extends Animados{
 		this.direccionActual = dir;
 	}
 	
-	/* FALTARIAN LOS ACTUALIZAR MAPA EN CADA MOVER PERO NO LOS AGREGE PORQUE TENGO DUDAS */
+	
 	
 	public void moverArriba(){
 		this.setDireccion(direccionAnimados.ARRIBA);
@@ -97,8 +92,8 @@ public class Rockford extends Animados{
 		}
 		else {
 			if (e.isDiamante())
-				this.agarrarDiamante(mapa);		// Creo que ya no hay que pasarle el mapa como parametro
-			if (mapa.modificarEspacio(x, y - 1, this) == 0) {   // Capaz seria this.getX() y this.getY() pero creo que ahi funcionaria
+				this.agarrarDiamante();		
+			if (mapa.modificarEspacio(x, y - 1, this) == 0) {   
 				mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
 				this.y--; 
 			}
@@ -115,7 +110,7 @@ public class Rockford extends Animados{
 		}
 		else {
 			if (e.isDiamante())
-				this.agarrarDiamante(mapa);
+				this.agarrarDiamante();
 			if (mapa.modificarEspacio(x + 1, y, this) == 0){
 				mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
 				this.x++;
@@ -131,7 +126,7 @@ public class Rockford extends Animados{
 		}
 		else {
 			if (e.isDiamante())
-				this.agarrarDiamante(mapa);
+				this.agarrarDiamante();
 			if (mapa.modificarEspacio(x, y + 1, this) == 0){
 				mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
 				this.y++;
@@ -149,7 +144,7 @@ public class Rockford extends Animados{
 		}
 		else {
 			if (e.isDiamante())
-				this.agarrarDiamante(mapa);
+				this.agarrarDiamante();
 			if (mapa.modificarEspacio(x - 1, y, this) == 0){
 				mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
 				this.x--;
@@ -173,12 +168,11 @@ public class Rockford extends Animados{
 	
 	public void setMuerto(boolean muerto) {
 		this.muerto = muerto;
-		mapa.setNivelTerminado(true);
 		System.out.println("El jugador ha muerto");
 	}
 	
 	public void actualizar(){
-		this.explotar();
+		
 	}
 	
 	public boolean isRockford() {

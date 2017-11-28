@@ -14,11 +14,6 @@ import static personajes.direccionAnimados.*;
  */
 public class Luciernaga extends Explosivos {
 	
-	public Luciernaga() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	/**
 	 * Constructor que setea coordenadas.
 	 * 
@@ -67,7 +62,7 @@ public class Luciernaga extends Explosivos {
 	 */
 	public void actualizar(){	
 		this.moverse();
-		this.detectar();
+		System.out.println("SE MUEVE");
 	}
 	
 	
@@ -111,7 +106,6 @@ public class Luciernaga extends Explosivos {
 				if (e.isEspacioVacio()){
 					this.moverDerecha();
 					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-					mapa.actualizarMapa();
 				}
 					else
 						this.cambiarDireccion();
@@ -123,7 +117,6 @@ public class Luciernaga extends Explosivos {
 				if (e.isEspacioVacio()){
 					this.moverAbajo();
 					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-					mapa.actualizarMapa();
 				}
 					else
 						this.cambiarDireccion();
@@ -135,7 +128,6 @@ public class Luciernaga extends Explosivos {
 				if (e.isEspacioVacio()){
 					this.moverIzquierda();
 					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-					mapa.actualizarMapa();
 				}
 					else
 						this.cambiarDireccion();
@@ -147,7 +139,6 @@ public class Luciernaga extends Explosivos {
 				if (e.isEspacioVacio()){
 					this.moverArriba();
 					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-					mapa.actualizarMapa();
 				}
 					else
 						this.cambiarDireccion();
@@ -157,15 +148,18 @@ public class Luciernaga extends Explosivos {
 			default: 
 				break;
 		}
+		
+		this.detectar();
 	}
 	
 	
 	/**
-	 * Explota convirtiendo un �rea de 3*3 en espacios vacios.
+	 * Explota convirtiendo un area de 3*3 en espacios vacios.
 	 */
 	public void explotar(){		
 		mapa.explotar(x, y);
 	}
+	
 	
 	public void detectar(){
 		Elementos e = this.devolverPos(ARRIBA);
@@ -174,25 +168,21 @@ public class Luciernaga extends Explosivos {
 				this.explotar();
 		else {
 			if (e.isRockford()){
-				this.explotar();
 				e.explotar();
 			}
 			else {
 				e = this.devolverPos(DERECHA);
 				if (e.isRockford()){
-					this.explotar();
 					e.explotar();
 				}
 				else {
 					e = this.devolverPos(ABAJO);
 					if (e.isRockford()){
-						this.explotar();
 						e.explotar();
 					}
 					else {
 						e = this.devolverPos(IZQUIERDA);
 						if (e.isRockford()){
-							this.explotar();
 							e.explotar();
 						}
 					}

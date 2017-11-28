@@ -15,11 +15,6 @@ import Juego.Mapa;
  */
 public class Mariposa extends Explosivos {
 	
-	public Mariposa() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	/**
 	 * Constructor que setea coordenadas.
 	 * 
@@ -91,7 +86,6 @@ public void moverse(){
 				if (e.isEspacioVacio()){
 					this.moverDerecha();
 					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-					mapa.actualizarMapa();
 				}
 					else
 						this.cambiarDireccion();
@@ -103,7 +97,6 @@ public void moverse(){
 				if (e.isEspacioVacio()){
 					this.moverAbajo();
 					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-					mapa.actualizarMapa();
 				}
 					else
 						this.cambiarDireccion();
@@ -115,7 +108,6 @@ public void moverse(){
 				if (e.isEspacioVacio()){
 					this.moverIzquierda();
 					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-					mapa.actualizarMapa();
 				}
 					else
 						this.cambiarDireccion();
@@ -127,7 +119,6 @@ public void moverse(){
 				if (e.isEspacioVacio()){
 					this.moverArriba();
 					System.out.println("La luciernaga se movio a : " + this.getX() + "," + this.getY());
-					mapa.actualizarMapa();
 				}
 					else
 						this.cambiarDireccion();
@@ -137,6 +128,8 @@ public void moverse(){
 			default: 
 				break;
 		}
+		
+		this.detectar();
 	}
 	
 	
@@ -156,25 +149,21 @@ public void moverse(){
 				this.explotar();
 		else {
 			if (e.isRockford()){
-				this.explotar();
 				e.explotar();
 			}
 			else {
 				e = this.devolverPos(DERECHA);
 				if (e.isRockford()){
-					this.explotar();
 					e.explotar();
 				}
 				else {
 					e = this.devolverPos(ABAJO);
 					if (e.isRockford()){
-						this.explotar();
 						e.explotar();
 					}
 					else {
 						e = this.devolverPos(IZQUIERDA);
 						if (e.isRockford()){
-							this.explotar();
 							e.explotar();
 						}
 					}
@@ -191,7 +180,6 @@ public void moverse(){
 	 */
 	public void actualizar (){
 		this.moverse();
-		this.explotar();
 		}
 	
 	/**

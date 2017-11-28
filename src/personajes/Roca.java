@@ -8,11 +8,6 @@ package personajes;
  */
 public class Roca extends QueCaen{
 
-	public Roca() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	/**
 	 * Costructor que setea coordenadas y el estado de que si debe caer o no.
 	 * 
@@ -38,13 +33,64 @@ public class Roca extends QueCaen{
 	}
 	
 	public void empujarDerecha(){
-		if (mapa.getPosition(x + 1, y).isEspacioVacio() && !(this.isCayendo()))
+		if (mapa.getEspacio(x + 1, y).isEspacioVacio() && !(this.isCayendo()))
 			this.moverDerecha();
 	}
 	
 	public void empujarIzquierda(){
-		if (mapa.getPosition(x - 1, y).isEspacioVacio() && !(this.isCayendo()))
+		if (mapa.getEspacio(x - 1, y).isEspacioVacio() && !(this.isCayendo()))
 			this.moverIzquierda();
+	}
+	
+	/**
+	 * Si la variable cayendo es verdadera modifica la posicion del elemento
+	 * @param m Mapa
+	 */
+	public void caer(){  
+		mapa.modificarEspacio(x, y + 1, this);
+		mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+		this.y++;
+	}
+	
+	public boolean detectar(){
+		Elementos e = this.devolverPos(direccionAnimados.ABAJO);
+		if (e.isRockford() || e.isLuciernaga() || e.isMariposa()){
+			e.explotar();
+			return true;
+		}
+		else
+			return false;	
+	}
+
+	
+	/**
+	 * Actualizar que ejecuta el metodo correspondiente de acuerdo al estado de cayendo
+	 */
+	public void actualizar(){ 
+		if (this.isCayendo())
+			if (!(this.detectar())){
+				this.caer();
+				Elementos e = this.devolverPos(direccionAnimados.ABAJO);
+				if (!(e.isEspacioVacio() || e.isRockford() || e.isLuciernaga() || e.isMariposa()))
+					this.setCayendo(false);
+			}
+		else {
+			Elementos e = this.devolverPos(direccionAnimados.ABAJO);
+			if (e.isEspacioVacio())
+				this.setCayendo(true);
+			if (e.isRoca() || e.isMuro() || e.isDiamante()){
+				if (e.devolverPos(direccionAnimados.IZQUIERDA).isEspacioVacio() && e.devolverPos(direccionAnimados.ABAJOIZQ).isEspacioVacio()){
+					this.moverIzquierda();
+					this.setCayendo(true);
+				}
+				if (e.devolverPos(direccionAnimados.DERECHA).isEspacioVacio() && e.devolverPos(direccionAnimados.ABAJODER).isEspacioVacio()){
+					this.moverDerecha();
+					this.setCayendo(true);
+				}
+					
+			}
+		}
+		
 	}
 
 	public void informar(){
