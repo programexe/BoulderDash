@@ -1,6 +1,7 @@
 package personajes;
 
 import Juego.Mapa;
+import personajes.direccionAnimados;
 
 /**
  * Clase para instanciar muros magicos. Este muro puede activarse, cuando lo hace convierte 
@@ -9,10 +10,8 @@ import Juego.Mapa;
  */
 public class Muro extends Muros {
 	
-	public Muro() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
+	private boolean magico;
 	
 	/**
 	 * Costructor que setea coordenadas.
@@ -24,80 +23,71 @@ public class Muro extends Muros {
 		super(i, j);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Muro (int i, int j, boolean activo){
+		this.x = i;
+		this.y = j;
+		this.magico = activo;
+	}
 
-	private int tiempo;		/*Esta variable guarda la cantidad de tiempo que el muro convertira los elementos en diamantes*/
-	private int seg30=0;
+	private int tiempo=0;		/*Esta variable guarda la cantidad de tiempo que el muro convertira los elementos en diamantes*/
+	private int seg=0;
 
 	public void informar(){
 		System.out.print("Es un muro magico");
 	}
 	
-	public void actualizar(Mapa m){
-		//convertir(m);
-		}
+	
 	/**
 	 * Por cada ejecucion de la tarea del timer disminuira el tiempo en que esta activo el muro magico
 	 */
-	public void actualizarPorTimer(){
+	public void actualizar(){
 		if (tiempo!=0){
 			tiempo--;
+			if (!this.magico){
+				if (( (QueCaen)this.devolverPos(direccionAnimados.ARRIBA) ).isCayendo())
+					this.setMagico(true);
+			}
+			if (this.magico)
+				this.transformar();
 		}
-		else if (seg30!=30){
-			seg30++;
+		else if (seg!=10){
+			seg++;
 		}
 		else {
-			seg30=0;
+			seg=0;
 			tiempo=5;
 		}
 	}
 
 	
-	/**
-	 * Convierte los elementos a su alrededor siempre y cuando este activo (tiempo!=0)
-	 * y el elemento a su alrededor no sea un muro
-	 * 
-	 * @param m Mapa
-	 */
-	/*public void convertir(Mapa m){	
-		
-		if((this.getTiempo()!=0) && (m.getEspacios()[this.getX()+1][this.getY()] instanceof Diamante)){
-			m.modificarEspacio(this.getX()+1, this.getY(), new Roca());
-		}
-		else{
-			if ((this.getTiempo()!=0) && (m.getEspacios()[this.getX()+1][this.getY()] instanceof Roca)){
-				m.modificarEspacio(this.getX()+1, this.getY(), new Diamante());
-			}
-		}
-		
-		if((this.getTiempo()!=0) && (m.getEspacios()[this.getX()-1][this.getY()] instanceof Diamante)){
-			m.modificarEspacio(this.getX()-1, this.getY(), new Roca());
-		}
-		else{
-			if ((this.getTiempo()!=0) && (m.getEspacios()[this.getX()-1][this.getY()] instanceof Roca)){
-				m.modificarEspacio(this.getX()-1, this.getY(), new Diamante());
-			}
-		}
-		
-		if((this.getTiempo()!=0) && (m.getEspacios()[this.getX()][this.getY()+1] instanceof Diamante)){
-			m.modificarEspacio(this.getX(), this.getY()+1, new Roca());
-		}
-		else{
-			if ((this.getTiempo()!=0) && (m.getEspacios()[this.getX()+1][this.getY()] instanceof Roca)){
-				m.modificarEspacio(this.getX(), this.getY()+1, new Diamante());
-			}
-		}
-		
-		if((this.getTiempo()!=0) && (m.getEspacios()[this.getX()][this.getY()-1] instanceof Diamante)){
-			m.modificarEspacio(this.getX(), this.getY()-1, new Roca());
-		}
-		else{
-			if ((this.getTiempo()!=0) && (m.getEspacios()[this.getX()][this.getY()-1] instanceof Roca)){
-				m.modificarEspacio(this.getX(), this.getY()-1, new Diamante());
+	public void activarMagia(boolean estado){
+		this.magico = estado;
+		Elementos e = this.devolverPos(direccionAnimados.IZQUIERDA);
+		if (e.isMuro())
+			if ( ( (Muro) e).isMagico() != estado)
+				((Muro) e).activarMagia(estado);
+		e = this.devolverPos(direccionAnimados.DERECHA);
+		if (e.isMuro())
+			if (((Muro) e).isMagico() != estado)
+				( (Muro) e).activarMagia(estado);
+	}
+	
+	public void transformar(){
+		if (( (QueCaen)this.devolverPos(direccionAnimados.ARRIBA) ).isCayendo()){
+			Elementos e = this.devolverPos(direccionAnimados.ARRIBA);
+			if (this.devolverPos(direccionAnimados.ABAJO).isEspacioVacio()){
+				if (e.isRoca()) {
+					mapa.modificarEspacio(x, y - 1, new EspacioVacio(x, y - 1));
+					mapa.modificarEspacio(x, y + 1,  new Diamante(x, y + 1, true));
+				}
+				if (e.isDiamante()){
+					mapa.modificarEspacio(x, y - 1, new EspacioVacio(x, y - 1));
+					mapa.modificarEspacio(x, y + 1,  new Roca(x, y + 1, true));
+				}
 			}
 		}
 	}
-	*/
-	
 		
 	public int getTiempo() {
 		return tiempo;
@@ -107,8 +97,16 @@ public class Muro extends Muros {
 		this.tiempo = tiempo;
 	}
 	
-	public boolean isMuroMagico() {
+	public boolean isMuro() {
 		return true;
+	}
+	
+	public boolean isMagico(){
+		return magico;
+	}
+	
+	public void setMagico(boolean e){
+		this.magico = e;
 	}
 	
 	public void explotar(){
