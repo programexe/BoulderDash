@@ -9,10 +9,10 @@ import Juego.Mapa;
  */
 public class MuroMagico extends Muro {
 	
-	public MuroMagico() {
-		super();
+	//public MuroMagico() {
+	//	super();
 		// TODO Auto-generated constructor stub
-	}
+	//}
 	
 	/**
 	 * Costructor que setea coordenadas.
