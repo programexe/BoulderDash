@@ -7,7 +7,7 @@ import CargaDeNiveles.*;
 /**
  * Mapa donde se desarolla el juego
  * 
- * @author Ezequiel Humar - Sebastián Sauer Rosas
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
  *
  */
 public class Mapa {
@@ -36,7 +36,7 @@ public class Mapa {
 	}
 	
 	
-	
+	Timer timer;
 	
 	
 	
@@ -106,6 +106,8 @@ public class Mapa {
 			}
 			
 			System.out.println("Se creo el mapa");	
+			this.setTiempo(150);
+			timer=new Timer();
 		
 		return 0;
 		} catch (Exception e) {
@@ -113,6 +115,24 @@ public class Mapa {
 				return 1;
 			}
 	}
+	
+	TimerTask tarea = new TimerTask(){
+		public void run(){
+			act();
+		}
+	};
+	
+	public void act(){
+		System.out.println("aaaaaaaaaaaaaaaaaaaaa");
+		for(int i=0;  i<40; i++){
+			for(int j=0; j<22; j++){
+				mapa.getEspacio(i,j).actualizar();
+				}
+			}
+		setTiempo(getTiempo()-1);
+		
+	}
+	
 
 
 	
@@ -142,6 +162,15 @@ public class Mapa {
 	 */
 	public Elementos getEspacio(int x, int y) {
 		return this.espacios[x][y];
+	}
+	
+	public int getTiempo() {
+		return tiempo;
+	}
+
+
+	public void setTiempo(int tiempo) {
+		this.tiempo = tiempo;
 	}
 	
 	/**

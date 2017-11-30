@@ -20,6 +20,20 @@ public class controlReglas implements ActionListener{
 		
 	}
 	
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		frame.mostrarReglas();
+		
+	}
+	
+	/*private interfazGrafica frame;
+	
+	public controlReglas(interfazGrafica frame){
+		this.frame=frame;
+		
+	}
+	
 	JTextArea textoReglas;
 	
 	@Override
@@ -47,5 +61,5 @@ public class controlReglas implements ActionListener{
 		frame.getPanel().setVisible(false);
 		frame.getPanelReglas().setVisible(true);
 		textoReglas.setBounds(160, 165, 120, 170);
-	}
+	}*/
 }

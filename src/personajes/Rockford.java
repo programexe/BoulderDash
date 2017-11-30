@@ -98,6 +98,7 @@ public class Rockford extends Animados{
 				this.y--; 
 			}
 		}
+	
 	}
 	
 	public void moverDerecha(){

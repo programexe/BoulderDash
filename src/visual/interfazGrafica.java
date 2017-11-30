@@ -1,11 +1,27 @@
 package visual;
 import control.*;
+import personajes.Ameba;
+import personajes.Basura;
+import personajes.Diamante;
+import personajes.EspacioVacio;
+import personajes.Luciernaga;
+import personajes.Mariposa;
+import personajes.Muro;
+import personajes.MuroTitanio;
+import personajes.Puerta;
+import personajes.Roca;
+import personajes.Rockford;
+
 import java.awt.*;
 import javax.imageio.ImageIO;
 import java.net.URL;
+import java.util.Timer;
+
 import javax.*;
 
 import java.awt.event.MouseListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javax.swing.*;
@@ -18,6 +34,7 @@ public class interfazGrafica extends JFrame{
 	JButton jugar=new JButton("�Quiero jugar!");
 	JButton topX=new JButton("Top 5");
 	JButton config=new JButton("Config");
+	JTextArea textoReglas;
 	
 	JComboBox elegirX;
 	
@@ -29,13 +46,42 @@ public class interfazGrafica extends JFrame{
 	
 	public interfazGrafica() {
 		crearPanel();
+		crearPanelReglas();
+		//crearPanelTopX();
+		//crearPanelJuego();
+		
+		
+		crearPanelConfig();
+		
+		
+	}
+	
+	private void crearPanelReglas() {
 		
 		panelReglas=new JScrollPane();
 		panelReglas.setLayout(null);
 		panelReglas.setBounds(296, 70, 120, 70);	
 		
-		crearPanelConfig();
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader("file.txt"));
+			StringBuilder sb = new StringBuilder();
+		    String line = br.readLine();
+
+		    while (line != null) {
+		        sb.append(line);
+		        sb.append(System.lineSeparator());
+		        line = br.readLine();
+		    }
+		    String everything = sb.toString();
+		    textoReglas=new JTextArea(everything, 10, 15);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		panelReglas.add(textoReglas);
 		
+		textoReglas.setBounds(160, 165, 120, 170);
 	}
 	
 	private void crearPanel() {
@@ -81,12 +127,102 @@ public class interfazGrafica extends JFrame{
 		//this.add(panelConfig);
 		//panelConfig.setVisible(false);
 	}
-	
+	/*
+	private void crearPanelJuego() {
+		
+		
+		
+		panelJuego.setLayout(new GridLayout(40,22));
+		pan
+		
+		
+		
+		
+		
+		
+		
+		
+		public int crearMapa(int lvl){  //Lee el archivo levels.xml y apartir de este crea una matriz con los elementos correpondientes
+			 //En el momento que crea el mapa, cuando encuentra a rockford crea una instancia de este y la retorna
+		
+		
+					
+					try {
+					
+					int levels = lector.readLevels("levels.xml");
+					lector.setCurrentLevel(lvl);
+					
+					for(int i=0; i<lector.getWIDTH(); i++){
+					for(int j=0; j<lector.getHEIGHT(); j++){
+					switch (lector.getTile(i, j)){
+					
+					case EMPTY : espacios[i][j]=new EspacioVacio(i,j);
+					break;
+					
+					case DIRT: espacios[i][j]=new Basura(i,j);
+					break;              
+					
+					case TITANIUM: espacios[i][j]=new MuroTitanio(i,j);
+					break;       
+					
+					case WALL: espacios[i][j]=new Muro(i,j);
+					break;              
+					
+					case ROCK: espacios[i][j]=new Roca(i,j, false);
+					break;               
+					
+					case FALLINGROCK: espacios[i][j]=new Roca(i,j, true);
+					break;        
+					
+					case DIAMOND: espacios[i][j]=new Diamante(i,j, false);
+					break;             
+					
+					case FALLINGDIAMOND: espacios[i][j]=new Diamante(i,j, true);
+					break;     
+					
+					case AMOEBA: espacios[i][j]=new Ameba(i,j);
+					break;              
+					
+					case FIREFLY: espacios[i][j]=new Luciernaga(i,j);
+					break;
+					
+					case BUTTERFLY: espacios[i][j]=new Mariposa(i,j);
+					break;
+					
+					case EXIT : espacios[i][j]= Puerta.getInstanceSetPosition(i, j);
+					break;
+					
+					case PLAYER : espacios[i][j]= Rockford.getInstanceSetPosition(i, j);
+					break;  
+					}
+					
+					}
+}
+
+System.out.println("Se creo el mapa");	
+this.setTiempo(150);
+timer=new Timer();
+
+return 0;
+} catch (Exception e) {
+e.printStackTrace();
+return 1;
+}
+}
+	}
+	*/
 	public void mostrarConfig(){
 		panel.setVisible(false);
 		this.add(panelConfig);
 		panelConfig.setVisible(true);
 	}
+	
+	public void mostrarReglas() {
+		panel.setVisible(false);
+		this.add(panelReglas);
+		panelConfig.setVisible(true);
+	}
+	
 	
 	
 	public static void main(String[] args) {

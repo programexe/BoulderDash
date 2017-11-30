@@ -45,7 +45,7 @@ public class Muro extends Muros {
 		if (tiempo!=0){
 			tiempo--;
 			if (!this.magico){
-				if (( (QueCaen)this.devolverPos(direccionAnimados.ARRIBA) ).isCayendo())
+				if (this.devolverPos(direccionAnimados.ARRIBA).isQueCaen() &&( (QueCaen)this.devolverPos(direccionAnimados.ARRIBA) ).isCayendo())
 					this.setMagico(true);
 			}
 			if (this.magico)

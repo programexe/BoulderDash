@@ -16,9 +16,10 @@ public class Juego {
 	private int j;
 	private boolean finJuego;
 	public int tiempo;
-	
+	Timer timer;
 	
 	private Juego(){	
+		
 	}
 	
 	public static Juego getInstance(){
@@ -28,7 +29,7 @@ public class Juego {
 		return juego;
 	}
 	
-	
+/*
 	TimerTask tarea = new TimerTask(){
 		public void run(){
 			System.out.println("aaaaaaaaaaaaaaaaaaaaa");
@@ -39,15 +40,16 @@ public class Juego {
 				}
 			setTiempo(getTiempo()-1);
 		}
-	};
+	};*/
 	
 	/**
 	 * Actualiza las posiciones de cada elemento en el mapa
 	 */
 	
-	public void actualizar(){
-		Timer timer=new Timer();
-		timer.schedule(tarea, 10);
+	public void actualizar(){ 
+		
+		mapa.act();
+		
 		
 		if (datos.getDiamantesRecolectados() == datos.getDiamantesPorRecolectar())
 			puerta.setAbierta(true);
@@ -69,7 +71,7 @@ public class Juego {
 	
 	public int cargarNivel (int l){
 	
-		this.setTiempo(150);
+		
 		
 		if (mapa.crearMapa(l) == 0){
 			jugador.setMuerto(false);
@@ -82,12 +84,5 @@ public class Juego {
 	}
 	
 	
-	public int getTiempo() {
-		return tiempo;
-	}
-
-
-	public void setTiempo(int tiempo) {
-		this.tiempo = tiempo;
-	}
+	
 }
