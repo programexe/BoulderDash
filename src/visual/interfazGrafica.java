@@ -28,6 +28,17 @@ public class interfazGrafica extends JFrame{
 	JPanel panelJuego;
 	
 	public interfazGrafica() {
+		crearPanel();
+		
+		panelReglas=new JScrollPane();
+		panelReglas.setLayout(null);
+		panelReglas.setBounds(296, 70, 120, 70);	
+		
+		crearPanelConfig();
+		
+	}
+	
+	private void crearPanel() {
 		panel=new JPanel();
 		this.setBounds(0, 0, 450, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,15 +59,7 @@ public class interfazGrafica extends JFrame{
 		//config.addActionListener(new ManejoConfig(this));
 		panel.setVisible(true);
 		this.add(panel);
-		
-		panelReglas=new JScrollPane();
-		panelReglas.setLayout(null);
-		panelReglas.setBounds(296, 70, 120, 70);	
-		
-		crearPanelConfig();
-		
 	}
-	
 	private void crearPanelConfig(){
 		panelConfig=new JPanel();
 		
@@ -76,6 +79,12 @@ public class interfazGrafica extends JFrame{
 		
 		//this.add(panelConfig);
 		//panelConfig.setVisible(false);
+	}
+	
+	public void mostrarConfig(){
+		panel.setVisible(false);
+		this.add(panelConfig);
+		panelConfig.setVisible(true);
 	}
 	
 	
