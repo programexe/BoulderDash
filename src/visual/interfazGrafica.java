@@ -60,6 +60,7 @@ public class interfazGrafica extends JFrame{
 		panel.setVisible(true);
 		this.add(panel);
 	}
+	
 	private void crearPanelConfig(){
 		panelConfig=new JPanel();
 		
