@@ -3,7 +3,9 @@ package Juego;
 public class DatosJuego {
 
 	private static DatosJuego datos = null;
-
+	
+	private Mapa mapa = Mapa.getInstance();
+	
 	private Integer score;
 
 	private Integer diamantesRecolectados;
@@ -191,5 +193,9 @@ public class DatosJuego {
 	 */
 	public void decTiempo() {
 		this.tiempo--;
+	}
+	
+	public String getElementosPos(int i, int j){
+		return mapa.getEspacio(i, j).toString();
 	}
 }

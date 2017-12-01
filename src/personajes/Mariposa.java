@@ -197,7 +197,11 @@ public void moverse(){
 	public boolean isMariposa() {
 		return true;
 	}
+	
+	public String toStringPos() {
+		return ("(" + this.x + "," + this.y + ")Mariposa      ");
 
+	}
 	
 
 }

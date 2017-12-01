@@ -179,4 +179,9 @@ public class Rockford extends Animados{
 	public boolean isRockford() {
 		return true;
 	}
+	
+	public String toStringPos() {
+		return ("(" + this.x + "," + this.y + ")Rockford     ");
+
+	}
 }

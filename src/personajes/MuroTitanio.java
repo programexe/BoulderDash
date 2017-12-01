@@ -37,4 +37,11 @@ public class MuroTitanio extends Muros{
 	public void explotar(){
 		
 	}	
+	
+	public String toStringPos() {
+		return ("(" + this.x + "," + this.y + ")MuroTitanio      ");
+
+	}
+	
+	
 }
