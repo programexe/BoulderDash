@@ -38,4 +38,9 @@ public class Basura extends Inanimados {
 		
 	}	
 	
+	public String toStringPos() {
+		return ("(" + this.x + "," + this.y + ")Basura      ");
+
+	}
+	
 }

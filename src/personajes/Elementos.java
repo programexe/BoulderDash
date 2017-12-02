@@ -176,5 +176,6 @@ public abstract class Elementos{
 	
 	public abstract void explotar();
 	
+	public abstract String toStringPos();	
 
 }

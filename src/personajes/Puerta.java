@@ -63,4 +63,9 @@ public class Puerta extends Inanimados{
 	public void explotar(){
 		
 	}	
+	
+	public String toStringPos() {
+		return ("(" + this.x + "," + this.y + ")Puerta      ");
+
+	}
 }

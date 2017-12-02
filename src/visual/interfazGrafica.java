@@ -1,16 +1,6 @@
+
 package visual;
 import control.*;
-import personajes.Ameba;
-import personajes.Basura;
-import personajes.Diamante;
-import personajes.EspacioVacio;
-import personajes.Luciernaga;
-import personajes.Mariposa;
-import personajes.Muro;
-import personajes.MuroTitanio;
-import personajes.Puerta;
-import personajes.Roca;
-import personajes.Rockford;
 
 import java.awt.*;
 import javax.imageio.ImageIO;
@@ -25,9 +15,15 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+
+import Juego.DatosJuego;
 
 public class interfazGrafica extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String imgFileName= "imagenes/img.gif";
 	private Image img;
 	
@@ -41,9 +37,11 @@ public class interfazGrafica extends JFrame{
 	
 	JPanel panel;
 	JScrollPane panelReglas;
-	JTable panelTopX;
+	JPanel panelTopX;
 	JPanel panelConfig;
 	JPanel panelJuego;
+	private CargaImagenes mapa;
+	public static DatosJuego juego = DatosJuego.getInstance();
 	
 	public interfazGrafica() {
 		crearPanel();
@@ -57,18 +55,6 @@ public class interfazGrafica extends JFrame{
 		
 	}
 	
-	private void crearPanelTopX() {
-		
-		DefaultTableModel modeloTabla=new DefaultTableModel();
-		panelTopX=new JTable(modeloTabla);
-	}
-	
-	
-	/*
-	private void crearPanelJuego() {
-		panelJuego=new JPanel();
-	}
-	*/
 	private void crearPanelReglas() {
 		
 		panelReglas=new JScrollPane();
@@ -89,6 +75,7 @@ public class interfazGrafica extends JFrame{
 		    String everything = sb.toString();
 		    textoReglas=new JTextArea(everything, 10, 15);
 		} catch (IOException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		panelReglas.add(textoReglas);
@@ -114,6 +101,7 @@ public class interfazGrafica extends JFrame{
 		panel.add(config);
 		config.setBounds(360, 0, 90, 40);
 		config.addActionListener(new controlConfig(this));
+		//config.addActionListener(new ManejoConfig(this));
 		panel.setVisible(true);
 		this.add(panel);
 	}
@@ -134,92 +122,17 @@ public class interfazGrafica extends JFrame{
 		
 		panelConfig.add(elegirX, BorderLayout.SOUTH);
 		panelConfig.add(textoConfig, BorderLayout.NORTH);
+		
+		//this.add(panelConfig);
+		//panelConfig.setVisible(false);
 	}
-	/*
-	private void crearPanelJuego() {
-		
-		
-		
-		panelJuego.setLayout(new GridLayout(40,22));
-		pan
-		
-		
-		
-		
-		
-		
-		
-		
-		public int crearMapa(int lvl){  //Lee el archivo levels.xml y apartir de este crea una matriz con los elementos correpondientes
-			 //En el momento que crea el mapa, cuando encuentra a rockford crea una instancia de este y la retorna
-		
-		
-					
-					try {
-					
-					int levels = lector.readLevels("levels.xml");
-					lector.setCurrentLevel(lvl);
-					
-					for(int i=0; i<lector.getWIDTH(); i++){
-					for(int j=0; j<lector.getHEIGHT(); j++){
-					switch (lector.getTile(i, j)){
-					
-					case EMPTY : espacios[i][j]=new EspacioVacio(i,j);
-					break;
-					
-					case DIRT: espacios[i][j]=new Basura(i,j);
-					break;              
-					
-					case TITANIUM: espacios[i][j]=new MuroTitanio(i,j);
-					break;       
-					
-					case WALL: espacios[i][j]=new Muro(i,j);
-					break;              
-					
-					case ROCK: espacios[i][j]=new Roca(i,j, false);
-					break;               
-					
-					case FALLINGROCK: espacios[i][j]=new Roca(i,j, true);
-					break;        
-					
-					case DIAMOND: espacios[i][j]=new Diamante(i,j, false);
-					break;             
-					
-					case FALLINGDIAMOND: espacios[i][j]=new Diamante(i,j, true);
-					break;     
-					
-					case AMOEBA: espacios[i][j]=new Ameba(i,j);
-					break;              
-					
-					case FIREFLY: espacios[i][j]=new Luciernaga(i,j);
-					break;
-					
-					case BUTTERFLY: espacios[i][j]=new Mariposa(i,j);
-					break;
-					
-					case EXIT : espacios[i][j]= Puerta.getInstanceSetPosition(i, j);
-					break;
-					
-					case PLAYER : espacios[i][j]= Rockford.getInstanceSetPosition(i, j);
-					break;  
-					}
-					
-					}
-}
-
-System.out.println("Se creo el mapa");	
-this.setTiempo(150);
-timer=new Timer();
-
-return 0;
-} catch (Exception e) {
-e.printStackTrace();
-return 1;
-}
-}
+	private void crearPanelJuego() throws Exception{
+		panelJuego.setLayout(new BorderLayout());
+		mapa = new CargaImagenes();		
+		panelJuego.add(mapa, BorderLayout.CENTER);		
 	}
-	*/
-	public void mostrarConfig() {
+	
+public void mostrarConfig() {
 		
 		panel.setVisible(false);
 		this.remove(panel);
@@ -245,7 +158,7 @@ return 1;
 		this.add(panelReglas);
 		panelReglas.setVisible(true);
 	}
-	/*
+	
 	public void mostrarTopX() {
 		
 		panel.setVisible(false);
@@ -273,7 +186,7 @@ return 1;
 		this.remove(panelReglas);
 		panelReglas.setVisible(false);
 	}
-	*/
+	
 	
 	
 	public static void main(String[] args) {
@@ -299,14 +212,14 @@ return 1;
 	}
 
 
-	public JTable getPanelTopX() {
+	public JPanel getPanelTopX() {
 		return panelTopX;
 	}
 
 
 
 
-	public void setPanelTopX(JTable panelTopX) {
+	public void setPanelTopX(JPanel panelTopX) {
 		this.panelTopX = panelTopX;
 	}
 

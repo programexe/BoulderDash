@@ -1,201 +1,59 @@
+
 package visual;
 import java.awt.*;
-
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
-import Imagenes.*;
 
-public class CargaImagenes {
+public class CargaImagenes extends JPanel {
 	
 	
-	private String fileAmeba = "imagenes/amoeba.gif";
-	private Image imgAmeba; 
 	
-	private String fileBoulder= "imagenes/boulder.gif";
-	private Image imgRoca; 
+	private static HashMap<String, ImageIcon> image = null;
 	
-	private String fileButterfly = "imagenes/butterfly.gif";
-	private Image imgMariposa; 
 	
-	private String fileDiamond = "imagenes/diamond.gif";
-	private Image imgDiamante; 
-	
-	private String fileEmpty = "imagenes/empty.gif";
-	private Image imgVacio; 
-	
-	private String fileExit = "imagenes/exit.gif";
-	private Image imgPuerta; 
-	
-	private String fileDirt = "imagenes/dirt.gif";
-	private Image imgBasura; 
-	
-	private String fileFirefly = "imagenes/firefly.gif";
-	private Image imgLuciernaga; 
-	
-	private String fileMagic = "imagenes/magic.gif";
-	private Image imgMuroMagico; 
-	
-	private String fileRockford = "imagenes/rockford.gif";
-	private Image imgRockford; 
-	
-	private String fileSteel = "imagenes/steel.gif";
-	private Image imgMuroTitanio; 
-	
-	private String fileWall = "imagenes/wall.gif";
-	private Image imgMuro; 
-	
-
-		public CargaImagenes() {
+	public CargaImagenes() throws Exception {
+		super();
+		if (image == null){
+			image = new HashMap<String, ImageIcon>();
 			
-			URL imgUrlAmeba = getClass().getClassLoader().getResource(fileAmeba);
-			if (imgUrlAmeba == null) {
-				System.err.println("No se encuentra el archivo:"+fileAmeba);
-			} else {
-				try {
-					imgAmeba = ImageIO.read(imgUrlAmeba); 
-			} 	catch (IOException ex) {
-					ex.printStackTrace();
-				}
-			}
-		
-		
-		
-		URL imgUrlRoca = getClass().getClassLoader().getResource(fileBoulder);
-		
-		if (imgUrlRoca == null) {
-			System.err.println("No se encuentra el archivo:"+fileBoulder);
-		} else {
-			try {
-				imgRoca = ImageIO.read(imgUrlRoca); 
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
-			}
+			image.put("Ameba", new ImageIcon(this.getClass().getResource("/imagenes/amoeba.gif")));
+			image.put("Roca", new ImageIcon(this.getClass().getResource("/imagenes/boulder.gif")));
+			image.put("Mariposa", new ImageIcon(this.getClass().getResource("/imagenes/butterfly.gif")));
+			image.put("Diamante", new ImageIcon(this.getClass().getResource("/imagenes/diamond.gif")));
+			image.put("Basura", new ImageIcon(this.getClass().getResource("/imagenes/Dirt.png")));
+			image.put("Vacio", new ImageIcon(this.getClass().getResource("/imagenes/empty.jpg")));
+			image.put("Puerta", new ImageIcon(this.getClass().getResource("/imagenes/exit.gif")));
+			image.put("Luciernaga", new ImageIcon(this.getClass().getResource("/imagenes/firefly.gif")));
+			image.put("MuroMagico", new ImageIcon(this.getClass().getResource("/imagenes/magic.gif")));
+			image.put("Rockford", new ImageIcon(this.getClass().getResource("/imagenes/rockford.gif")));
+			image.put("MuroTitanio", new ImageIcon(this.getClass().getResource("/imagenes/steel.gif")));
+			image.put("Muro", new ImageIcon(this.getClass().getResource("/imagenes/wall.gif")));
+			
+			
 		}
-
-
-		URL imgUrlMariposa = getClass().getClassLoader().getResource(fileButterfly);
-		if (imgUrlMariposa == null) {
-			System.err.println("No se encuentra el archivo:"+fileButterfly);
-		} else {
-			try {
-				imgMariposa = ImageIO.read(imgUrlMariposa);
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
+	}
+	
+	public void paint(Graphics g){
+		int w = this.getWidth() / 40;
+		int h = this.getHeight() / 22;
+		g.drawString(interfazGrafica.juego.getDiamantesPorRecolectar() + "-VIDAS: "
+				+ interfazGrafica.juego.getVidas()
+				+ interfazGrafica.juego.getDiamantesRecolectados()
+				+ interfazGrafica.juego.getTiempo()
+				+ interfazGrafica.juego.getScore(), 100, h/2);
+		for (int i = 0; i < 22; i++){
+			for (int j = 0; j < 40; j++){
+				g.drawImage(image.get((interfazGrafica.juego.getElementosPos(j, i))).getImage(), (j) * w, (i + 1) * h, w, h, this);
 			}
 		}
-		
-		
-		URL imgUrlDiamante = getClass().getClassLoader().getResource(fileDiamond);
-		if (imgUrlDiamante == null) {
-			System.err.println("No se encuentra el archivo:"+fileDiamond);
-		} else {
-			try {
-				imgDiamante = ImageIO.read(imgUrlDiamante); 
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-		
-		
-		URL imgUrlBasura = getClass().getClassLoader().getResource(fileDirt);
-		if (imgUrlBasura == null) {
-			System.err.println("No se encuentra el archivo:"+fileDirt);
-		} else {
-			try {
-				imgBasura = ImageIO.read(imgUrlBasura);
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-		
-		
-		URL imgUrlVacio = getClass().getClassLoader().getResource(fileEmpty);
-		if (imgUrlVacio == null) {
-			System.err.println("No se encuentra el archivo:"+fileEmpty);
-		} else {
-			try {
-				imgVacio = ImageIO.read(imgUrlVacio);
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-		
-		
-		URL imgUrlPuerta = getClass().getClassLoader().getResource(fileExit);
-		if (imgUrlPuerta == null) {
-			System.err.println("No se encuentra el archivo:"+fileExit);
-		} else {
-			try {
-				imgPuerta = ImageIO.read(imgUrlPuerta); 
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-		
-		
-		URL imgUrlLuciernaga = getClass().getClassLoader().getResource(fileFirefly);
-		if (imgUrlMariposa == null) {
-			System.err.println("No se encuentra el archivo:"+fileButterfly);
-		} else {
-			try {
-				imgMariposa = ImageIO.read(imgUrlLuciernaga); 
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-		
-		
-		URL imgUrlMuroMagico = getClass().getClassLoader().getResource(fileMagic);
-		if (imgUrlMuroMagico == null) {
-			System.err.println("No se encuentra el archivo:"+fileMagic);
-		} else {
-			try {
-				imgMuroMagico = ImageIO.read(imgUrlMuroMagico); 
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-		
-		
-		URL imgUrlRockford = getClass().getClassLoader().getResource(fileRockford);
-		if (imgUrlRockford == null) {
-			System.err.println("No se encuentra el archivo:"+fileRockford);
-		} else {
-			try {
-				imgRockford = ImageIO.read(imgUrlRockford); 
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-		
-		
-		URL imgUrlMuroTitanio = getClass().getClassLoader().getResource(fileSteel);
-		if (imgUrlMuroTitanio == null) {
-			System.err.println("No se encuentra el archivo:"+fileSteel);
-		} else {
-			try {
-				imgMuroTitanio = ImageIO.read(imgUrlMuroTitanio); 
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-		
-		
-		URL imgUrlMuro = getClass().getClassLoader().getResource(fileWall);
-		if (imgUrlMuro == null) {
-			System.err.println("No se encuentra el archivo:"+fileWall);
-		} else {
-			try {
-				imgMuro = ImageIO.read(imgUrlMuro); 
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-		
-		
-		}
-		
+	}
+	
+	
 }
+

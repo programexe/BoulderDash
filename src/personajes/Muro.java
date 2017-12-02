@@ -112,4 +112,9 @@ public class Muro extends Muros {
 	public void explotar(){
 		
 	}	
+	
+	public String toStringPos() {
+		return ("(" + this.x + "," + this.y + ")Muro      ");
+
+	}
 }

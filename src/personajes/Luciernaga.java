@@ -200,5 +200,10 @@ public class Luciernaga extends Explosivos {
 	public boolean isLuciernaga() {
 		return true;
 	}
+	
+	public String toStringPos() {
+		return ("(" + this.x + "," + this.y + ")Luciernaga      ");
+
+	}
 
 }

@@ -104,4 +104,9 @@ public class Roca extends QueCaen{
 	public void explotar(){
 		
 	}	
+	
+	public String toStringPos() {
+		return ("(" + this.x + "," + this.y + ")Roca      ");
+
+	}
 }
