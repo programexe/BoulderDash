@@ -18,6 +18,8 @@ public class DatosJuego {
 	private int nivelActual;
 	
 	private int tiempo=150;
+	
+	private Puntaje[] puntosJugadores=new Puntaje[15];
 
 	/**
 	 * Constructor principal de la clase DatosJuego.
@@ -51,7 +53,7 @@ public class DatosJuego {
 	 * Cada vez que se agarra un diamante se incrementa los "e" 
 	 * diamantes recibidos.
 	 * 
-	 * @param e recibe el numero de diamantes agarrados en esa acción
+	 * @param e recibe el numero de diamantes agarrados en esa acciï¿½n
 	 */
 	public void increaseDiamantesRecolectados(Integer e) {
 		this.diamantesRecolectados = this.diamantesRecolectados + e;

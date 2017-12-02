@@ -1,5 +1,6 @@
 package visual;
 import java.awt.*;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -9,7 +10,7 @@ import Imagenes.*;
 
 public class CargaImagenes {
 	
-	/* 
+	
 	private String fileAmeba = "imagenes/amoeba.gif";
 	private Image imgAmeba; 
 	
@@ -41,168 +42,160 @@ public class CargaImagenes {
 	private Image imgRockford; 
 	
 	private String fileSteel = "imagenes/steel.gif";
-	private Image imgMuroTitanio-; 
+	private Image imgMuroTitanio; 
 	
 	private String fileWall = "imagenes/wall.gif";
 	private Image imgMuro; 
 	
 
 		public CargaImagenes() {
+			
 			URL imgUrlAmeba = getClass().getClassLoader().getResource(fileAmeba);
 			if (imgUrlAmeba == null) {
 				System.err.println("No se encuentra el archivo:"+fileAmeba);
 			} else {
 				try {
-					imgAmeba = ImageIO.read(imgUrlAmeba); // carga imagen en img
+					imgAmeba = ImageIO.read(imgUrlAmeba); 
 			} 	catch (IOException ex) {
 					ex.printStackTrace();
 				}
 			}
-		}
+		
 		
 		
 		URL imgUrlRoca = getClass().getClassLoader().getResource(fileBoulder);
-		if (imgUrl == null) {
+		
+		if (imgUrlRoca == null) {
 			System.err.println("No se encuentra el archivo:"+fileBoulder);
 		} else {
 			try {
-				imgRoca = ImageIO.read(imgUrl); // carga imagen en img
+				imgRoca = ImageIO.read(imgUrlRoca); 
 		} 	catch (IOException ex) {
 				ex.printStackTrace();
 			}
 		}
-	}
 
-		URL imgUrl = getClass().getClassLoader().getResource(file);
-		if (imgUrl == null) {
-			System.err.println("No se encuentra el archivo:"+file);
+
+		URL imgUrlMariposa = getClass().getClassLoader().getResource(fileButterfly);
+		if (imgUrlMariposa == null) {
+			System.err.println("No se encuentra el archivo:"+fileButterfly);
 		} else {
 			try {
-				img = ImageIO.read(imgUrl); // carga imagen en img
+				imgMariposa = ImageIO.read(imgUrlMariposa);
 		} 	catch (IOException ex) {
 				ex.printStackTrace();
 			}
-		}
 		}
 		
-		URL imgUrl = getClass().getClassLoader().getResource(file);
-		if (imgUrl == null) {
-			System.err.println("No se encuentra el archivo:"+file);
+		
+		URL imgUrlDiamante = getClass().getClassLoader().getResource(fileDiamond);
+		if (imgUrlDiamante == null) {
+			System.err.println("No se encuentra el archivo:"+fileDiamond);
 		} else {
 			try {
-				img = ImageIO.read(imgUrl); // carga imagen en img
+				imgDiamante = ImageIO.read(imgUrlDiamante); 
 		} 	catch (IOException ex) {
 				ex.printStackTrace();
 			}
-		}
 		}
 		
-		URL imgUrl = getClass().getClassLoader().getResource(file);
-		if (imgUrl == null) {
-			System.err.println("No se encuentra el archivo:"+file);
+		
+		URL imgUrlBasura = getClass().getClassLoader().getResource(fileDirt);
+		if (imgUrlBasura == null) {
+			System.err.println("No se encuentra el archivo:"+fileDirt);
 		} else {
 			try {
-				img = ImageIO.read(imgUrl); // carga imagen en img
+				imgBasura = ImageIO.read(imgUrlBasura);
 		} 	catch (IOException ex) {
 				ex.printStackTrace();
 			}
-		}
 		}
 		
-		URL imgUrl = getClass().getClassLoader().getResource(file);
-		if (imgUrl == null) {
-			System.err.println("No se encuentra el archivo:"+file);
+		
+		URL imgUrlVacio = getClass().getClassLoader().getResource(fileEmpty);
+		if (imgUrlVacio == null) {
+			System.err.println("No se encuentra el archivo:"+fileEmpty);
 		} else {
 			try {
-				img = ImageIO.read(imgUrl); // carga imagen en img
+				imgVacio = ImageIO.read(imgUrlVacio);
 		} 	catch (IOException ex) {
 				ex.printStackTrace();
 			}
-		}
 		}
 		
-		URL imgUrl = getClass().getClassLoader().getResource(file);
-		if (imgUrl == null) {
-			System.err.println("No se encuentra el archivo:"+file);
+		
+		URL imgUrlPuerta = getClass().getClassLoader().getResource(fileExit);
+		if (imgUrlPuerta == null) {
+			System.err.println("No se encuentra el archivo:"+fileExit);
 		} else {
 			try {
-				img = ImageIO.read(imgUrl); // carga imagen en img
+				imgPuerta = ImageIO.read(imgUrlPuerta); 
 		} 	catch (IOException ex) {
 				ex.printStackTrace();
 			}
-		}
 		}
 		
-		URL imgUrl = getClass().getClassLoader().getResource(file);
-		if (imgUrl == null) {
-			System.err.println("No se encuentra el archivo:"+file);
+		
+		URL imgUrlLuciernaga = getClass().getClassLoader().getResource(fileFirefly);
+		if (imgUrlMariposa == null) {
+			System.err.println("No se encuentra el archivo:"+fileButterfly);
 		} else {
 			try {
-				img = ImageIO.read(imgUrl); // carga imagen en img
+				imgMariposa = ImageIO.read(imgUrlLuciernaga); 
 		} 	catch (IOException ex) {
 				ex.printStackTrace();
 			}
-		}
 		}
 		
-		URL imgUrl = getClass().getClassLoader().getResource(file);
-		if (imgUrl == null) {
-			System.err.println("No se encuentra el archivo:"+file);
+		
+		URL imgUrlMuroMagico = getClass().getClassLoader().getResource(fileMagic);
+		if (imgUrlMuroMagico == null) {
+			System.err.println("No se encuentra el archivo:"+fileMagic);
 		} else {
 			try {
-				img = ImageIO.read(imgUrl); // carga imagen en img
+				imgMuroMagico = ImageIO.read(imgUrlMuroMagico); 
 		} 	catch (IOException ex) {
 				ex.printStackTrace();
 			}
-		}
 		}
 		
-		URL imgUrl = getClass().getClassLoader().getResource(file);
-		if (imgUrl == null) {
-			System.err.println("No se encuentra el archivo:"+file);
+		
+		URL imgUrlRockford = getClass().getClassLoader().getResource(fileRockford);
+		if (imgUrlRockford == null) {
+			System.err.println("No se encuentra el archivo:"+fileRockford);
 		} else {
 			try {
-				img = ImageIO.read(imgUrl); // carga imagen en img
+				imgRockford = ImageIO.read(imgUrlRockford); 
 		} 	catch (IOException ex) {
 				ex.printStackTrace();
 			}
-		}
 		}
 		
-		URL imgUrl = getClass().getClassLoader().getResource(file);
-		if (imgUrl == null) {
-			System.err.println("No se encuentra el archivo:"+file);
+		
+		URL imgUrlMuroTitanio = getClass().getClassLoader().getResource(fileSteel);
+		if (imgUrlMuroTitanio == null) {
+			System.err.println("No se encuentra el archivo:"+fileSteel);
 		} else {
 			try {
-				img = ImageIO.read(imgUrl); // carga imagen en img
+				imgMuroTitanio = ImageIO.read(imgUrlMuroTitanio); 
 		} 	catch (IOException ex) {
 				ex.printStackTrace();
 			}
-		}
 		}
 		
-		URL imgUrl = getClass().getClassLoader().getResource(file);
-		if (imgUrl == null) {
-			System.err.println("No se encuentra el archivo:"+file);
+		
+		URL imgUrlMuro = getClass().getClassLoader().getResource(fileWall);
+		if (imgUrlMuro == null) {
+			System.err.println("No se encuentra el archivo:"+fileWall);
 		} else {
 			try {
-				img = ImageIO.read(imgUrl); // carga imagen en img
+				imgMuro = ImageIO.read(imgUrlMuro); 
 		} 	catch (IOException ex) {
 				ex.printStackTrace();
 			}
-		}
 		}
 		
-		URL imgUrl = getClass().getClassLoader().getResource(file);
-		if (imgUrl == null) {
-			System.err.println("No se encuentra el archivo:"+file);
-		} else {
-			try {
-				img = ImageIO.read(imgUrl); // carga imagen en img
-		} 	catch (IOException ex) {
-				ex.printStackTrace();
-			}
+		
 		}
-		}
-	*/	
+		
 }
