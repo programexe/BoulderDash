@@ -4,6 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import javax.swing.table.DefaultTableModel;
 
 import visual.interfazGrafica;
 
@@ -20,17 +25,13 @@ public class controlOpcionesConfig implements ItemListener {
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		cantidadSeleccionada=frame.getElegirX().getSelectedItem().toString();
+		frame.setCantJugadoresTabla(Integer.parseInt(cantidadSeleccionada));
 		
-		switch(cantidadSeleccionada) {
-		case "5": this.cantidadAMostrar=5;
-		break;
+		frame.leerArchivoPuntaje();
+		frame.setModeloTablaTopX();
 		
-		case "10": this.cantidadAMostrar=10;
-		break;
-		
-		case "15": this.cantidadAMostrar=15;
-		break;
-		}
+		//DefaultTableModel nuevoModelo=new DefaultTableModel(datos,frame.getTitulosTabla());
+		//frame.getTablaTopX().setModel(nuevoModelo);
 		
 		
 	}

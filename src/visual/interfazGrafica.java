@@ -15,6 +15,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import Juego.DatosJuego;
 
@@ -28,39 +29,46 @@ public class interfazGrafica extends JFrame{
 	private Image img;
 	
 	JButton reglas=new JButton("Reglas");
-	JButton jugar=new JButton("�Quiero jugar!");
+	JButton jugar=new JButton("¡Jugar!");
 	JButton topX=new JButton("Top 5");
 	JButton config=new JButton("Config");
+	JButton atras=new JButton("Atras");
+	JButton atras2=new JButton("Atras");
+	JButton atras3=new JButton("Atras");
 	JTextArea textoReglas;
+	Graphics g;
+	int cantJugadoresTabla=5;
+	Object[] titulosTabla = {"Puesto","Nombre","Puntos"};
+	Object[][] datosPuntajes=new Object[15][3];
+	
 	
 	JComboBox elegirX;
-	
+	DefaultTableModel modeloTablaTopX;
 	JPanel panel;
-	JScrollPane panelReglas;
+	JPanel panelReglas;
 	JPanel panelTopX;
+	JTable tablaTopX;
 	JPanel panelConfig;
 	JPanel panelJuego;
 	private CargaImagenes mapa;
 	public static DatosJuego juego = DatosJuego.getInstance();
 	
-	public interfazGrafica() {
+	
+	public interfazGrafica() throws Exception {
+		
 		crearPanel();
 		crearPanelReglas();
-		//crearPanelTopX();
+		crearPanelTopX();
 		//crearPanelJuego();
-		
-		
 		crearPanelConfig();
-		
-		
 	}
 	
 	private void crearPanelReglas() {
-		
-		panelReglas=new JScrollPane();
-		panelReglas.setLayout(null);
-		panelReglas.setBounds(296, 70, 120, 70);	
-		
+		panelReglas=new JPanel();
+		//panelReglas=new JScrollPane();
+		//panelReglas.setLayout(null);
+		//panelReglas.setBounds(296, 70, 120, 70);	
+		panelReglas.setLayout(new BorderLayout());
 		BufferedReader br;
 		try {
 			br = new BufferedReader(new FileReader("file.txt"));
@@ -78,30 +86,34 @@ public class interfazGrafica extends JFrame{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		panelReglas.add(textoReglas);
 		
-		textoReglas.setBounds(160, 165, 120, 170);
+		textoReglas.setEditable(false);
+		atras3.addActionListener(new controlAtras(this));
+		panelReglas.add(textoReglas,BorderLayout.CENTER);
+		panelReglas.add(atras3, BorderLayout.NORTH);
+		
+		//textoReglas.setBounds(160, 165, 120, 170);
 	}
 	
 	private void crearPanel() {
 		panel=new JPanel();
-		this.setBounds(0, 0, 450, 300);
+		this.setBounds(0, 0, 450, 335);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		panel.setLayout(null);
 		panel.add(reglas);
-		reglas.setBounds(296, 70, 120, 70);
+		reglas.setBounds(276, 164, 140, 40);
 		reglas.addActionListener(new controlReglas(this));
 		panel.add(jugar);
-		jugar.setBounds(160, 165, 120, 70);
+		jugar.setBounds(276, 28, 140, 40);
 		//jugar.addActionListener(new ManejoJugar(this));
 		panel.add(topX);
-		topX.setBounds(24, 70, 120, 70);
-		//top5.addActionListener(new ManejoTop5(this));
+		topX.setBounds(276, 96, 140, 40);
+		topX.addActionListener(new controlTopX(this));
+		atras.addActionListener(new controlAtras(this));
 		panel.add(config);
-		config.setBounds(360, 0, 90, 40);
+		config.setBounds(276, 232, 140, 40);
 		config.addActionListener(new controlConfig(this));
-		//config.addActionListener(new ManejoConfig(this));
 		panel.setVisible(true);
 		this.add(panel);
 	}
@@ -119,17 +131,74 @@ public class interfazGrafica extends JFrame{
 		elegirX.addItem("15");
 		
 		elegirX.addItemListener(new controlOpcionesConfig(this));
-		
+		atras2.addActionListener(new controlAtras(this));
+		panelConfig.add(atras2, BorderLayout.NORTH);
 		panelConfig.add(elegirX, BorderLayout.SOUTH);
-		panelConfig.add(textoConfig, BorderLayout.NORTH);
+		panelConfig.add(textoConfig, BorderLayout.CENTER);
 		
 		//this.add(panelConfig);
 		//panelConfig.setVisible(false);
 	}
+	/*
 	private void crearPanelJuego() throws Exception{
+		panelJuego=new JPanel();
 		panelJuego.setLayout(new BorderLayout());
 		mapa = new CargaImagenes();		
-		panelJuego.add(mapa, BorderLayout.CENTER);		
+		panelJuego.add(mapa, BorderLayout.CENTER);	
+		mapa.paint(g);
+	}
+	*/
+	
+	public void leerArchivoPuntaje() {
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader("puntos.txt"));
+			StringBuilder sb = new StringBuilder();
+		    String line = br.readLine();
+		    int a=0;
+		    int b=0;
+		    datosPuntajes[b][a]=line;
+		    a++;
+		    while (line != null) {
+		    	if (a>2) {
+		    		a=0;
+		    		b++;
+		    	}
+		    	if(b>cantJugadoresTabla-1) {
+		    		break;
+		    	}
+		        sb.append(line);
+		        sb.append(System.lineSeparator());
+		        line = br.readLine();
+		        datosPuntajes[b][a]=line;
+		        a++;
+		    }
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+	}
+	public void setModeloTablaTopX() {
+		modeloTablaTopX=new ModeloTabla(datosPuntajes,titulosTabla);
+		tablaTopX.setModel(modeloTablaTopX);
+		datosPuntajes=new Object[15][3];
+		
+	}
+	private void crearPanelTopX() {
+		
+		leerArchivoPuntaje();
+		
+		topX.addActionListener(new controlTopX(this));
+		
+		panelTopX=new JPanel();
+		tablaTopX=new JTable();
+		JScrollPane scrollTabla=new JScrollPane(tablaTopX);
+		setModeloTablaTopX(); 
+		panelTopX.setLayout(new BorderLayout());
+		panelTopX.add(scrollTabla, BorderLayout.CENTER);
+		panelTopX.add(atras,BorderLayout.NORTH);
+		
 	}
 	
 public void mostrarConfig() {
@@ -159,26 +228,40 @@ public void mostrarConfig() {
 		panelReglas.setVisible(true);
 	}
 	
+	public void mostrarPanel() {
+		
+		panelTopX.setVisible(false);
+		this.remove(panelTopX);
+		//panelJuego.setVisible(false);
+		//this.remove(panelJuego);
+		panelConfig.setVisible(false);
+		this.remove(panelConfig);
+		panelReglas.setVisible(false);
+		this.remove(panelReglas);
+		panel.setVisible(true);
+		this.add(panel);
+	}
+	
 	public void mostrarTopX() {
 		
 		panel.setVisible(false);
 		this.remove(panel);
 		panelTopX.setVisible(true);
 		this.add(panelTopX);
-		panelJuego.setVisible(false);
-		this.remove(panelJuego);
+		//panelJuego.setVisible(false);
+		//this.remove(panelJuego);
 		panelConfig.setVisible(false);
 		this.remove(panelConfig);
 		this.remove(panelReglas);
 		panelReglas.setVisible(false);
 	}
-	
+	/*
 	public void mostrarJuego() {
 		
 		panel.setVisible(false);
 		this.remove(panel);
-		panelTopX.setVisible(false);
-		this.remove(panelTopX);
+		//panelTopX.setVisible(false);
+		//this.remove(panelTopX);
 		panelJuego.setVisible(true);
 		this.add(panelJuego);
 		panelConfig.setVisible(false);
@@ -186,10 +269,11 @@ public void mostrarConfig() {
 		this.remove(panelReglas);
 		panelReglas.setVisible(false);
 	}
+	*/
 	
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		interfazGrafica game=new interfazGrafica();
 		game.setVisible(true);
 
@@ -203,11 +287,11 @@ public void mostrarConfig() {
 		this.panel = panel;
 	}
 
-	public JScrollPane getPanelReglas() {
+	public JPanel getPanelReglas() {
 		return panelReglas;
 	}
 
-	public void setPanelReglas(JScrollPane panelReglas) {
+	public void setPanelReglas(JPanel panelReglas) {
 		this.panelReglas = panelReglas;
 	}
 
@@ -258,6 +342,38 @@ public void mostrarConfig() {
 
 	public JComboBox getElegirX() {
 		return elegirX;
+	}
+
+	public int getCantJugadoresTabla() {
+		return cantJugadoresTabla;
+	}
+
+	public void setCantJugadoresTabla(int cantJugadoresTabla) {
+		this.cantJugadoresTabla = cantJugadoresTabla;
+	}
+
+	public Object[][] getDatosPuntajes() {
+		return datosPuntajes;
+	}
+
+	public void setDatosPuntajes(Object[][] datos) {
+		this.datosPuntajes = datos;
+	}
+
+	public JTable getTablaTopX() {
+		return tablaTopX;
+	}
+
+	public void setTablaTopX(JTable tablaTopX) {
+		this.tablaTopX = tablaTopX;
+	}
+
+	public Object[] getTitulosTabla() {
+		return titulosTabla;
+	}
+
+	public void setTitulosTabla(Object[] titulosTabla) {
+		this.titulosTabla = titulosTabla;
 	}
 
 	

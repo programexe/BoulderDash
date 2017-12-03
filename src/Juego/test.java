@@ -5,12 +5,12 @@ import java.util.Scanner;
 /**
  * Clase princial, donde se controla y ejecuta todo el juego
  * 
- * @author Ezequiel Humar - Sebastián Sauer Rosas
+ * @author Ezequiel Humar - Sebastiï¿½n Sauer Rosas
  *
  */
 public class test {
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception{
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Ingrese nivel que quiere recorrer");

@@ -21,7 +21,6 @@ public class DatosJuego {
 	
 	private int tiempo=150;
 	
-	private Puntaje[] puntosJugadores=new Puntaje[15];
 
 	/**
 	 * Constructor principal de la clase DatosJuego.
