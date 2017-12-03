@@ -10,7 +10,9 @@ import java.util.Timer;
 import javax.*;
 
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -28,10 +30,12 @@ public class interfazGrafica extends JFrame{
 	private String imgFileName= "imagenes/img.gif";
 	private Image img;
 	
+	
+	
 	JButton reglas=new JButton("Reglas");
 	JButton jugar=new JButton("¡Jugar!");
-	JButton topX=new JButton("Top 5");
-	JButton config=new JButton("Config");
+	JButton topX=new JButton("Ranking");
+	JButton config=new JButton("Configuración");
 	JButton atras=new JButton("Atras");
 	JButton atras2=new JButton("Atras");
 	JButton atras3=new JButton("Atras");
@@ -42,9 +46,11 @@ public class interfazGrafica extends JFrame{
 	Object[][] datosPuntajes=new Object[15][3];
 	
 	
+	
+	
 	JComboBox elegirX;
 	DefaultTableModel modeloTablaTopX;
-	JPanel panel;
+	panelPrincipal panel;
 	JPanel panelReglas;
 	JPanel panelTopX;
 	JTable tablaTopX;
@@ -53,9 +59,21 @@ public class interfazGrafica extends JFrame{
 	private CargaImagenes mapa;
 	public static DatosJuego juego = DatosJuego.getInstance();
 	
-	
 	public interfazGrafica() throws Exception {
+		//this.cargarImagenFondo();
+		//dibujarFondo();
 		
+		Image imgIconoFrame;
+		imgIconoFrame = new ImageIcon("Imagenes/rockford.gif").getImage();
+		if (imgIconoFrame!=null) {
+			this.setIconImage(imgIconoFrame);
+			
+		}
+		else {
+			System.out.println("No se pudo encntrar el archivo");
+		}
+		
+		this.setTitle("Boulder Dash");
 		crearPanel();
 		crearPanelReglas();
 		crearPanelTopX();
@@ -94,9 +112,10 @@ public class interfazGrafica extends JFrame{
 		
 		//textoReglas.setBounds(160, 165, 120, 170);
 	}
+
 	
 	private void crearPanel() {
-		panel=new JPanel();
+		panel=new panelPrincipal();
 		this.setBounds(0, 0, 450, 335);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -279,11 +298,11 @@ public void mostrarConfig() {
 
 	}
 
-	public JPanel getPanel() {
+	public panelPrincipal getPanel() {
 		return panel;
 	}
 
-	public void setPanel(JPanel panel) {
+	public void setPanel(panelPrincipal panel) {
 		this.panel = panel;
 	}
 
