@@ -36,8 +36,8 @@ public class interfazGrafica extends JFrame{
 		return interfazGrafica;
 	}
 	*/
-	private String imgFileName= "imagenes/img.gif";
-	private Image img;
+	
+
 	
 	JButton reglas=new JButton("Reglas");
 	JButton jugar=new JButton("¡Jugar!");
@@ -173,6 +173,7 @@ public class interfazGrafica extends JFrame{
 		//panelConfig.setVisible(false);
 	}
 	
+
 	private void crearPanelJuego(){
 		panelJuego=new JPanel();
 		panelJuego.setLayout(new BorderLayout());
@@ -296,13 +297,13 @@ public void mostrarConfig() {
 		this.remove(panelReglas);
 		panelReglas.setVisible(false);
 	}
-	/*
+	
 	public void mostrarJuego() {
 		
 		panel.setVisible(false);
 		this.remove(panel);
-		//panelTopX.setVisible(false);
-		//this.remove(panelTopX);
+		panelTopX.setVisible(false);
+		this.remove(panelTopX);
 		panelJuego.setVisible(true);
 		this.add(panelJuego);
 		panelConfig.setVisible(false);
@@ -310,7 +311,7 @@ public void mostrarConfig() {
 		this.remove(panelReglas);
 		panelReglas.setVisible(false);
 	}
-	*/
+	
 	
 public void mostrarPanelGuardarPuntaje() {
 		

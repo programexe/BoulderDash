@@ -112,7 +112,7 @@ public class Roca extends QueCaen{
 	}	
 	
 	public String toStringPos() {
-		return ("(" + this.x + "," + this.y + ")Roca      ");
+		return ("Roca");
 
 	}
 }

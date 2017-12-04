@@ -97,7 +97,7 @@ public class Diamante extends QueCaen {
 	}
 	
 	public String toStringPos() {
-		return ("(" + this.x + "," + this.y + ")Diamante      ");
+		return ("Diamante");
 
 	}
 	

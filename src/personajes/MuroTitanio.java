@@ -39,7 +39,7 @@ public class MuroTitanio extends Muros{
 	}	
 	
 	public String toStringPos() {
-		return ("(" + this.x + "," + this.y + ")MuroTitanio      ");
+		return ("Titanio");
 
 	}
 	

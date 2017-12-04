@@ -35,11 +35,14 @@ public class Juego {
 	
 	private interfazGrafica ig;
 	
+	
+
 	private Juego(){	
-		//ig=interfazGrafica.getInstance();
 		ig=new interfazGrafica();
 		ig.setVisible(true);
 	}
+	
+
 	
 	public static Juego getInstance(){
 		if (juego == null)

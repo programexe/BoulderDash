@@ -114,7 +114,7 @@ public class Muro extends Muros {
 	}	
 	
 	public String toStringPos() {
-		return ("(" + this.x + "," + this.y + ")Muro      ");
+		return ("Muro");
 
 	}
 }

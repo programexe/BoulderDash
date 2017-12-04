@@ -166,6 +166,10 @@ public class Mapa {
 		return this.espacios[x][y];
 	}
 	
+	public String getEspacioToString(int x, int y) {
+		return this.espacios[x][y].toStringPos();
+	}
+	
 	public int getTiempo() {
 		return tiempo;
 	}
@@ -220,6 +224,24 @@ public class Mapa {
 		modificarEspacio(x, y + 1, new Diamante(x,y + 1));
 		modificarEspacio(x + 1, y + 1, new Diamante(x + 1,y + 1));
 		
+	}
+	
+	/*
+	 * Este método imprime como se vería el mapa en formato texto
+	 * */
+	public void imprimirMapa() {
+		System.out.println("..............................................................");
+		System.out.println("...Y así se ve el mapa!");
+		for (int y = 0; y < lector.getHEIGHT(); y++) {
+			for (int x = 0; x < lector.getWIDTH(); x++) {
+				System.out.print(this.getEspacios()[x][y].toStringPos());
+				System.out.print(" ");
+			}
+			System.out.println();
+
+		}
+		System.out.println("..............................................................");
+
 	}
 
 	

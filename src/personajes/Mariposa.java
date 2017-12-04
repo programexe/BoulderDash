@@ -199,7 +199,7 @@ public void moverse(){
 	}
 	
 	public String toStringPos() {
-		return ("(" + this.x + "," + this.y + ")Mariposa      ");
+		return ("Mariposa");
 
 	}
 	
