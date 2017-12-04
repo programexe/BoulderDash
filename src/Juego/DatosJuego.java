@@ -197,6 +197,6 @@ public class DatosJuego {
 	}
 	
 	public String getElementosPos(int i, int j){
-		return (mapa.getEspacio(i, j)).toString();
+		return mapa.getEspacio(i, j).toString();
 	}
 }

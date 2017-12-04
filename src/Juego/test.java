@@ -25,7 +25,6 @@ public class test {
 		
 			case 1 :{
 				juego.cargarNivel(lvl);
-				m.imprimirMapa();
 				juego.actualizar();
 				player.moverAbajo();
 				juego.actualizar();
@@ -58,14 +57,12 @@ public class test {
 			}
 			System.out.println("Se termino el nivel");
 			System.out.println("Rockford termio en: " + player.getX() + " , " + player.getY());
-			m.imprimirMapa();
 			if (player.isMuerto())
 				System.out.println("Rockford se murio");
 			break;
 			
 			case 2:{
 				juego.cargarNivel(lvl);
-				m.imprimirMapa();
 				juego.actualizar();
 				player.moverDerecha();
 				for (int i = 0; i<3; i++){
@@ -78,7 +75,6 @@ public class test {
 			}
 			System.out.println("Se termino el nivel");
 			System.out.println("Rockford termio en: " + player.getX() + " , " + player.getY());
-			m.imprimirMapa();
 			if (player.isMuerto())
 				System.out.println("Rockford se murio");
 			break;

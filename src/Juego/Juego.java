@@ -31,18 +31,14 @@ public class Juego {
 	String nombreArchivo="puntajes.txt";
 	File archivoPuntaje=new File(nombreArchivo);
 	Scanner sc=new Scanner(System.in);
-	
+	int lvl=1;
 	
 	private interfazGrafica ig;
 	
-	
-
 	private Juego(){	
 		ig=new interfazGrafica();
 		ig.setVisible(true);
 	}
-	
-
 	
 	public static Juego getInstance(){
 		if (juego == null)
@@ -90,9 +86,8 @@ public class Juego {
 	}
 	
 	private void ingresarPuntajePartida() {
-		ig.mostrarPanelGuardarPuntaje();
-		//System.out.println("Ingrese su nombre:");
-		//agregarNuevoPuntaje(sc.next(),DatosJuego.getInstance().getDiamantesRecolectados());
+		System.out.println("Ingrese su nombre:");
+		agregarNuevoPuntaje(sc.next(),DatosJuego.getInstance().getDiamantesRecolectados());
 		
 	}
 	
@@ -154,7 +149,6 @@ public class Juego {
 	}
 	
 	public void actualizar(){ 
-		
 		mapa.act();
 		
 		
@@ -168,12 +162,14 @@ public class Juego {
 		
 		if (jugador.isMuerto()){
 			System.out.println("lalalalalalalalalalalala");
-			
-			this.finJuego = true;
-			mapa.timer.cancel();
 			this.ingresarPuntajePartida();
+			this.finJuego = true;
+			
+			timer.cancel();
 			
 		}
+		
+		ig.getPanelJuego().repaint();
 		
 		
 	}
@@ -192,6 +188,14 @@ public class Juego {
 		}
 		
 		return 1;
+	}
+
+	public int getLvl() {
+		return lvl;
+	}
+
+	public void setLvl(int lvl) {
+		this.lvl = lvl;
 	}
 	
 	

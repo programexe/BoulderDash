@@ -88,7 +88,7 @@ public class Rockford extends Animados{
 	}
 	
 	public void moverArriba(){
-		if(!this.muerto) {
+		if(!this.muerto){
 			System.out.println("Rockford arriba");
 			this.setDireccion(direccionAnimados.ARRIBA);
 			Elementos e = this.devolverPos(direccionAnimados.ARRIBA);
@@ -103,12 +103,12 @@ public class Rockford extends Animados{
 					this.y--; 
 				}
 			}
-			this.imprimirPosicion();
+		this.imprimirPosicion();
 		}
 	}
 	
 	public void moverDerecha(){
-		if(!this.muerto) {
+		if(!this.muerto){
 			System.out.println("Rockford derecha");
 			this.setDireccion(direccionAnimados.DERECHA);
 			Elementos e = this.devolverPos(direccionAnimados.DERECHA);
@@ -130,7 +130,7 @@ public class Rockford extends Animados{
 	}
 	
 	public void moverAbajo(){
-		if(!this.muerto) {
+		if(!this.muerto){
 			System.out.println("Rockford abajo");
 			this.setDireccion(direccionAnimados.ABAJO);
 			Elementos e = this.devolverPos(direccionAnimados.ABAJO);
@@ -150,7 +150,7 @@ public class Rockford extends Animados{
 	}
 	
 	public void moverIzquierda(){
-		if(!this.muerto) {
+		if(!this.muerto){
 			System.out.println("Rockford Izquierda");
 			this.setDireccion(direccionAnimados.IZQUIERDA);
 			Elementos e = this.devolverPos(direccionAnimados.IZQUIERDA);

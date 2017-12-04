@@ -20,33 +20,23 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import Juego.DatosJuego;
-import Juego.Juego;
 
 public class interfazGrafica extends JFrame{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//private static interfazGrafica interfazGrafica = null;
-	/*
-	public static interfazGrafica getInstance(){
-		if (interfazGrafica == null)
-			interfazGrafica = new interfazGrafica();
-		
-		return interfazGrafica;
-	}
-	*/
 	
-
+	private String imgFileName= "imagenes/img.gif";
+	private Image img;
 	
 	JButton reglas=new JButton("Reglas");
-	JButton jugar=new JButton("�Jugar!");
+	JButton jugar=new JButton("¡Jugar!");
 	JButton topX=new JButton("Ranking");
-	JButton config=new JButton("Configuracion");
+	JButton config=new JButton("Configuración");
 	JButton atras=new JButton("Atras");
 	JButton atras2=new JButton("Atras");
 	JButton atras3=new JButton("Atras");
-	JButton guardarPuntaje= new JButton("Guardar");
 	JTextArea textoReglas;
 	int cantJugadoresTabla=5;
 	Object[] titulosTabla = {"Puesto","Nombre","Puntos"};
@@ -63,8 +53,6 @@ public class interfazGrafica extends JFrame{
 	JTable tablaTopX;
 	JPanel panelConfig;
 	JPanel panelJuego;
-	JPanel panelGuardarPuntaje;
-	JTextArea nombrePuntaje;
 	private CargaImagenes mapa;
 	public static DatosJuego juego = DatosJuego.getInstance();
 	
@@ -82,20 +70,20 @@ public class interfazGrafica extends JFrame{
 			
 		}
 		else {
-			System.out.println("No se pudo encontrar el archivo");
+			System.out.println("No se pudo encntrar el archivo");
 		}
 		
 		this.setTitle("Boulder Dash");
-		crearPanel();
+		
 		crearPanelReglas();
 		crearPanelTopX();
-		//crearPanelJuego();
+		crearPanelJuego();
 		crearPanelConfig();
-		crearPanelGuardarPuntaje();
+		crearPanel();
 		
 	}
 	
-	public void crearPanelReglas() {
+	private void crearPanelReglas() {
 		panelReglas=new JPanel();
 		//panelReglas=new JScrollPane();
 		//panelReglas.setLayout(null);
@@ -144,6 +132,7 @@ public class interfazGrafica extends JFrame{
 		topX.setBounds(276, 96, 140, 40);
 		topX.addActionListener(new controlTopX(this));
 		atras.addActionListener(new controlAtras(this));
+		jugar.addActionListener(new controlJuego(this));
 		panel.add(config);
 		config.setBounds(276, 232, 140, 40);
 		config.addActionListener(new controlConfig(this));
@@ -173,22 +162,9 @@ public class interfazGrafica extends JFrame{
 		//panelConfig.setVisible(false);
 	}
 	
-/*
-	private void crearPanelJuego(){
-		panelJuego=new JPanel();
-		panelJuego.setLayout(new BorderLayout());
-		mapa = new CargaImagenes();		
-		panelJuego.add(mapa, BorderLayout.CENTER);	
-		//mapa.paint(g);
-	}
-	*/
-	private void crearPanelGuardarPuntaje() {
-		panelGuardarPuntaje=new JPanel();
-		panelGuardarPuntaje.setLayout(new BorderLayout());
-		nombrePuntaje=new JTextArea();
-		nombrePuntaje.setEditable(true);
-		panelGuardarPuntaje.add(nombrePuntaje, BorderLayout.CENTER);
-		panelGuardarPuntaje.add(guardarPuntaje, BorderLayout.SOUTH);
+	public void crearPanelJuego(){
+		panelJuego=new CargaImagenes();	
+		this.add(panelJuego);
 	}
 	
 	public void leerArchivoPuntaje() {
@@ -297,41 +273,21 @@ public void mostrarConfig() {
 		this.remove(panelReglas);
 		panelReglas.setVisible(false);
 	}
-	/*
-	public void mostrarJuego() {
-		
-		panel.setVisible(false);
-		this.remove(panel);
-		panelTopX.setVisible(false);
-		this.remove(panelTopX);
-		panelJuego.setVisible(true);
-		this.add(panelJuego);
-		panelConfig.setVisible(false);
-		this.remove(panelConfig);
-		this.remove(panelReglas);
-		panelReglas.setVisible(false);
-	}
-	*/
 	
-public void mostrarPanelGuardarPuntaje() {
-		
+	public void mostrarJuego() {
+		this.setBounds(0, 0, 656, 392);
 		panel.setVisible(false);
 		this.remove(panel);
 		panelTopX.setVisible(false);
 		this.remove(panelTopX);
-		//panelJuego.setVisible(false);
-		//this.remove(panelJuego);
 		panelConfig.setVisible(false);
 		this.remove(panelConfig);
-		panelReglas.setVisible(false);
 		this.remove(panelReglas);
-		pack();
-		this.add(panelGuardarPuntaje);
-		panelGuardarPuntaje.setVisible(true);
-		this.setBounds(0, 0, 450, 335);
-		
-		
+		panelReglas.setVisible(false);
+		this.add(panelJuego);
+		panelJuego.setVisible(true);
 	}
+	
 	
 	
 	
@@ -436,14 +392,6 @@ public void mostrarPanelGuardarPuntaje() {
 
 	public void setTitulosTabla(Object[] titulosTabla) {
 		this.titulosTabla = titulosTabla;
-	}
-
-	public JTextArea getNombrePuntaje() {
-		return nombrePuntaje;
-	}
-
-	public void setNombrePuntaje(JTextArea nombrePuntaje) {
-		this.nombrePuntaje = nombrePuntaje;
 	}
 
 	

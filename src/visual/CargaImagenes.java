@@ -1,4 +1,3 @@
-
 package visual;
 import java.awt.*;
 
@@ -31,40 +30,40 @@ public class CargaImagenes extends JPanel {
 	private Mapa mapa = Mapa.getInstance();
 	Graphics g;
 	
-	private String imgFileNameAmeba = "/visual/imagenes/amoeba.gif";  
+	private String imgFileNameAmeba = "imagenes/amoeba.gif";  
 	private Image imgAmeba;  
 	
-	private String imgFileNameRoca = "/visual/imagenes/boulder.gif";  
+	private String imgFileNameRoca = "imagenes/boulder.gif";  
 	private Image imgRoca; 
 	
-	private String imgFileNameMariposa = "/visual/imagenes/butterfly.gif";  
+	private String imgFileNameMariposa = "imagenes/butterfly.gif";  
 	private Image imgMariposa; 
 	
-	private String imgFileNameDiamante = "/visual/imagenes/diamond.gif";  
+	private String imgFileNameDiamante = "imagenes/diamond.gif";  
 	private Image imgDiamante; 
 	
-	private String imgFileNameVacio = "/visual/imagenes/empty.jpg";  
+	private String imgFileNameVacio = "imagenes/empty.jpg";  
 	private Image imgVacio; 
 	
-	private String imgFileNamePuerta = "/visual/imagenes/exit.gif";  
+	private String imgFileNamePuerta = "imagenes/exit.gif";  
 	private Image imgPuerta; 
 	
-	private String imgFileNameLuciernaga = "/visual/imagenes/firefly.gif";  
+	private String imgFileNameLuciernaga = "imagenes/firefly.gif";  
 	private Image imgLuciernaga; 
 	
-	private String imgFileNameMagico = "/visual/imagenes/magic.gif";  
+	private String imgFileNameMagico = "imagenes/magic.gif";  
 	private Image imgMagico; 
 	
-	private String imgFileNameRockford = "/visual/imagenes/rockford.gif";  
+	private String imgFileNameRockford = "imagenes/rockford.gif";  
 	private Image imgRockford; 
 	
-	private String imgFileNameTitanio = "/visual/imagenes/steel.gif";  
+	private String imgFileNameTitanio = "imagenes/steel.gif";  
 	private Image imgTitanio; 
 	
-	private String imgFileNameMuro = "/visual/imagenes/wall.gif";  
+	private String imgFileNameMuro = "imagenes/wall.gif";  
 	private Image imgMuro; 
 	
-	private String imgFileNameBasura = "/visual/imagenes/Dirt.png";  
+	private String imgFileNameBasura = "imagenes/Dirt.png";  
 	private Image imgBasura; 
 	
 	public CargaImagenes(){
@@ -267,14 +266,14 @@ public class CargaImagenes extends JPanel {
 		this.cargarVacio();
 	}
 	
-	public void pintar(Graphics g)
+	public void paintComponent(Graphics g)
     { 
-		this.cargar();
         super.paintComponent(g);
+        //g.drawImage(imgBasura, 16, 16, null);
         
         
-        for (int i=0; i < 22; i++){
-        	for (int j=0; j < 44; j++){
+        for (int i=0; i < 40; i++){
+        	for (int j=0; j < 22; j++){
         		
         		switch (mapa.getEspacio(i, j).toStringPos()){
         		
@@ -318,9 +317,9 @@ public class CargaImagenes extends JPanel {
 		} 
         		}
         	}
+        	
         }
         
         
         
 }
-
