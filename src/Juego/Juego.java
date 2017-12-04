@@ -36,6 +36,7 @@ public class Juego {
 	private interfazGrafica ig;
 	
 	private Juego(){	
+		//ig=interfazGrafica.getInstance();
 		ig=new interfazGrafica();
 		ig.setVisible(true);
 	}
@@ -86,8 +87,9 @@ public class Juego {
 	}
 	
 	private void ingresarPuntajePartida() {
-		System.out.println("Ingrese su nombre:");
-		agregarNuevoPuntaje(sc.next(),DatosJuego.getInstance().getDiamantesRecolectados());
+		ig.mostrarPanelGuardarPuntaje();
+		//System.out.println("Ingrese su nombre:");
+		//agregarNuevoPuntaje(sc.next(),DatosJuego.getInstance().getDiamantesRecolectados());
 		
 	}
 	
@@ -163,10 +165,10 @@ public class Juego {
 		
 		if (jugador.isMuerto()){
 			System.out.println("lalalalalalalalalalalala");
-			this.ingresarPuntajePartida();
-			this.finJuego = true;
 			
-			timer.cancel();
+			this.finJuego = true;
+			mapa.timer.cancel();
+			this.ingresarPuntajePartida();
 			
 		}
 		

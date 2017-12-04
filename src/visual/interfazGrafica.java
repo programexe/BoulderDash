@@ -20,13 +20,22 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import Juego.DatosJuego;
+import Juego.Juego;
 
 public class interfazGrafica extends JFrame{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	//private static interfazGrafica interfazGrafica = null;
+	/*
+	public static interfazGrafica getInstance(){
+		if (interfazGrafica == null)
+			interfazGrafica = new interfazGrafica();
+		
+		return interfazGrafica;
+	}
+	*/
 	private String imgFileName= "imagenes/img.gif";
 	private Image img;
 	
@@ -37,6 +46,7 @@ public class interfazGrafica extends JFrame{
 	JButton atras=new JButton("Atras");
 	JButton atras2=new JButton("Atras");
 	JButton atras3=new JButton("Atras");
+	JButton guardarPuntaje= new JButton("Guardar");
 	JTextArea textoReglas;
 	int cantJugadoresTabla=5;
 	Object[] titulosTabla = {"Puesto","Nombre","Puntos"};
@@ -53,6 +63,8 @@ public class interfazGrafica extends JFrame{
 	JTable tablaTopX;
 	JPanel panelConfig;
 	JPanel panelJuego;
+	JPanel panelGuardarPuntaje;
+	JTextArea nombrePuntaje;
 	private CargaImagenes mapa;
 	public static DatosJuego juego = DatosJuego.getInstance();
 	
@@ -79,10 +91,11 @@ public class interfazGrafica extends JFrame{
 		crearPanelTopX();
 		crearPanelJuego();
 		crearPanelConfig();
+		crearPanelGuardarPuntaje();
 		
 	}
 	
-	private void crearPanelReglas() {
+	public void crearPanelReglas() {
 		panelReglas=new JPanel();
 		//panelReglas=new JScrollPane();
 		//panelReglas.setLayout(null);
@@ -166,6 +179,15 @@ public class interfazGrafica extends JFrame{
 		mapa = new CargaImagenes();		
 		panelJuego.add(mapa, BorderLayout.CENTER);	
 		//mapa.paint(g);
+	}
+	
+	private void crearPanelGuardarPuntaje() {
+		panelGuardarPuntaje=new JPanel();
+		panelGuardarPuntaje.setLayout(new BorderLayout());
+		nombrePuntaje=new JTextArea();
+		nombrePuntaje.setEditable(true);
+		panelGuardarPuntaje.add(nombrePuntaje, BorderLayout.CENTER);
+		panelGuardarPuntaje.add(guardarPuntaje, BorderLayout.SOUTH);
 	}
 	
 	public void leerArchivoPuntaje() {
@@ -290,6 +312,26 @@ public void mostrarConfig() {
 	}
 	*/
 	
+public void mostrarPanelGuardarPuntaje() {
+		
+		panel.setVisible(false);
+		this.remove(panel);
+		panelTopX.setVisible(false);
+		this.remove(panelTopX);
+		//panelJuego.setVisible(false);
+		//this.remove(panelJuego);
+		panelConfig.setVisible(false);
+		this.remove(panelConfig);
+		panelReglas.setVisible(false);
+		this.remove(panelReglas);
+		pack();
+		this.add(panelGuardarPuntaje);
+		panelGuardarPuntaje.setVisible(true);
+		this.setBounds(0, 0, 450, 335);
+		
+		
+	}
+	
 	
 	
 	public static void main(String[] args) throws Exception {
@@ -393,6 +435,14 @@ public void mostrarConfig() {
 
 	public void setTitulosTabla(Object[] titulosTabla) {
 		this.titulosTabla = titulosTabla;
+	}
+
+	public JTextArea getNombrePuntaje() {
+		return nombrePuntaje;
+	}
+
+	public void setNombrePuntaje(JTextArea nombrePuntaje) {
+		this.nombrePuntaje = nombrePuntaje;
 	}
 
 	

@@ -88,79 +88,87 @@ public class Rockford extends Animados{
 	}
 	
 	public void moverArriba(){
-		System.out.println("Rockford arriba");
-		this.setDireccion(direccionAnimados.ARRIBA);
-		Elementos e = this.devolverPos(direccionAnimados.ARRIBA);
-		if (e.isMuro() || e.isMuroTitanio() || e.isRoca()){
-			System.out.println("Rockford no puede moverse a ese lugar");
-		}
-		else {
-			if (e.isDiamante())
-				this.agarrarDiamante();		
-			if (mapa.modificarEspacio(x, y - 1, this) == 0) {   
-				mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
-				this.y--; 
+		if(!this.muerto) {
+			System.out.println("Rockford arriba");
+			this.setDireccion(direccionAnimados.ARRIBA);
+			Elementos e = this.devolverPos(direccionAnimados.ARRIBA);
+			if (e.isMuro() || e.isMuroTitanio() || e.isRoca()){
+				System.out.println("Rockford no puede moverse a ese lugar");
 			}
+			else {
+				if (e.isDiamante())
+					this.agarrarDiamante();		
+				if (mapa.modificarEspacio(x, y - 1, this) == 0) {   
+					mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+					this.y--; 
+				}
+			}
+			this.imprimirPosicion();
 		}
-	this.imprimirPosicion();
 	}
 	
 	public void moverDerecha(){
-		System.out.println("Rockford derecha");
-		this.setDireccion(direccionAnimados.DERECHA);
-		Elementos e = this.devolverPos(direccionAnimados.DERECHA);
-		if (e.isRoca())
-			this.empujarRoca( (Roca) e);
-		if (e.isMuro() || e.isMuroTitanio()){
-			System.out.println("Rockford no puede moverse a ese lugar");
-		}
-		else {
-			if (e.isDiamante())
-				this.agarrarDiamante();
-			if (mapa.modificarEspacio(x + 1, y, this) == 0){
-				mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
-				this.x++;
+		if(!this.muerto) {
+			System.out.println("Rockford derecha");
+			this.setDireccion(direccionAnimados.DERECHA);
+			Elementos e = this.devolverPos(direccionAnimados.DERECHA);
+			if (e.isRoca())
+				this.empujarRoca( (Roca) e);
+			if (e.isMuro() || e.isMuroTitanio()){
+				System.out.println("Rockford no puede moverse a ese lugar");
 			}
+			else {
+				if (e.isDiamante())
+					this.agarrarDiamante();
+				if (mapa.modificarEspacio(x + 1, y, this) == 0){
+					mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+					this.x++;
+				}
+			}
+			this.imprimirPosicion();
 		}
-		this.imprimirPosicion();
 	}
 	
 	public void moverAbajo(){
-		System.out.println("Rockford abajo");
-		this.setDireccion(direccionAnimados.ABAJO);
-		Elementos e = this.devolverPos(direccionAnimados.ABAJO);
-		if (e.isMuro() || e.isMuroTitanio() || e.isRoca()){
-			System.out.println("Rockford no puede moverse a ese lugar");
-		}
-		else {
-			if (e.isDiamante())
-				this.agarrarDiamante();
-			if (mapa.modificarEspacio(x, y + 1, this) == 0){
-				mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
-				this.y++;
+		if(!this.muerto) {
+			System.out.println("Rockford abajo");
+			this.setDireccion(direccionAnimados.ABAJO);
+			Elementos e = this.devolverPos(direccionAnimados.ABAJO);
+			if (e.isMuro() || e.isMuroTitanio() || e.isRoca()){
+				System.out.println("Rockford no puede moverse a ese lugar");
 			}
+			else {
+				if (e.isDiamante())
+					this.agarrarDiamante();
+				if (mapa.modificarEspacio(x, y + 1, this) == 0){
+					mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+					this.y++;
+				}
+			}
+			this.imprimirPosicion();
 		}
-		this.imprimirPosicion();
 	}
 	
 	public void moverIzquierda(){
-		System.out.println("Rockford Izquierda");
-		this.setDireccion(direccionAnimados.IZQUIERDA);
-		Elementos e = this.devolverPos(direccionAnimados.IZQUIERDA);
-		if (e.isRoca())
-			this.empujarRoca( (Roca) e);
-		if (e.isMuro() || e.isMuroTitanio()) {
-			System.out.println("Rockford no puede moverse a ese lugar");
-		}
-		else {
-			if (e.isDiamante())
-				this.agarrarDiamante();
-			if (mapa.modificarEspacio(x - 1, y, this) == 0){
-				mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
-				this.x--;
+		if(!this.muerto) {
+			System.out.println("Rockford Izquierda");
+			this.setDireccion(direccionAnimados.IZQUIERDA);
+			Elementos e = this.devolverPos(direccionAnimados.IZQUIERDA);
+			if (e.isRoca())
+				this.empujarRoca( (Roca) e);
+			if (e.isMuro() || e.isMuroTitanio()) {
+				System.out.println("Rockford no puede moverse a ese lugar");
 			}
+			else {
+				if (e.isDiamante())
+					this.agarrarDiamante();
+				if (mapa.modificarEspacio(x - 1, y, this) == 0){
+					mapa.modificarEspacio(x, y, new EspacioVacio(x,y));
+					this.x--;
+				}
+			}
+			this.imprimirPosicion();
 		}
-		this.imprimirPosicion();
 	}
 	
 	private void empujarRoca(Roca r){
