@@ -40,9 +40,9 @@ public class interfazGrafica extends JFrame{
 
 	
 	JButton reglas=new JButton("Reglas");
-	JButton jugar=new JButton("¡Jugar!");
+	JButton jugar=new JButton("�Jugar!");
 	JButton topX=new JButton("Ranking");
-	JButton config=new JButton("Configuración");
+	JButton config=new JButton("Configuracion");
 	JButton atras=new JButton("Atras");
 	JButton atras2=new JButton("Atras");
 	JButton atras3=new JButton("Atras");
@@ -82,14 +82,14 @@ public class interfazGrafica extends JFrame{
 			
 		}
 		else {
-			System.out.println("No se pudo encntrar el archivo");
+			System.out.println("No se pudo encontrar el archivo");
 		}
 		
 		this.setTitle("Boulder Dash");
 		crearPanel();
 		crearPanelReglas();
 		crearPanelTopX();
-		crearPanelJuego();
+		//crearPanelJuego();
 		crearPanelConfig();
 		crearPanelGuardarPuntaje();
 		
@@ -173,7 +173,7 @@ public class interfazGrafica extends JFrame{
 		//panelConfig.setVisible(false);
 	}
 	
-
+/*
 	private void crearPanelJuego(){
 		panelJuego=new JPanel();
 		panelJuego.setLayout(new BorderLayout());
@@ -181,7 +181,7 @@ public class interfazGrafica extends JFrame{
 		panelJuego.add(mapa, BorderLayout.CENTER);	
 		//mapa.paint(g);
 	}
-	
+	*/
 	private void crearPanelGuardarPuntaje() {
 		panelGuardarPuntaje=new JPanel();
 		panelGuardarPuntaje.setLayout(new BorderLayout());
@@ -297,7 +297,7 @@ public void mostrarConfig() {
 		this.remove(panelReglas);
 		panelReglas.setVisible(false);
 	}
-	
+	/*
 	public void mostrarJuego() {
 		
 		panel.setVisible(false);
@@ -311,7 +311,7 @@ public void mostrarConfig() {
 		this.remove(panelReglas);
 		panelReglas.setVisible(false);
 	}
-	
+	*/
 	
 public void mostrarPanelGuardarPuntaje() {
 		
