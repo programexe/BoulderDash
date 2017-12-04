@@ -15,7 +15,7 @@ public class test {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Ingrese nivel que quiere recorrer");
 		int lvl = sc.nextInt();
-		
+		//ANDA;
 		Mapa m = Mapa.getInstance();
 		Rockford player= Rockford.getInstance();
 		Juego juego = Juego.getInstance(); 
