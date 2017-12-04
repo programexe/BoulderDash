@@ -38,7 +38,7 @@ public class EspacioVacio extends Inanimados {
 	}	
 	
 	public String toStringPos() {
-		return ("(" + this.x + "," + this.y + ")Vacio      ");
+		return ("Vacio");
 
 	}
 

@@ -138,7 +138,7 @@ public class Ameba extends Animados {
 	}
 	
 	public String toStringPos() {
-		return ("(" + this.x + "," + this.y + ")Ameba      ");
+		return ("Ameba");
 
 	}
 

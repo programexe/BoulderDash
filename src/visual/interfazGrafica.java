@@ -27,10 +27,7 @@ public class interfazGrafica extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String imgFileName= "imagenes/img.gif";
-	private Image img;
-	
-	
+		
 	
 	JButton reglas=new JButton("Reglas");
 	JButton jugar=new JButton("¡Jugar!");
@@ -59,7 +56,7 @@ public class interfazGrafica extends JFrame{
 	private CargaImagenes mapa;
 	public static DatosJuego juego = DatosJuego.getInstance();
 	
-	public interfazGrafica() throws Exception {
+	public interfazGrafica() {
 		//this.cargarImagenFondo();
 		//dibujarFondo();
 		
@@ -77,7 +74,7 @@ public class interfazGrafica extends JFrame{
 		crearPanel();
 		crearPanelReglas();
 		crearPanelTopX();
-		//crearPanelJuego();
+		crearPanelJuego();
 		crearPanelConfig();
 	}
 	
@@ -158,15 +155,11 @@ public class interfazGrafica extends JFrame{
 		//this.add(panelConfig);
 		//panelConfig.setVisible(false);
 	}
-	/*
-	private void crearPanelJuego() throws Exception{
-		panelJuego=new JPanel();
-		panelJuego.setLayout(new BorderLayout());
-		mapa = new CargaImagenes();		
-		panelJuego.add(mapa, BorderLayout.CENTER);	
-		mapa.paint(g);
+	
+	private void crearPanelJuego() {
+		panelJuego=new CargaImagenes();
 	}
-	*/
+	
 	
 	public void leerArchivoPuntaje() {
 		BufferedReader br;

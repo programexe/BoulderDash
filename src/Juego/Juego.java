@@ -32,11 +32,11 @@ public class Juego {
 	
 	private interfazGrafica ig;
 	
-	private Juego() throws Exception{	
+	private Juego() {	
 		ig=new interfazGrafica();
 	}
 	
-	public static Juego getInstance() throws Exception{
+	public static Juego getInstance() {
 		if (juego == null)
 			juego = new Juego();
 		

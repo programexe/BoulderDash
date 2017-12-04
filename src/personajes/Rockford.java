@@ -181,7 +181,7 @@ public class Rockford extends Animados{
 	}
 	
 	public String toStringPos() {
-		return ("(" + this.x + "," + this.y + ")Rockford     ");
+		return ("Rockford");
 
 	}
 }

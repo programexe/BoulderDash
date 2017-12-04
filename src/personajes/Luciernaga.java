@@ -202,7 +202,7 @@ public class Luciernaga extends Explosivos {
 	}
 	
 	public String toStringPos() {
-		return ("(" + this.x + "," + this.y + ")Luciernaga      ");
+		return ("Luciernaga");
 
 	}
 
