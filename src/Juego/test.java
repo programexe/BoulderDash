@@ -19,7 +19,8 @@ public class test {
 		Mapa m = Mapa.getInstance();
 		Rockford player= Rockford.getInstance();
 		Juego juego = Juego.getInstance(); 
-				
+		juego.cargarNivel(lvl);
+		/*		
 		switch (lvl){
 		
 			case 1 :{
@@ -85,6 +86,7 @@ public class test {
 			default:
 				System.out.println("El nivel no esta disponible");
 		}
+		*/
 		
 		
 

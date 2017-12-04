@@ -67,17 +67,23 @@ public class Roca extends QueCaen{
 	 * Actualizar que ejecuta el metodo correspondiente de acuerdo al estado de cayendo
 	 */
 	public void actualizar(){ 
-		if (this.isCayendo())
+		
+		if (this.isCayendo()) {
 			if (!(this.detectar())){
 				this.caer();
 				Elementos e = this.devolverPos(direccionAnimados.ABAJO);
 				if (!(e.isEspacioVacio() || e.isRockford() || e.isLuciernaga() || e.isMariposa()))
 					this.setCayendo(false);
 			}
+		}
 		else {
 			Elementos e = this.devolverPos(direccionAnimados.ABAJO);
-			if (e.isEspacioVacio())
+			if (e.isEspacioVacio()) {
 				this.setCayendo(true);
+				System.out.println("set cayedo true");
+				
+			}
+				
 			if (e.isRoca() || e.isMuro() || e.isDiamante()){
 				if (e.devolverPos(direccionAnimados.IZQUIERDA).isEspacioVacio() && e.devolverPos(direccionAnimados.ABAJOIZQ).isEspacioVacio()){
 					this.moverIzquierda();

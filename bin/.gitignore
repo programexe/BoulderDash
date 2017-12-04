@@ -1,5 +1,12 @@
 /CargaDeNiveles/
+<<<<<<< HEAD
 /Juego/
 /control/
+=======
+/ImagenFondo.png
+/Juego/
+/control/
+/imagenes/
+>>>>>>> branch 'master' of https://github.com/programexe/BoulderDash
 /personajes/
 /visual/

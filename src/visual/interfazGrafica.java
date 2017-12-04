@@ -27,7 +27,12 @@ public class interfazGrafica extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+<<<<<<< HEAD
 		
+=======
+	private String imgFileName= "imagenes/img.gif";
+	private Image img;
+>>>>>>> branch 'master' of https://github.com/programexe/BoulderDash
 	
 	JButton reglas=new JButton("Reglas");
 	JButton jugar=new JButton("¡Jugar!");
@@ -37,12 +42,11 @@ public class interfazGrafica extends JFrame{
 	JButton atras2=new JButton("Atras");
 	JButton atras3=new JButton("Atras");
 	JTextArea textoReglas;
-	Graphics g;
 	int cantJugadoresTabla=5;
 	Object[] titulosTabla = {"Puesto","Nombre","Puntos"};
 	Object[][] datosPuntajes=new Object[15][3];
 	
-	
+	ControlTeclas teclado;
 	
 	
 	JComboBox elegirX;
@@ -59,6 +63,9 @@ public class interfazGrafica extends JFrame{
 	public interfazGrafica() {
 		//this.cargarImagenFondo();
 		//dibujarFondo();
+		teclado=new ControlTeclas();
+		this.addKeyListener(teclado);
+		this.setFocusable(true);
 		
 		Image imgIconoFrame;
 		imgIconoFrame = new ImageIcon("Imagenes/rockford.gif").getImage();
@@ -75,7 +82,12 @@ public class interfazGrafica extends JFrame{
 		crearPanelReglas();
 		crearPanelTopX();
 		crearPanelJuego();
+<<<<<<< HEAD
 		crearPanelConfig();
+=======
+		crearPanelConfig();
+		
+>>>>>>> branch 'master' of https://github.com/programexe/BoulderDash
 	}
 	
 	private void crearPanelReglas() {
@@ -156,10 +168,22 @@ public class interfazGrafica extends JFrame{
 		//panelConfig.setVisible(false);
 	}
 	
+<<<<<<< HEAD
 	private void crearPanelJuego() {
 		panelJuego=new CargaImagenes();
+=======
+	private void crearPanelJuego(){
+		panelJuego=new JPanel();
+		panelJuego.setLayout(new BorderLayout());
+		mapa = new CargaImagenes();		
+		panelJuego.add(mapa, BorderLayout.CENTER);	
+		//mapa.paint(g);
+>>>>>>> branch 'master' of https://github.com/programexe/BoulderDash
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> branch 'master' of https://github.com/programexe/BoulderDash
 	
 	public void leerArchivoPuntaje() {
 		BufferedReader br;
