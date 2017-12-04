@@ -30,8 +30,6 @@ public class interfazGrafica extends JFrame{
 	private String imgFileName= "imagenes/img.gif";
 	private Image img;
 	
-	
-	
 	JButton reglas=new JButton("Reglas");
 	JButton jugar=new JButton("¡Jugar!");
 	JButton topX=new JButton("Ranking");
@@ -40,12 +38,11 @@ public class interfazGrafica extends JFrame{
 	JButton atras2=new JButton("Atras");
 	JButton atras3=new JButton("Atras");
 	JTextArea textoReglas;
-	Graphics g;
 	int cantJugadoresTabla=5;
 	Object[] titulosTabla = {"Puesto","Nombre","Puntos"};
 	Object[][] datosPuntajes=new Object[15][3];
 	
-	
+	ControlTeclas teclado;
 	
 	
 	JComboBox elegirX;
@@ -59,9 +56,12 @@ public class interfazGrafica extends JFrame{
 	private CargaImagenes mapa;
 	public static DatosJuego juego = DatosJuego.getInstance();
 	
-	public interfazGrafica() throws Exception {
+	public interfazGrafica() {
 		//this.cargarImagenFondo();
 		//dibujarFondo();
+		teclado=new ControlTeclas();
+		this.addKeyListener(teclado);
+		this.setFocusable(true);
 		
 		Image imgIconoFrame;
 		imgIconoFrame = new ImageIcon("Imagenes/rockford.gif").getImage();
@@ -77,8 +77,9 @@ public class interfazGrafica extends JFrame{
 		crearPanel();
 		crearPanelReglas();
 		crearPanelTopX();
-		//crearPanelJuego();
+		crearPanelJuego();
 		crearPanelConfig();
+		
 	}
 	
 	private void crearPanelReglas() {
@@ -158,15 +159,14 @@ public class interfazGrafica extends JFrame{
 		//this.add(panelConfig);
 		//panelConfig.setVisible(false);
 	}
-	/*
-	private void crearPanelJuego() throws Exception{
+	
+	private void crearPanelJuego(){
 		panelJuego=new JPanel();
 		panelJuego.setLayout(new BorderLayout());
 		mapa = new CargaImagenes();		
 		panelJuego.add(mapa, BorderLayout.CENTER);	
-		mapa.paint(g);
+		//mapa.paint(g);
 	}
-	*/
 	
 	public void leerArchivoPuntaje() {
 		BufferedReader br;

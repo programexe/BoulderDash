@@ -82,9 +82,13 @@ public class Rockford extends Animados{
 		this.direccionActual = dir;
 	}
 	
-	
+	private void imprimirPosicion() {
+		System.out.println("Rockford esta en: "+ this.x + ","+ this.y);
+		System.out.println(this.devolverPos(direccionAnimados.ARRIBA).isRoca());
+	}
 	
 	public void moverArriba(){
+		System.out.println("Rockford arriba");
 		this.setDireccion(direccionAnimados.ARRIBA);
 		Elementos e = this.devolverPos(direccionAnimados.ARRIBA);
 		if (e.isMuro() || e.isMuroTitanio() || e.isRoca()){
@@ -98,10 +102,11 @@ public class Rockford extends Animados{
 				this.y--; 
 			}
 		}
-	
+	this.imprimirPosicion();
 	}
 	
 	public void moverDerecha(){
+		System.out.println("Rockford derecha");
 		this.setDireccion(direccionAnimados.DERECHA);
 		Elementos e = this.devolverPos(direccionAnimados.DERECHA);
 		if (e.isRoca())
@@ -117,9 +122,11 @@ public class Rockford extends Animados{
 				this.x++;
 			}
 		}
+		this.imprimirPosicion();
 	}
 	
 	public void moverAbajo(){
+		System.out.println("Rockford abajo");
 		this.setDireccion(direccionAnimados.ABAJO);
 		Elementos e = this.devolverPos(direccionAnimados.ABAJO);
 		if (e.isMuro() || e.isMuroTitanio() || e.isRoca()){
@@ -133,9 +140,11 @@ public class Rockford extends Animados{
 				this.y++;
 			}
 		}
+		this.imprimirPosicion();
 	}
 	
 	public void moverIzquierda(){
+		System.out.println("Rockford Izquierda");
 		this.setDireccion(direccionAnimados.IZQUIERDA);
 		Elementos e = this.devolverPos(direccionAnimados.IZQUIERDA);
 		if (e.isRoca())
@@ -151,6 +160,7 @@ public class Rockford extends Animados{
 				this.x--;
 			}
 		}
+		this.imprimirPosicion();
 	}
 	
 	private void empujarRoca(Roca r){
@@ -169,7 +179,9 @@ public class Rockford extends Animados{
 	
 	public void setMuerto(boolean muerto) {
 		this.muerto = muerto;
+		if(muerto) {
 		System.out.println("El jugador ha muerto");
+		}
 	}
 	
 	public void actualizar(){

@@ -17,7 +17,7 @@ public class CargaImagenes extends JPanel {
 	private static HashMap<String, ImageIcon> image = null;
 	
 	
-	public CargaImagenes() throws Exception {
+	public CargaImagenes() {
 		super();
 		if (image == null){
 			image = new HashMap<String, ImageIcon>();
@@ -39,7 +39,7 @@ public class CargaImagenes extends JPanel {
 		}
 	}
 	
-	public void paint(Graphics g){
+	public void paintComponent(Graphics g){
 		int w = this.getWidth() / 40;
 		int h = this.getHeight() / 22;
 		g.drawString(interfazGrafica.juego.getDiamantesPorRecolectar() + "-VIDAS: "

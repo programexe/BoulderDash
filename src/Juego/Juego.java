@@ -1,5 +1,5 @@
 package Juego;
-
+import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import control.ControlTeclas;
 import personajes.*;
 import visual.interfazGrafica;
 
@@ -29,14 +30,17 @@ public class Juego {
 	Timer timer;
 	String nombreArchivo="puntajes.txt";
 	File archivoPuntaje=new File(nombreArchivo);
+	Scanner sc=new Scanner(System.in);
+	
 	
 	private interfazGrafica ig;
 	
-	private Juego() throws Exception{	
+	private Juego(){	
 		ig=new interfazGrafica();
+		ig.setVisible(true);
 	}
 	
-	public static Juego getInstance() throws Exception{
+	public static Juego getInstance(){
 		if (juego == null)
 			juego = new Juego();
 		
@@ -81,7 +85,13 @@ public class Juego {
 		fw.close();
 	}
 	
-	public void agregarNuevoPuntaje(String nuevoNombre, String nuevoApellido, int nuevoPuntos) {  //Este metodo agraga el nuevo puntaje con sus datos en la posicion correcta (Ordenados los puntajes de mayor a menos)
+	private void ingresarPuntajePartida() {
+		System.out.println("Ingrese su nombre:");
+		agregarNuevoPuntaje(sc.next(),DatosJuego.getInstance().getDiamantesRecolectados());
+		
+	}
+	
+	public void agregarNuevoPuntaje(String nuevoNombre, int nuevoPuntos) {  //Este metodo agraga el nuevo puntaje con sus datos en la posicion correcta (Ordenados los puntajes de mayor a menos)
 		String line;
 		int puesto=1;
 		String nombre;
@@ -103,13 +113,13 @@ public class Juego {
 				puntos=Integer.parseInt(br.readLine());
 				if (puntos<nuevoPuntos) { //Aca es cuando se encuentra el espacio donde va en nuevo puntaje, entonces se lo agrega al archivo
 					escribirArchivo(puesto, archivoTemporal);
-					escribirArchivo(nuevoNombre+nuevoApellido,archivoTemporal);
+					escribirArchivo(nuevoNombre,archivoTemporal);
 					escribirArchivo(nuevoPuntos,archivoTemporal);
 					sumarAPuesto=1;
 				}
 				else {
 					escribirArchivo(puesto+sumarAPuesto, archivoTemporal);
-					escribirArchivo(nuevoNombre+nuevoApellido,archivoTemporal);
+					escribirArchivo(nuevoNombre,archivoTemporal);
 					escribirArchivo(nuevoPuntos,archivoTemporal);
 				}
 			}
@@ -118,7 +128,7 @@ public class Juego {
 				nombre= br.readLine();
 				puntos=Integer.parseInt(br.readLine());
 				escribirArchivoSobre(puesto, archivoTemporal);
-				escribirArchivoSobre(nuevoNombre+nuevoApellido,archivoTemporal);
+				escribirArchivoSobre(nuevoNombre,archivoTemporal);
 				escribirArchivoSobre(nuevoPuntos,archivoTemporal);
 			}
 			File archivoPermanente=new File("puntos.txt");
@@ -152,8 +162,12 @@ public class Juego {
 		}
 		
 		if (jugador.isMuerto()){
+			System.out.println("lalalalalalalalalalalala");
+			this.ingresarPuntajePartida();
 			this.finJuego = true;
+			
 			timer.cancel();
+			
 		}
 		
 		

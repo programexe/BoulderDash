@@ -108,6 +108,7 @@ public class Mapa {
 			System.out.println("Se creo el mapa");	
 			this.setTiempo(150);
 			timer=new Timer();
+			timer.schedule(tarea,0,100);
 		
 		return 0;
 		} catch (Exception e) {
@@ -118,12 +119,13 @@ public class Mapa {
 	
 	TimerTask tarea = new TimerTask(){
 		public void run(){
-			act();
+			//act();
+			Juego.getInstance().actualizar();
 		}
 	};
 	
 	public void act(){
-		System.out.println("aaaaaaaaaaaaaaaaaaaaa");
+		//System.out.println("aaaaaaaaaaaaaaaaaaaaa");
 		for(int i=0;  i<40; i++){
 			for(int j=0; j<22; j++){
 				mapa.getEspacio(i,j).actualizar();
